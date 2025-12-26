@@ -10,7 +10,8 @@ export async function GET(request: NextRequest) {
     const code = searchParams.get('code');
 
     if (!code) {
-      return NextResponse.redirect(new URL('/?error=discord_auth_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=discord_auth_failed', frontendUrl));
     }
 
     // Échanger le code contre un access token
@@ -30,7 +31,8 @@ export async function GET(request: NextRequest) {
 
     if (!tokenResponse.ok) {
       console.error('Discord token exchange failed:', await tokenResponse.text());
-      return NextResponse.redirect(new URL('/?error=discord_token_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=discord_token_failed', frontendUrl));
     }
 
     const tokenData = await tokenResponse.json();
@@ -45,7 +47,8 @@ export async function GET(request: NextRequest) {
 
     if (!userResponse.ok) {
       console.error('Discord user fetch failed:', await userResponse.text());
-      return NextResponse.redirect(new URL('/?error=discord_user_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=discord_user_failed', frontendUrl));
     }
 
     const discordUser = await userResponse.json();
@@ -54,8 +57,9 @@ export async function GET(request: NextRequest) {
     const email = discordUser.email;
 
     if (!email) {
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
       return NextResponse.redirect(
-        new URL('/?error=discord_no_email', request.url)
+        new URL('/?error=discord_no_email', frontendUrl)
       );
     }
 
@@ -138,7 +142,8 @@ export async function GET(request: NextRequest) {
       expiresAt: Date.now() + (2 * 60 * 60 * 1000), // 2 heures
     };
 
-    const response = NextResponse.redirect(new URL('/', request.url));
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    const response = NextResponse.redirect(new URL('/', frontendUrl));
 
     // Créer le cookie de session - expire dans 2h
     response.cookies.set('whop_session', JSON.stringify(session), {
@@ -152,6 +157,7 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Discord OAuth callback error:', error);
-    return NextResponse.redirect(new URL('/?error=discord_callback_failed', request.url));
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    return NextResponse.redirect(new URL('/?error=discord_callback_failed', frontendUrl));
   }
 }

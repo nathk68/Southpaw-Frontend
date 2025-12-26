@@ -10,7 +10,8 @@ export async function GET(request: NextRequest) {
     const code = searchParams.get('code');
 
     if (!code) {
-      return NextResponse.redirect(new URL('/?error=auth_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=auth_failed', frontendUrl));
     }
 
     console.log('🔍 Exchanging Whop authorization code for token...');
@@ -32,7 +33,8 @@ export async function GET(request: NextRequest) {
 
     if (!tokenResponse.ok) {
       console.error('Token exchange failed:', await tokenResponse.text());
-      return NextResponse.redirect(new URL('/?error=token_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=token_failed', frontendUrl));
     }
 
     const tokenData = await tokenResponse.json();
@@ -47,7 +49,8 @@ export async function GET(request: NextRequest) {
 
     if (!userResponse.ok) {
       console.error('User fetch failed:', await userResponse.text());
-      return NextResponse.redirect(new URL('/?error=user_fetch_failed', request.url));
+      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      return NextResponse.redirect(new URL('/?error=user_fetch_failed', frontendUrl));
     }
 
     const userData = await userResponse.json();
@@ -120,7 +123,8 @@ export async function GET(request: NextRequest) {
     };
 
     // Redirect to home with session data in URL params (to be stored in localStorage)
-    const response = NextResponse.redirect(new URL('/', request.url));
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    const response = NextResponse.redirect(new URL('/', frontendUrl));
 
     // Set session cookie
     response.cookies.set('whop_session', JSON.stringify(session), {
@@ -133,6 +137,7 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Whop callback error:', error);
-    return NextResponse.redirect(new URL('/?error=callback_failed', request.url));
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    return NextResponse.redirect(new URL('/?error=callback_failed', frontendUrl));
   }
 }

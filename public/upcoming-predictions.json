@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2025-12-26T22:58:12.294460",
+  "count": 5,
+  "fights": [
+    {
+      "fighter1": "Gaethje",
+      "fighter2": "Pimblett",
+      "eventTitle": "UFC 324",
+      "eventDate": "2026-01-25T02:00:00.000Z",
+      "prob1": 69.9,
+      "prob2": 30.1,
+      "confidence": 39.7
+    },
+    {
+      "fighter1": "Volkanovski",
+      "fighter2": "Lopes",
+      "eventTitle": "UFC 325",
+      "eventDate": "2026-02-01T02:00:00.000Z",
+      "prob1": 50,
+      "prob2": 50,
+      "confidence": 0
+    },
+    {
+      "fighter1": "Bautista",
+      "fighter2": "Oliveira",
+      "eventTitle": "UFC FIGHT NIGHT",
+      "eventDate": "2026-02-08T02:00:00.000Z",
+      "prob1": 88.7,
+      "prob2": 11.3,
+      "confidence": 77.5
+    },
+    {
+      "fighter1": "Strickland",
+      "fighter2": "Hernandez",
+      "eventTitle": "UFC FIGHT NIGHT",
+      "eventDate": "2026-02-22T02:00:00.000Z",
+      "prob1": 50,
+      "prob2": 50,
+      "confidence": 0
+    },
+    {
+      "fighter1": "Moreno",
+      "fighter2": "Almabayev",
+      "eventTitle": "UFC FIGHT NIGHT",
+      "eventDate": "2026-03-01T02:00:00.000Z",
+      "prob1": 70.3,
+      "prob2": 29.7,
+      "confidence": 40.6
+    }
+  ]
+}

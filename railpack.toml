@@ -1,0 +1,11 @@
+builder = "node"
+
+[node]
+version = "20"
+
+[build]
+install_cmd = "npm install"
+build_cmd = "npm run build"
+
+[start]
+cmd = "npm run start"

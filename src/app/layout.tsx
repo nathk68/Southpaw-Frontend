@@ -22,9 +22,6 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Southpaw',
   description: 'Southpaw - Predictions UFC',
-  icons: {
-    icon: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

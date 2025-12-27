@@ -156,11 +156,36 @@ export function predictHybrid(fighter1: FighterStats, fighter2: FighterStats): H
 export function predictFightOutcomeHybrid(fighter1: FighterStats, fighter2: FighterStats) {
   const prediction = predictHybrid(fighter1, fighter2);
 
+  // La confiance est basée sur le pourcentage du favori (pas l'écart)
+  // Points de calibration :
+  // 50% → 0%, 52% → 20%, 60% → 50%, 75% → 75%, 85% → 95%
+  const maxProbability = Math.max(prediction.fighter1WinProbability, prediction.fighter2WinProbability);
+
+  // Formule par paliers basée sur le pourcentage absolu du favori
+  let confidence: number;
+  if (maxProbability <= 50) {
+    confidence = 0;
+  } else if (maxProbability <= 52) {
+    // 50% → 52% donne 0% → 20%
+    confidence = (maxProbability - 50) * 10; // (52-50) * 10 = 20
+  } else if (maxProbability <= 60) {
+    // 52% → 60% donne 20% → 50%
+    confidence = 20 + (maxProbability - 52) * 3.75; // 20 + 8*3.75 = 50
+  } else if (maxProbability <= 75) {
+    // 60% → 75% donne 50% → 75%
+    confidence = 50 + (maxProbability - 60) * 1.67; // 50 + 15*1.67 ≈ 75
+  } else {
+    // 75% → 85%+ donne 75% → 95%+
+    confidence = 75 + (maxProbability - 75) * 2; // 75 + 10*2 = 95
+  }
+
+  confidence = Math.min(100, confidence); // Cap à 100%
+
   return {
     fighter1WinProbability: prediction.fighter1WinProbability,
     fighter2WinProbability: prediction.fighter2WinProbability,
     predictedWinner: prediction.fighter1WinProbability > 50 ? 'fighter1' : 'fighter2',
-    confidence: Math.abs(prediction.fighter1WinProbability - 50),
+    confidence: Math.round(confidence * 10) / 10, // Arrondi à 1 décimale
     details: {
       baseScore: prediction.baseScore,
       adjustedScore: prediction.adjustedScore,

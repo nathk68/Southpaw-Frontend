@@ -220,7 +220,7 @@ export default function AlgorithmPage() {
       icon: Target,
       title: 'REAL-TIME ODDS',
       description: 'Calculs instantanés',
-      detail: 'API Next.js ultra-rapide',
+      detail: 'API Python ultra-rapide',
     },
     {
       icon: CheckCircle,

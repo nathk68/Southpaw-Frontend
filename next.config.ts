@@ -40,12 +40,12 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://discord.com https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com https://www.google-analytics.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://discord.com https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net",
               "style-src 'self' 'unsafe-inline' https://cmp.clickio.com https://clickiocmp.com",
-              "img-src 'self' data: https:",
+              "img-src 'self' data: https: blob:",
               "font-src 'self' data:",
-              "connect-src 'self' https://discord.com http://localhost:8000 https://www.google-analytics.com https://analytics.google.com https://cmp.clickio.com https://clickiocmp.com",
-              "frame-src https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com",
+              "connect-src 'self' https://discord.com http://localhost:8000 https://www.google-analytics.com https://analytics.google.com https://cmp.clickio.com https://clickiocmp.com https://www.googletagmanager.com https://region1.google-analytics.com https://stats.g.doubleclick.net",
+              "frame-src https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com https://td.doubleclick.net",
               "frame-ancestors 'self'",
             ].join('; ')
           },

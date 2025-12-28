@@ -19,161 +19,180 @@ export default function AlgorithmPage() {
   const pillarsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Hero Section Animations
-    const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    // Petit délai pour s'assurer que le DOM est prêt
+    const initAnimations = () => {
+      // Hero Section Animations
+      const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-    heroTl
-      .from('.hero-badge', {
-        opacity: 0,
-        scale: 0.5,
-        y: -50,
-        duration: 0.8,
-      })
-      .from('.hero-title .word', {
-        opacity: 0,
-        rotateX: -90,
-        transformOrigin: 'top center',
-        stagger: 0.1,
-        duration: 1,
-      }, '-=0.4')
-      .from('.hero-subtitle', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-      }, '-=0.6')
-      .from('.hero-cta', {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.6,
-      }, '-=0.4');
+      heroTl
+        .from('.hero-badge', {
+          opacity: 0,
+          scale: 0.5,
+          y: -50,
+          duration: 0.8,
+        })
+        .from('.hero-title .word', {
+          opacity: 0,
+          rotateX: -90,
+          transformOrigin: 'top center',
+          stagger: 0.1,
+          duration: 1,
+        }, '-=0.4')
+        .from('.hero-subtitle', {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+        }, '-=0.6')
+        .from('.hero-cta', {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.6,
+        }, '-=0.4');
 
-    // Hero Parallax
-    gsap.to('.hero-title', {
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5,
-      },
-      y: -150,
-      scale: 0.9,
-      opacity: 0.3,
-    });
+      // Hero Parallax
+      gsap.to('.hero-title', {
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+        y: -150,
+        scale: 0.9,
+        opacity: 0.3,
+      });
 
-    // Pipeline Line Progressive Reveal
-    gsap.fromTo('.pipeline-line',
-      { scaleY: 0, transformOrigin: 'top' },
-      {
-        scaleY: 1,
+      // Pipeline Line Progressive Reveal
+      gsap.fromTo('.pipeline-line',
+        { scaleY: 0, transformOrigin: 'top' },
+        {
+          scaleY: 1,
+          scrollTrigger: {
+            trigger: pipelineRef.current,
+            start: 'top 60%',
+            end: 'bottom 80%',
+            scrub: 0.5,
+          },
+          ease: 'none',
+        }
+      );
+
+      // Pipeline Nodes Appear
+      gsap.from('.pipeline-node', {
         scrollTrigger: {
           trigger: pipelineRef.current,
           start: 'top 60%',
-          end: 'bottom 80%',
-          scrub: 0.5,
         },
-        ease: 'none',
-      }
-    );
+        scale: 0,
+        rotation: 180,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: 'back.out(1.7)',
+      });
 
-    // Pipeline Nodes Appear
-    gsap.from('.pipeline-node', {
-      scrollTrigger: {
-        trigger: pipelineRef.current,
-        start: 'top 60%',
-      },
-      scale: 0,
-      rotation: 180,
-      stagger: 0.2,
-      duration: 0.6,
-      ease: 'back.out(1.7)',
-    });
+      // Pipeline Cards Entrance
+      gsap.from('.pipeline-card', {
+        scrollTrigger: {
+          trigger: pipelineRef.current,
+          start: 'top 60%',
+        },
+        opacity: 0,
+        x: (index: number) => index % 2 === 0 ? -100 : 100,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
 
-    // Pipeline Cards Entrance
-    gsap.from('.pipeline-card', {
-      scrollTrigger: {
-        trigger: pipelineRef.current,
-        start: 'top 60%',
-      },
-      opacity: 0,
-      x: (index: number) => index % 2 === 0 ? -100 : 100,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: 'power3.out',
-    });
+      // Stats Counter Animation
+      document.querySelectorAll('.stat-counter').forEach((counter) => {
+        const target = counter as HTMLElement;
+        const finalValue = parseFloat(target.getAttribute('data-value') || '0');
 
-    // Stats Counter Animation
-    document.querySelectorAll('.stat-counter').forEach((counter) => {
-      const target = counter as HTMLElement;
-      const finalValue = parseFloat(target.getAttribute('data-value') || '0');
+        gsap.to(target, {
+          innerHTML: finalValue,
+          duration: 2.5,
+          ease: 'power2.out',
+          snap: { innerHTML: finalValue % 1 === 0 ? 1 : 0.1 },
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: 'top 70%',
+          },
+          onUpdate: function() {
+            const value = parseFloat(this.targets()[0].innerHTML);
+            if (finalValue % 1 === 0) {
+              this.targets()[0].innerHTML = Math.round(value).toString();
+            } else {
+              this.targets()[0].innerHTML = value.toFixed(1);
+            }
+          }
+        });
+      });
 
-      gsap.to(target, {
-        innerHTML: finalValue,
-        duration: 2.5,
-        ease: 'power2.out',
-        snap: { innerHTML: finalValue % 1 === 0 ? 1 : 0.1 },
+      // Stats Cards Scale Animation - initial state visible
+      gsap.set('.stat-card', { opacity: 1, scale: 1 });
+
+      gsap.from('.stat-card', {
         scrollTrigger: {
           trigger: statsRef.current,
           start: 'top 70%',
         },
-        onUpdate: function() {
-          const value = parseFloat(this.targets()[0].innerHTML);
-          if (finalValue % 1 === 0) {
-            this.targets()[0].innerHTML = Math.round(value).toString();
-          } else {
-            this.targets()[0].innerHTML = value.toFixed(1);
-          }
-        }
+        scale: 0.8,
+        opacity: 0,
+        rotateY: -20,
+        stagger: 0.15,
+        duration: 1,
+        ease: 'back.out(1.4)',
       });
-    });
 
-    // Stats Cards Scale Animation - initial state visible
-    gsap.set('.stat-card', { opacity: 1, scale: 1 });
+      // Pillars initial state - make sure they're visible
+      const pillarCards = document.querySelectorAll('.pillar-card');
+      const pillarBars = document.querySelectorAll('.pillar-bar');
 
-    gsap.from('.stat-card', {
-      scrollTrigger: {
-        trigger: statsRef.current,
-        start: 'top 70%',
-      },
-      scale: 0.8,
-      opacity: 0,
-      rotateY: -20,
-      stagger: 0.15,
-      duration: 1,
-      ease: 'back.out(1.4)',
-    });
+      if (pillarCards.length > 0) {
+        gsap.set('.pillar-card', { opacity: 1 });
+      }
 
-    // Pillars initial state - make sure they're visible
-    gsap.set('.pillar-card', { opacity: 1 });
-    gsap.set('.pillar-bar', { scaleY: 1, transformOrigin: 'bottom' });
+      if (pillarBars.length > 0) {
+        gsap.set('.pillar-bar', { scaleY: 1, transformOrigin: 'bottom' });
 
-    // Pillars Progress Bars
-    gsap.from('.pillar-bar', {
-      scrollTrigger: {
-        trigger: pillarsRef.current,
-        start: 'top 70%',
-      },
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      stagger: 0.1,
-      duration: 1.5,
-      ease: 'power3.out',
-    });
+        // Pillars Progress Bars
+        gsap.from('.pillar-bar', {
+          scrollTrigger: {
+            trigger: pillarsRef.current,
+            start: 'top 70%',
+          },
+          scaleY: 0,
+          transformOrigin: 'bottom',
+          stagger: 0.1,
+          duration: 1.5,
+          ease: 'power3.out',
+        });
+      }
 
-    // Pillars Cards
-    gsap.from('.pillar-card', {
-      scrollTrigger: {
-        trigger: pillarsRef.current,
-        start: 'top 70%',
-      },
-      opacity: 0,
-      y: 80,
-      rotateX: -30,
-      stagger: 0.12,
-      duration: 1,
-      ease: 'power3.out',
+      // Pillars Cards
+      if (pillarCards.length > 0) {
+        gsap.from('.pillar-card', {
+          scrollTrigger: {
+            trigger: pillarsRef.current,
+            start: 'top 70%',
+          },
+          opacity: 0,
+          y: 80,
+          rotateX: -30,
+          stagger: 0.12,
+          duration: 1,
+          ease: 'power3.out',
+        });
+      }
+    };
+
+    // Utilise requestAnimationFrame pour s'assurer que le DOM est prêt
+    const rafId = requestAnimationFrame(() => {
+      initAnimations();
     });
 
     return () => {
+      cancelAnimationFrame(rafId);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -206,7 +225,7 @@ export default function AlgorithmPage() {
     {
       icon: CheckCircle,
       title: 'VERIFIED RESULTS',
-      description: '69.3% de précision',
+      description: '72.3% de précision',
       detail: '133/192 combats prédits correctement',
     },
   ];
@@ -242,7 +261,7 @@ export default function AlgorithmPage() {
     {
       icon: Target,
       title: 'Validation Rigoureuse',
-      description: '69.3% de précision maintenue sur 192 combats de test',
+      description: '72.3% de précision maintenue sur 192 combats de test',
       detail: 'Performance supérieure aux bookmakers traditionnels',
       color: 'from-green-500 to-emerald-500'
     },
@@ -298,7 +317,7 @@ export default function AlgorithmPage() {
               </div>
 
               <p className="hero-subtitle text-xl md:text-2xl text-gray-400 font-mono mb-12 max-w-3xl mx-auto opacity-100">
-                L'algorithme prédictif le plus avancé de l'UFC. 69.3% de précision.
+                L'algorithme prédictif le plus avancé de l'UFC. 72.3% de précision.
                 <br />
                 Propulsé par l'IA, la data science & 8255 combats analysés.
               </p>
@@ -492,7 +511,7 @@ export default function AlgorithmPage() {
                 </p>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-lime/10 border border-brand-lime/30 clip-path-card">
                   <CheckCircle size={20} className="text-brand-lime" />
-                  <span className="font-mono text-brand-lime font-bold">69.3% de précision globale sur 192 combats</span>
+                  <span className="font-mono text-brand-lime font-bold">72.3% de précision globale sur 192 combats</span>
                 </div>
               </div>
 

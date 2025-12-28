@@ -220,7 +220,7 @@ export async function POST(request: NextRequest) {
 
     // Toujours ajouter les facteurs généraux à la fin
     keyFactors.push(
-      `Prédiction basée sur 8,255 combats historiques (69.3% accuracy)`,
+      `Prédiction basée sur 8,255 combats historiques (72.3% accuracy)`,
       `Modèle: Random Forest avec 48 features statistiques`
     );
 

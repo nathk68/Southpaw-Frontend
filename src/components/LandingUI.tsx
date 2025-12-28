@@ -68,7 +68,7 @@ export const CustomCursor = () => {
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, access, loading, logout } = useAuth();
+  const { user, access, loading, login, logout } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
@@ -221,7 +221,7 @@ export const Navbar = () => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                setShowEmailModal(true);
+                login();
               }}
               className="border-2 border-brand-lime text-brand-lime px-4 py-3 hover:bg-brand-lime hover:text-black transition-all font-bold"
             >

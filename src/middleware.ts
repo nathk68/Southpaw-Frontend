@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
 
   // 1. Rate Limiting sur les endpoints API
   if (request.nextUrl.pathname.startsWith('/api/')) {
-    const ip = request.ip ?? request.headers.get('x-forwarded-for') ?? '127.0.0.1';
+    const ip = request.headers.get('x-forwarded-for') ?? request.headers.get('x-real-ip') ?? '127.0.0.1';
     const { allowed, remaining, resetTime } = rateLimiter.check(ip);
 
     if (!allowed) {

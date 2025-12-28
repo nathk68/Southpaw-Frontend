@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Loader2, Mail } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
@@ -14,8 +15,13 @@ export function EmailLoginModal({ isOpen, onClose, onSuccess }: Props) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isOpen || !mounted) return null;
 
   const handleDiscordLogin = () => {
     // Redirect vers Discord OAuth
@@ -58,9 +64,9 @@ export function EmailLoginModal({ isOpen, onClose, onSuccess }: Props) {
     }
   };
 
-  return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-brand-dark border-2 border-brand-lime max-w-md w-full">
+  const modalContent = (
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-brand-dark border-2 border-brand-lime max-w-md w-full my-auto">
         <div className="p-6 border-b border-brand-lime/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -166,4 +172,6 @@ export function EmailLoginModal({ isOpen, onClose, onSuccess }: Props) {
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

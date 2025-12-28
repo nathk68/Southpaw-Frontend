@@ -58,8 +58,8 @@ export const CustomCursor = () => {
 
   return (
     <>
-      <div ref={cursorRef} className="fixed w-3 h-3 bg-brand-lime rounded-full pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 hidden md:block lime-glow" />
-      <div ref={followerRef} className="fixed w-10 h-10 border-2 border-brand-lime/50 rounded-full pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 hidden md:block" />
+      <div ref={cursorRef} className="fixed w-3 h-3 bg-brand-lime rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 hidden md:block lime-glow" />
+      <div ref={followerRef} className="fixed w-10 h-10 border-2 border-brand-lime/50 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 hidden md:block" />
     </>
   );
 };

@@ -105,7 +105,7 @@ export const Hero = () => {
           </h1>
           <p ref={descRef} className="text-lg md:text-xl text-gray-400 max-w-lg mb-10 font-sans font-light border-l-2 border-brand-lime pl-6">
             <strong className="text-white font-medium">Southpaw</strong> n&apos;est pas un bookmaker. C&apos;est votre analyste personnel.
-            Nous croisons des millions de données (styles, cardio, historique) pour vous donner l&apos;avantage mathématique.
+            Nous croisons des milliers de données (styles, cardio, historique) pour vous donner l&apos;avantage mathématique.
           </p>
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
             <button className="group relative px-8 py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105">
@@ -479,6 +479,8 @@ export const CallToAction = () => {
   const iconRef = useRef(null);
 
   useEffect(() => {
+    if (!ctaRef.current || !iconRef.current) return;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ctaRef.current,
@@ -499,14 +501,7 @@ export const CallToAction = () => {
       y: 30,
       duration: 1,
       ease: "power3.out"
-    }, "-=0.7")
-    .from(formRef.current, {
-      y: 40,
-      opacity: 0,
-      scale: 0.9,
-      duration: 1,
-      ease: "power2.out"
-    }, "-=0.6");
+    }, "-=0.7");
 
     // Continuous rotation on icon
     gsap.to(iconRef.current, {

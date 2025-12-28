@@ -164,6 +164,8 @@ export function validateEnvironmentVariables(): void {
  */
 export function isAllowedRedirectUrl(url: string): boolean {
   const ALLOWED_DOMAINS = [
+    'southpaw.fr',
+    'www.southpaw.fr',
     'southpaw.com',
     'www.southpaw.com',
     'localhost',

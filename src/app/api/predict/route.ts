@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: 'Données invalides',
-          details: validationResult.error.errors.map(e => ({
+          details: validationResult.error.issues.map(e => ({
             field: e.path.join('.'),
             message: e.message
           }))

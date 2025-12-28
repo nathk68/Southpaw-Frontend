@@ -61,7 +61,7 @@ export default function DiscordLoginModal({ isOpen, onClose, onLogin }: DiscordL
               <span className="text-white font-bold">€12</span>
             </div>
             <a
-              href="https://whop.com/southpaw-ppv/"
+              href="https://whop.com/southpaw/ppv-pass/"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center bg-white text-black font-bold py-2 rounded hover:bg-white/90 transition-colors text-sm mt-3"

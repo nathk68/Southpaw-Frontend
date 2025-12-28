@@ -309,13 +309,13 @@ const FightRow = ({ fighter1, fighter2, date, prob1, prob2, event, confidence = 
                 <span className="text-white font-display text-xl">{date}</span>
             </div>
 
-            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-12 flex-1 w-full">
-                <div className={`text-right w-[40%] sm:w-1/3 transition-opacity duration-300 ${prob1 >= prob2 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
-                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none truncate">{fighter1}</div>
+            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-12 flex-1 w-full md:flex-nowrap flex-wrap">
+                <div className={`text-right flex-shrink min-w-0 transition-opacity duration-300 ${prob1 >= prob2 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
+                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none overflow-hidden text-ellipsis whitespace-nowrap md:overflow-visible md:whitespace-normal">{fighter1}</div>
                 </div>
-                <div className="font-display text-base sm:text-xl italic font-bold text-gray-700 flex-shrink-0">VS</div>
-                <div className={`text-left w-[40%] sm:w-1/3 transition-opacity duration-300 ${prob2 > prob1 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
-                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none truncate">{fighter2}</div>
+                <div className="font-display text-base sm:text-xl italic font-bold text-gray-700 flex-shrink-0 mx-2">VS</div>
+                <div className={`text-left flex-shrink min-w-0 transition-opacity duration-300 ${prob2 > prob1 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
+                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none overflow-hidden text-ellipsis whitespace-nowrap md:overflow-visible md:whitespace-normal">{fighter2}</div>
                 </div>
             </div>
 

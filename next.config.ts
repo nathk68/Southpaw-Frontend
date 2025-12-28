@@ -40,12 +40,12 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://discord.com https://www.googletagmanager.com https://cmp.clickio.com https://www.google-analytics.com",
-              "style-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://discord.com https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline' https://cmp.clickio.com https://clickiocmp.com",
               "img-src 'self' data: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://discord.com http://localhost:8000 https://www.google-analytics.com https://analytics.google.com https://cmp.clickio.com",
-              "frame-src https://www.googletagmanager.com https://cmp.clickio.com",
+              "connect-src 'self' https://discord.com http://localhost:8000 https://www.google-analytics.com https://analytics.google.com https://cmp.clickio.com https://clickiocmp.com",
+              "frame-src https://www.googletagmanager.com https://cmp.clickio.com https://clickiocmp.com",
               "frame-ancestors 'self'",
             ].join('; ')
           },

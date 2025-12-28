@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
       if (opponentResults.length > 0 && opponentResults[0].weight) {
         const opponentWeight = opponentResults[0].weight;
 
-        // Trier par proximité de poids, puis par nombre de victoires
+        // Trier par proximité de poids en priorité
         results.sort((a, b) => {
           const aWeight = a.weight || 0;
           const bWeight = b.weight || 0;
@@ -76,18 +76,24 @@ export async function POST(request: NextRequest) {
           const aDiff = Math.abs(aWeight - opponentWeight);
           const bDiff = Math.abs(bWeight - opponentWeight);
 
-          // Si la différence de poids est similaire (<10 lbs), prendre celui avec plus de victoires
+          // Prioriser celui avec le poids le plus proche
+          // Si différence < 10 lbs, prioriser stats complètes puis victoires
           if (Math.abs(aDiff - bDiff) < 10) {
+            // Si un a des stats complètes et pas l'autre, prendre celui avec stats
+            if (a.hasCompleteStats && !b.hasCompleteStats) return -1;
+            if (!a.hasCompleteStats && b.hasCompleteStats) return 1;
+
+            // Sinon, prendre celui avec plus de victoires
             const aWins = parseInt(a.record.split('-')[0]) || 0;
             const bWins = parseInt(b.record.split('-')[0]) || 0;
             return bWins - aWins;
           }
 
-          // Sinon, prendre celui le plus proche en poids
+          // Si différence > 10 lbs, TOUJOURS prendre le plus proche en poids
           return aDiff - bDiff;
         });
 
-        console.log(`   🎯 Matching par poids: adversaire ${opponentWeight} lbs, choisi ${results[0].full_name} (${results[0].weight} lbs)`);
+        console.log(`   🎯 Matching par poids: adversaire ${opponentWeight} lbs, choisi ${results[0].name} (${results[0].weight} lbs, hasCompleteStats: ${results[0].hasCompleteStats})`);
       }
 
       // Retourner le premier (déjà trié par stats complètes + victoires depuis l'API)
@@ -98,7 +104,7 @@ export async function POST(request: NextRequest) {
     const fighter1 = chooseBestMatch(results1.results, results2.results);
     const fighter2 = chooseBestMatch(results2.results, results1.results);
 
-    console.log(`✅ Trouvé: ${fighter1.full_name} (${fighter1.record}) vs ${fighter2.full_name} (${fighter2.record})`);
+    console.log(`✅ Trouvé: ${fighter1.name} (${fighter1.record}) vs ${fighter2.name} (${fighter2.record})`);
 
     // Étape 2: Demander la prédiction à l'API Python
     const predictionResponse = await fetch(`${PYTHON_API_URL}/predict`, {
@@ -107,26 +113,26 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        fighter1_id: fighter1.fighter_id,
-        fighter2_id: fighter2.fighter_id,
+        fighter1_id: fighter1.id,
+        fighter2_id: fighter2.id,
       }),
     });
 
     if (!predictionResponse.ok) {
       const error = await predictionResponse.json();
       console.error(`❌ Erreur prédiction ML:`, error);
-      console.error(`   Fighter1 ID: ${fighter1.fighter_id}`);
-      console.error(`   Fighter2 ID: ${fighter2.fighter_id}`);
+      console.error(`   Fighter1 ID: ${fighter1.id}`);
+      console.error(`   Fighter2 ID: ${fighter2.id}`);
 
       // Vérifier si c'est un problème de stats incomplètes
       if (error.detail && error.detail.includes('Stats incomplètes')) {
         return NextResponse.json(
           {
-            error: `Statistiques incomplètes pour ${fighter1.full_name} ou ${fighter2.full_name}`,
+            error: `Statistiques incomplètes pour ${fighter1.name} ou ${fighter2.name}`,
             details: 'Ces combattants n\'ont pas assez de statistiques historiques pour générer une prédiction ML fiable. Cela arrive souvent avec les nouveaux combattants qui n\'ont pas encore beaucoup de combats UFC.',
             fightersInfo: {
-              fighter1: `${fighter1.full_name} (${fighter1.record})`,
-              fighter2: `${fighter2.full_name} (${fighter2.record})`
+              fighter1: `${fighter1.name} (${fighter1.record})`,
+              fighter2: `${fighter2.name} (${fighter2.record})`
             }
           },
           { status: 422 }  // 422 Unprocessable Entity
@@ -139,11 +145,11 @@ export async function POST(request: NextRequest) {
     const mlPrediction = await predictionResponse.json();
     console.log(`✅ Prédiction ML réussie:`, mlPrediction);
 
-    console.log(`📊 Prédiction ML: ${fighter1.full_name} ${mlPrediction.fighter1_win_prob}% vs ${fighter2.full_name} ${mlPrediction.fighter2_win_prob}%`);
+    console.log(`📊 Prédiction ML: ${fighter1.name} ${mlPrediction.fighter1_win_prob}% vs ${fighter2.name} ${mlPrediction.fighter2_win_prob}%`);
 
     // Étape 3: Récupérer les infos détaillées des combattants
-    const fighter1Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter1.fighter_id}`);
-    const fighter2Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter2.fighter_id}`);
+    const fighter1Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter1.id}`);
+    const fighter2Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter2.id}`);
 
     const f1Info = fighter1Details.ok ? await fighter1Details.json() : null;
     const f2Info = fighter2Details.ok ? await fighter2Details.json() : null;
@@ -159,7 +165,7 @@ export async function POST(request: NextRequest) {
 
     // Facteur 1: Basé sur l'avantage striking
     if (analysis.striking_advantage) {
-      const strikingLeader = analysis.striking_advantage > 0 ? fighter1.full_name : fighter2.full_name;
+      const strikingLeader = analysis.striking_advantage > 0 ? fighter1.name : fighter2.name;
       const strikingValue = Math.abs(analysis.striking_advantage);
       if (strikingValue > 20) {
         keyFactors.push(`${strikingLeader} possède un avantage striking significatif (+${strikingValue.toFixed(0)}%)`);
@@ -170,7 +176,7 @@ export async function POST(request: NextRequest) {
 
     // Facteur 2: Basé sur l'avantage grappling
     if (analysis.grappling_advantage) {
-      const grapplingLeader = analysis.grappling_advantage > 0 ? fighter1.full_name : fighter2.full_name;
+      const grapplingLeader = analysis.grappling_advantage > 0 ? fighter1.name : fighter2.name;
       const grapplingValue = Math.abs(analysis.grappling_advantage);
       if (grapplingValue > 20) {
         keyFactors.push(`${grapplingLeader} domine au grappling avec des takedowns constants`);
@@ -181,7 +187,7 @@ export async function POST(request: NextRequest) {
     if (analysis.finish_potential) {
       const finisherValue = Math.abs(analysis.finish_potential);
       if (finisherValue > 15) {
-        const finisher = analysis.finish_potential > 0 ? fighter1.full_name : fighter2.full_name;
+        const finisher = analysis.finish_potential > 0 ? fighter1.name : fighter2.name;
         keyFactors.push(`${finisher} a un taux de finish élevé - risque de KO/Soumission`);
       }
     }
@@ -190,7 +196,7 @@ export async function POST(request: NextRequest) {
     if (analysis.f1_str && analysis.f2_str) {
       const maxStr = Math.max(analysis.f1_str, analysis.f2_str);
       if (maxStr > 500) {
-        const volumeStriker = analysis.f1_str > analysis.f2_str ? fighter1.full_name : fighter2.full_name;
+        const volumeStriker = analysis.f1_str > analysis.f2_str ? fighter1.name : fighter2.name;
         keyFactors.push(`${volumeStriker} maintient un volume de frappes élevé (${maxStr.toFixed(0)} frappes totales)`);
       }
     }
@@ -264,22 +270,22 @@ export async function POST(request: NextRequest) {
           ? ['Prédiction serrée - Plusieurs scénarios possibles']
           : [],
         prediction: mlPrediction.prediction === 'fighter1'
-          ? `Victoire probable de ${fighter1.full_name}`
-          : `Victoire probable de ${fighter2.full_name}`,
+          ? `Victoire probable de ${fighter1.name}`
+          : `Victoire probable de ${fighter2.name}`,
       },
     };
 
     return NextResponse.json({
       success: true,
       fighter1: {
-        name: fighter1.full_name,
+        name: fighter1.name,
         style: f1Info?.fighting_style || undefined,
         age: f1Info?.age?.toString() || undefined,
         reach: f1Info?.reach?.toString() || undefined,
         profileUrl: `https://www.ufc.com/athlete/${fighter1Name}` // Approximation
       },
       fighter2: {
-        name: fighter2.full_name,
+        name: fighter2.name,
         style: f2Info?.fighting_style || undefined,
         age: f2Info?.age?.toString() || undefined,
         reach: f2Info?.reach?.toString() || undefined,

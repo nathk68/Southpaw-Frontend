@@ -231,7 +231,7 @@ export default function AlgorithmPage() {
   ];
 
   const stats = [
-    { value: 69.3, suffix: '%', label: 'Précision Globale', icon: TrendingUp },
+    { value: 72.3, suffix: '%', label: 'Précision Globale', icon: TrendingUp },
     { value: 192, suffix: '', label: 'Combats Testés', icon: Target },
     { value: 8255, suffix: '', label: 'Combats Analysés', icon: Database },
   ];

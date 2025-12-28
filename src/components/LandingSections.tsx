@@ -99,22 +99,22 @@ export const Hero = () => {
               PROBABILITÉS EN TEMPS RÉEL
             </div>
           </div>
-          <h1 ref={titleRef} className="font-display font-bold text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-8 relative z-30">
+          <h1 ref={titleRef} className="font-display font-bold text-[3rem] sm:text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-6 sm:mb-8 relative z-30">
             <span className="block text-brand-white">BETTING</span>
             <span className="block text-brand-lime glitch-text" data-text="INTELLIGENCE">INTELLIGENCE</span>
           </h1>
-          <p ref={descRef} className="text-lg md:text-xl text-gray-400 max-w-lg mb-10 font-sans font-light border-l-2 border-brand-lime pl-6">
+          <p ref={descRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-lg mb-8 sm:mb-10 font-sans font-light border-l-2 border-brand-lime pl-3 sm:pl-4 md:pl-6">
             <strong className="text-white font-medium">Southpaw</strong> n&apos;est pas un bookmaker. C&apos;est votre analyste personnel.
             Nous croisons des milliers de données (styles, cardio, historique) pour vous donner l&apos;avantage mathématique.
           </p>
-          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
-            <button className="group relative px-8 py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105">
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base">
               <span className="relative z-10 flex items-center gap-2 justify-center">
                 Voir les prédictions <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white transform translate-y-full transition-transform group-hover:translate-y-0 duration-300"></div>
             </button>
-            <button className="px-8 py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-xs sm:text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300">
               Comment ça marche ?
             </button>
           </div>
@@ -309,13 +309,13 @@ const FightRow = ({ fighter1, fighter2, date, prob1, prob2, event, confidence = 
                 <span className="text-white font-display text-xl">{date}</span>
             </div>
 
-            <div className="flex items-center justify-center gap-4 md:gap-12 flex-1 w-full">
-                <div className={`text-right w-1/3 transition-opacity duration-300 ${prob1 >= prob2 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
-                    <div className="text-2xl md:text-5xl font-display font-bold uppercase leading-none">{fighter1}</div>
+            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-12 flex-1 w-full">
+                <div className={`text-right w-[40%] sm:w-1/3 transition-opacity duration-300 ${prob1 >= prob2 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
+                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none truncate">{fighter1}</div>
                 </div>
-                <div className="font-display text-xl italic font-bold text-gray-700">VS</div>
-                <div className={`text-left w-1/3 transition-opacity duration-300 ${prob2 > prob1 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
-                    <div className="text-2xl md:text-5xl font-display font-bold uppercase leading-none">{fighter2}</div>
+                <div className="font-display text-base sm:text-xl italic font-bold text-gray-700 flex-shrink-0">VS</div>
+                <div className={`text-left w-[40%] sm:w-1/3 transition-opacity duration-300 ${prob2 > prob1 ? 'opacity-100 text-brand-lime' : 'opacity-50 text-white'}`}>
+                    <div className="text-lg sm:text-2xl md:text-5xl font-display font-bold uppercase leading-none truncate">{fighter2}</div>
                 </div>
             </div>
 

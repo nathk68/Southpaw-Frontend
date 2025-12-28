@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifySession } from '@/lib/session';
 
 interface Session {
   id: string;
@@ -28,7 +29,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const session = JSON.parse(sessionCookie.value) as Session;
+    const session = await verifySession(sessionCookie.value);
+
+    if (!session) {
+      console.warn('⚠️ Invalid session signature detected');
+      const response = NextResponse.json(
+        { error: 'Invalid session', hasAccess: false },
+        { status: 401 }
+      );
+      response.cookies.delete('whop_session');
+      return response;
+    }
 
     // Vérifier si la session a expiré (2h)
     if (session.expiresAt && Date.now() > session.expiresAt) {

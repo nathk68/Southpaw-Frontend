@@ -6,7 +6,6 @@ import { FaDiscord } from 'react-icons/fa';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { useAuth } from '@/contexts/AuthContext';
-import { EmailLoginModal } from './EmailLoginModal';
 
 // --- Custom Cursor ---
 export const CustomCursor = () => {
@@ -71,7 +70,6 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, access, loading, logout } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showEmailModal, setShowEmailModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -124,20 +122,14 @@ export const Navbar = () => {
           </a>
 
           {!loading && !user && (
-            <>
-              <button
-                onClick={() => setShowEmailModal(true)}
-                className="bg-transparent border border-brand-lime text-brand-lime px-6 py-2 hover:bg-brand-lime hover:text-black transition-all duration-300 font-bold clip-path-card text-xs tracking-wider relative overflow-hidden group"
-              >
-                <span className="relative z-10">CONNEXION</span>
-                <span className="absolute inset-0 bg-brand-lime transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </button>
-              <EmailLoginModal
-                isOpen={showEmailModal}
-                onClose={() => setShowEmailModal(false)}
-                onSuccess={() => setShowEmailModal(false)}
-              />
-            </>
+            <a
+              href="/api/auth/discord"
+              className="bg-transparent border border-brand-lime text-brand-lime px-6 py-2 hover:bg-brand-lime hover:text-black transition-all duration-300 font-bold clip-path-card text-xs tracking-wider relative overflow-hidden group inline-flex items-center gap-2"
+            >
+              <img src="/discord-icon.svg" alt="Discord" className="w-5 h-5 relative z-10" style={{ filter: 'brightness(0) saturate(100%) invert(88%) sepia(49%) saturate(1584%) hue-rotate(20deg) brightness(104%) contrast(102%)' }} />
+              <span className="relative z-10">CONNEXION</span>
+              <span className="absolute inset-0 bg-brand-lime transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
           )}
 
           {!loading && user && (

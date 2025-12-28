@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifySession } from '@/lib/session';
 
 interface Session {
   id: string;
@@ -7,14 +8,13 @@ interface Session {
   has_access: boolean;
   isPro?: boolean;
   isPPV?: boolean;
-  token?: string;
   createdAt?: number;
   expiresAt?: number;
 }
 
 /**
  * GET /api/auth/session
- * Returns the current user session (supports Discord login)
+ * Returns the current user session (Discord login only)
  */
 export async function GET(request: NextRequest) {
   try {
@@ -24,9 +24,16 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ user: null, access: null });
     }
 
-    const session = JSON.parse(sessionCookie.value) as Session;
+    const session = await verifySession(sessionCookie.value);
 
-    // Vérifier si la session a expiré (2h)
+    if (!session) {
+      console.warn('⚠️ Invalid session signature detected');
+      const response = NextResponse.json({ user: null, access: null });
+      response.cookies.delete('whop_session');
+      return response;
+    }
+
+    // Vérifier si la session a expiré (2h pour Discord)
     if (session.expiresAt && Date.now() > session.expiresAt) {
       console.log('⏰ Session expired during fetch');
 

@@ -52,7 +52,15 @@ export function canAccessEvent(
     }
   }
 
-  // User has access flag but no recognized subscription
+  // Si l'utilisateur a hasAccess=true, on lui donne l'accès même sans isPro/isPPV explicite
+  // Cela couvre le cas où Discord donne l'accès mais les flags ne sont pas correctement définis
+  if (access.hasAccess) {
+    return {
+      canAccess: true,
+    };
+  }
+
+  // User has no access
   return {
     canAccess: false,
     reason: 'no_subscription',

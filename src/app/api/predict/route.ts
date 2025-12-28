@@ -1,9 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
 
 // URL de l'API Python (configurable via variable d'environnement)
-const PYTHON_API_URL = process.env.PYTHON_API_URL || 'http://localhost:8000';
+const PYTHON_API_URL = process.env.PYTHON_API_URL;
+
+if (!PYTHON_API_URL) {
+  throw new Error('PYTHON_API_URL environment variable is required');
+}
+
+// Schéma de validation avec Zod
+const FighterPredictionSchema = z.object({
+  fighter1Name: z.string()
+    .min(2, 'Nom trop court (minimum 2 caractères)')
+    .max(50, 'Nom trop long (maximum 50 caractères)')
+    .regex(/^[a-zA-Z\s\-'\.]+$/, 'Caractères invalides dans le nom'),
+  fighter2Name: z.string()
+    .min(2, 'Nom trop court (minimum 2 caractères)')
+    .max(50, 'Nom trop long (maximum 50 caractères)')
+    .regex(/^[a-zA-Z\s\-'\.]+$/, 'Caractères invalides dans le nom'),
+});
 
 /**
  * POST /api/predict
@@ -14,14 +31,24 @@ const PYTHON_API_URL = process.env.PYTHON_API_URL || 'http://localhost:8000';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fighter1Name, fighter2Name } = body;
 
-    if (!fighter1Name || !fighter2Name) {
+    // Validation des inputs avec Zod
+    const validationResult = FighterPredictionSchema.safeParse(body);
+
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Les noms des deux combattants sont requis' },
+        {
+          error: 'Données invalides',
+          details: validationResult.error.errors.map(e => ({
+            field: e.path.join('.'),
+            message: e.message
+          }))
+        },
         { status: 400 }
       );
     }
+
+    const { fighter1Name, fighter2Name } = validationResult.data;
 
     console.log(`🔍 Recherche de combattants: ${fighter1Name} vs ${fighter2Name}`);
 

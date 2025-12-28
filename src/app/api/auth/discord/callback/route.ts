@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { signSession } from '@/lib/session';
 
 /**
  * GET /api/auth/discord/callback
@@ -142,14 +143,30 @@ export async function GET(request: NextRequest) {
       expiresAt: Date.now() + (2 * 60 * 60 * 1000), // 2 heures
     };
 
-    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    // Whitelist des URLs de redirection autorisées
+    const ALLOWED_REDIRECT_URLS = [
+      process.env.NEXT_PUBLIC_FRONTEND_URL,
+      'http://localhost:3000',
+      'https://localhost:3000',
+    ].filter(Boolean);
+
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
+    if (!frontendUrl || !ALLOWED_REDIRECT_URLS.includes(frontendUrl)) {
+      return NextResponse.json(
+        { error: 'Invalid redirect URL configuration' },
+        { status: 500 }
+      );
+    }
+
     const response = NextResponse.redirect(new URL('/', frontendUrl));
 
-    // Créer le cookie de session - expire dans 2h
-    response.cookies.set('whop_session', JSON.stringify(session), {
+    // Créer le cookie de session signé - expire dans 2h
+    const signedSession = await signSession(session);
+    response.cookies.set('whop_session', signedSession, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'strict',
       maxAge: 2 * 60 * 60, // 2 heures (en secondes)
       path: '/',
     });
@@ -157,7 +174,7 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Discord OAuth callback error:', error);
-    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000';
     return NextResponse.redirect(new URL('/?error=discord_callback_failed', frontendUrl));
   }
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { fetchWithTimeout, TIMEOUTS, FetchTimeoutError } from '@/lib/fetch-with-timeout';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,12 +53,16 @@ export async function POST(request: NextRequest) {
 
     console.log(`🔍 Recherche de combattants: ${fighter1Name} vs ${fighter2Name}`);
 
-    // Étape 1: Chercher les combattants via l'API Python
-    const searchFighter1 = await fetch(
-      `${PYTHON_API_URL}/search/fighter?name=${encodeURIComponent(fighter1Name)}`
+    // Étape 1: Chercher les combattants via l'API Python avec timeout
+    const searchFighter1 = await fetchWithTimeout(
+      `${PYTHON_API_URL}/search/fighter?name=${encodeURIComponent(fighter1Name)}`,
+      {},
+      TIMEOUTS.SEARCH_FIGHTER
     );
-    const searchFighter2 = await fetch(
-      `${PYTHON_API_URL}/search/fighter?name=${encodeURIComponent(fighter2Name)}`
+    const searchFighter2 = await fetchWithTimeout(
+      `${PYTHON_API_URL}/search/fighter?name=${encodeURIComponent(fighter2Name)}`,
+      {},
+      TIMEOUTS.SEARCH_FIGHTER
     );
 
     if (!searchFighter1.ok || !searchFighter2.ok) {
@@ -133,17 +138,21 @@ export async function POST(request: NextRequest) {
 
     console.log(`✅ Trouvé: ${fighter1.name} (${fighter1.record}) vs ${fighter2.name} (${fighter2.record})`);
 
-    // Étape 2: Demander la prédiction à l'API Python
-    const predictionResponse = await fetch(`${PYTHON_API_URL}/predict`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    // Étape 2: Demander la prédiction à l'API Python avec timeout étendu (ML = lourd)
+    const predictionResponse = await fetchWithTimeout(
+      `${PYTHON_API_URL}/predict`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fighter1_id: fighter1.id,
+          fighter2_id: fighter2.id,
+        }),
       },
-      body: JSON.stringify({
-        fighter1_id: fighter1.id,
-        fighter2_id: fighter2.id,
-      }),
-    });
+      TIMEOUTS.PREDICT // 15 secondes pour ML
+    );
 
     if (!predictionResponse.ok) {
       const error = await predictionResponse.json();
@@ -174,9 +183,17 @@ export async function POST(request: NextRequest) {
 
     console.log(`📊 Prédiction ML: ${fighter1.name} ${mlPrediction.fighter1_win_prob}% vs ${fighter2.name} ${mlPrediction.fighter2_win_prob}%`);
 
-    // Étape 3: Récupérer les infos détaillées des combattants
-    const fighter1Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter1.id}`);
-    const fighter2Details = await fetch(`${PYTHON_API_URL}/fighter/${fighter2.id}`);
+    // Étape 3: Récupérer les infos détaillées des combattants avec timeout
+    const fighter1Details = await fetchWithTimeout(
+      `${PYTHON_API_URL}/fighter/${fighter1.id}`,
+      {},
+      TIMEOUTS.FIGHTER_DETAILS
+    );
+    const fighter2Details = await fetchWithTimeout(
+      `${PYTHON_API_URL}/fighter/${fighter2.id}`,
+      {},
+      TIMEOUTS.FIGHTER_DETAILS
+    );
 
     const f1Info = fighter1Details.ok ? await fighter1Details.json() : null;
     const f2Info = fighter2Details.ok ? await fighter2Details.json() : null;
@@ -322,6 +339,17 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Prediction API Error:', error);
+
+    // Gestion spécifique du timeout
+    if (error instanceof FetchTimeoutError) {
+      return NextResponse.json(
+        {
+          error: 'Timeout: L\'API de prédiction met trop de temps à répondre',
+          details: 'Le serveur ML est peut-être surchargé ou lent. Réessayez dans quelques instants.',
+        },
+        { status: 504 } // Gateway Timeout
+      );
+    }
 
     // Vérifier si l'API Python est accessible
     if (error instanceof TypeError && error.message.includes('fetch failed')) {

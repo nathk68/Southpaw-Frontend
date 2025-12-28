@@ -9,6 +9,11 @@ export async function signSession(sessionData: any): Promise<string> {
     throw new Error('SESSION_SECRET environment variable is required');
   }
 
+  // Validation de la longueur minimale pour sécurité (256 bits minimum)
+  if (secret.length < 32) {
+    throw new Error('SESSION_SECRET must be at least 32 characters long for security');
+  }
+
   const sessionJson = JSON.stringify(sessionData);
 
   // Convertir le secret en clé crypto
@@ -47,6 +52,11 @@ export async function verifySession(signedSession: string): Promise<any | null> 
     throw new Error('SESSION_SECRET environment variable is required');
   }
 
+  // Validation de la longueur minimale pour sécurité (256 bits minimum)
+  if (secret.length < 32) {
+    throw new Error('SESSION_SECRET must be at least 32 characters long for security');
+  }
+
   try {
     const parsed = JSON.parse(signedSession);
 
@@ -73,8 +83,29 @@ export async function verifySession(signedSession: string): Promise<any | null> 
       .map(b => b.toString(16).padStart(2, '0'))
       .join('');
 
-    // Comparaison timing-safe
-    if (parsed.signature !== expectedSignature || parsed.signature.length !== expectedSignature.length) {
+    // Comparaison timing-safe pour éviter les attaques par timing
+    // Convertir les signatures hex en Uint8Array pour comparaison constante
+    const expectedBuffer = new Uint8Array(
+      expectedSignature.match(/.{2}/g)!.map(byte => parseInt(byte, 16))
+    );
+    const actualBuffer = new Uint8Array(
+      parsed.signature.match(/.{2}/g)?.map(byte => parseInt(byte, 16)) || []
+    );
+
+    // Vérifier d'abord la longueur (pas de timing attack sur la longueur)
+    if (expectedBuffer.length !== actualBuffer.length) {
+      console.warn('⚠️ Session signature length mismatch - possible tampering detected');
+      return null;
+    }
+
+    // Comparaison timing-safe byte par byte avec XOR
+    // Cette méthode prend toujours le même temps quelque soit la position de différence
+    let mismatch = 0;
+    for (let i = 0; i < expectedBuffer.length; i++) {
+      mismatch |= expectedBuffer[i] ^ actualBuffer[i];
+    }
+
+    if (mismatch !== 0) {
       console.warn('⚠️ Session signature mismatch - possible tampering detected');
       return null;
     }

@@ -1,5 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { signSession } from '@/lib/session';
+import { isAllowedRedirectUrl } from '@/lib/validate-env';
+
+// Valider les variables d'environnement critiques au chargement du module
+const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID;
+const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
+const DISCORD_REDIRECT_URI = process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI;
+const FRONTEND_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
+if (!DISCORD_CLIENT_ID || !DISCORD_CLIENT_SECRET || !DISCORD_REDIRECT_URI) {
+  throw new Error(
+    'Missing required Discord OAuth environment variables: DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, NEXT_PUBLIC_DISCORD_REDIRECT_URI'
+  );
+}
+
+if (!FRONTEND_URL) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('NEXT_PUBLIC_FRONTEND_URL is required in production');
+  }
+  console.warn('⚠️ NEXT_PUBLIC_FRONTEND_URL not set, using fallback (not recommended for production)');
+}
 
 /**
  * GET /api/auth/discord/callback
@@ -11,7 +31,7 @@ export async function GET(request: NextRequest) {
     const code = searchParams.get('code');
 
     if (!code) {
-      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
       return NextResponse.redirect(new URL('/?error=discord_auth_failed', frontendUrl));
     }
 
@@ -22,17 +42,17 @@ export async function GET(request: NextRequest) {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({
-        client_id: process.env.DISCORD_CLIENT_ID!,
-        client_secret: process.env.DISCORD_CLIENT_SECRET!,
+        client_id: DISCORD_CLIENT_ID,
+        client_secret: DISCORD_CLIENT_SECRET,
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI!,
+        redirect_uri: DISCORD_REDIRECT_URI,
       }),
     });
 
     if (!tokenResponse.ok) {
       console.error('Discord token exchange failed:', await tokenResponse.text());
-      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
       return NextResponse.redirect(new URL('/?error=discord_token_failed', frontendUrl));
     }
 
@@ -48,7 +68,7 @@ export async function GET(request: NextRequest) {
 
     if (!userResponse.ok) {
       console.error('Discord user fetch failed:', await userResponse.text());
-      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
       return NextResponse.redirect(new URL('/?error=discord_user_failed', frontendUrl));
     }
 
@@ -58,7 +78,7 @@ export async function GET(request: NextRequest) {
     const email = discordUser.email;
 
     if (!email) {
-      const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || request.url;
+      const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
       return NextResponse.redirect(
         new URL('/?error=discord_no_email', frontendUrl)
       );
@@ -143,16 +163,11 @@ export async function GET(request: NextRequest) {
       expiresAt: Date.now() + (2 * 60 * 60 * 1000), // 2 heures
     };
 
-    // Whitelist des URLs de redirection autorisées
-    const ALLOWED_REDIRECT_URLS = [
-      process.env.NEXT_PUBLIC_FRONTEND_URL,
-      'http://localhost:3000',
-      'https://localhost:3000',
-    ].filter(Boolean);
+    // Validation sécurisée de l'URL de redirection pour éviter les Open Redirects
+    const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
 
-    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
-
-    if (!frontendUrl || !ALLOWED_REDIRECT_URLS.includes(frontendUrl)) {
+    if (!isAllowedRedirectUrl(frontendUrl)) {
+      console.error('❌ Invalid or unauthorized redirect URL:', frontendUrl);
       return NextResponse.json(
         { error: 'Invalid redirect URL configuration' },
         { status: 500 }
@@ -174,7 +189,7 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Discord OAuth callback error:', error);
-    const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000';
+    const frontendUrl = FRONTEND_URL || 'http://localhost:3000';
     return NextResponse.redirect(new URL('/?error=discord_callback_failed', frontendUrl));
   }
 }

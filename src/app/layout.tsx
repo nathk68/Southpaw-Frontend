@@ -51,7 +51,7 @@ gtag('set', 'url_passthrough', false);
         </Script>
 
         <Script
-          src="//clickiocmp.com/t/consent_246836.js"
+          src="https://clickiocmp.com/t/consent_246836.js"
           strategy="beforeInteractive"
           async
         />

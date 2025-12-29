@@ -56,6 +56,18 @@ gtag('set', 'url_passthrough', false);
           async
         />
 
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0GDPYC2CZX"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0GDPYC2CZX');`}
+        </Script>
+
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

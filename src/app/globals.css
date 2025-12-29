@@ -325,3 +325,54 @@ html.lenis {
   background: linear-gradient(90deg, transparent, var(--brand-lime), transparent);
   animation: shimmer 3s infinite;
 }
+
+/* Clickio Cookie Consent Modal Fixes */
+/* Fix cursor visibility on cookie modal */
+[id*="clickio"],
+[class*="clickio"],
+[id*="consent"],
+[class*="consent-modal"],
+.cmp-modal,
+.cmp-overlay {
+  cursor: auto !important;
+}
+
+[id*="clickio"] *,
+[class*="clickio"] *,
+[id*="consent"] *,
+[class*="consent-modal"] *,
+.cmp-modal *,
+.cmp-overlay * {
+  cursor: auto !important;
+}
+
+/* Prevent Lenis from affecting cookie modal scroll */
+[id*="clickio"],
+[class*="clickio"],
+[id*="consent"],
+[class*="consent-modal"],
+.cmp-modal {
+  overscroll-behavior: contain !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Ensure modal content scrolls independently */
+[id*="clickio"] [class*="content"],
+[class*="clickio"] [class*="content"],
+[id*="consent"] [class*="content"],
+[class*="consent-modal"] [class*="content"],
+.cmp-modal [class*="content"] {
+  overflow-y: auto !important;
+  max-height: 80vh !important;
+}
+
+/* Disable Lenis on modal overlay */
+[id*="clickio"],
+[class*="clickio"],
+[id*="consent"],
+[class*="consent-modal"],
+.cmp-modal,
+.cmp-overlay {
+  touch-action: auto !important;
+}

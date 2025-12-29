@@ -108,15 +108,15 @@ export const Hero = () => {
             Nous croisons des milliers de données (styles, cardio, historique) pour vous donner l&apos;avantage mathématique.
           </p>
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base">
-              <span className="relative z-10 flex items-center gap-2 justify-center">
+            <a href="/fight-card" className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base inline-block cursor-pointer">
+              <span className="relative z-10 flex items-center gap-2 justify-center pointer-events-none">
                 Voir les prédictions <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-white transform translate-y-full transition-transform group-hover:translate-y-0 duration-300"></div>
-            </button>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-xs sm:text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300">
-              Comment ça marche ?
-            </button>
+              <div className="absolute inset-0 bg-white transform translate-y-full transition-transform group-hover:translate-y-0 duration-300 pointer-events-none"></div>
+            </a>
+            <a href="/algorithm" className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-xs sm:text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300 inline-block text-center cursor-pointer">
+              <span className="pointer-events-none">Comment ça marche ?</span>
+            </a>
           </div>
         </div>
 

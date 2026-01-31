@@ -1,16 +1,248 @@
 {
   "metadata": {
     "globalAccuracy": 73.1,
-    "totalTestFights": 499,
-    "correctPredictions": 365,
-    "displayedEvents": 30,
+    "totalTestFights": 510,
+    "correctPredictions": 373,
+    "displayedEvents": 31,
     "trainingFights": 7962,
-    "generatedAt": "2025-12-28T18:10:56.109818",
+    "generatedAt": "2026-01-31T17:05:38.140784",
     "modelVersion": "2.0_optimized",
     "modelName": "Logistic Regression",
     "modelAUC": 0.8025
   },
   "events": [
+    {
+      "slug": "ufc-324:-gaethje-vs.-pimblett",
+      "title": "UFC 324: Gaethje vs. Pimblett",
+      "date": "2026-01-24T00:00:00",
+      "location": "Paradise, Nevada, USA",
+      "accuracy": 72.7,
+      "correctPredictions": 8,
+      "totalDecidedFights": 11,
+      "totalFights": 11,
+      "fights": [
+        {
+          "fighter1": "Justin Gaethje",
+          "fighter2": "Paddy Pimblett",
+          "weightClass": "Lightweight",
+          "isTitleFight": true,
+          "prediction": {
+            "fighter1WinProbability": 69.9,
+            "fighter2WinProbability": 30.1,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Sean O'Malley",
+          "fighter2": "Song Yadong",
+          "weightClass": "Bantamweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 62.5,
+            "fighter2WinProbability": 37.5,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Waldo Cortes-Acosta",
+          "fighter2": "Derrick Lewis",
+          "weightClass": "Heavyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 45.2,
+            "fighter2WinProbability": 54.8,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Nat\u00e1lia Silva",
+          "fighter2": "Rose Namajunas",
+          "weightClass": "Women's Flyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 48.3,
+            "fighter2WinProbability": 51.7,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Jean Silva",
+          "fighter2": "Arnold Allen",
+          "weightClass": "Featherweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 38.7,
+            "fighter2WinProbability": 61.3,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Umar Nurmagomedov",
+          "fighter2": "Deiveson Figueiredo",
+          "weightClass": "Bantamweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 71.4,
+            "fighter2WinProbability": 28.6,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Ateba Gautier",
+          "fighter2": "Andrey Pulyaev",
+          "weightClass": "Middleweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 55.8,
+            "fighter2WinProbability": 44.2,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Nikita Krylov",
+          "fighter2": "Modestas Bukauskas",
+          "weightClass": "Light Heavyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 68.9,
+            "fighter2WinProbability": 31.1,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Alex Perez",
+          "fighter2": "Charles Johnson",
+          "weightClass": "Flyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 58.2,
+            "fighter2WinProbability": 41.8,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Josh Hokit",
+          "fighter2": "Denzel Freeman",
+          "weightClass": "Heavyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 52.3,
+            "fighter2WinProbability": 47.7,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Ty Miller",
+          "fighter2": "Adam Fugitt",
+          "weightClass": "Welterweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 61.7,
+            "fighter2WinProbability": 38.3,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        }
+      ]
+    },
     {
       "slug": "ufc-323:-dvalishvili-vs.-yan-2",
       "title": "UFC 323: Dvalishvili vs. Yan 2",

@@ -1,16 +1,288 @@
 {
   "metadata": {
-    "globalAccuracy": 73.1,
-    "totalTestFights": 510,
-    "correctPredictions": 373,
-    "displayedEvents": 31,
+    "globalAccuracy": 73.2,
+    "totalTestFights": 523,
+    "correctPredictions": 383,
+    "displayedEvents": 32,
     "trainingFights": 7962,
-    "generatedAt": "2026-01-31T17:05:38.140784",
+    "generatedAt": "2026-02-04T10:57:32.490711",
     "modelVersion": "2.0_optimized",
     "modelName": "Logistic Regression",
     "modelAUC": 0.8025
   },
   "events": [
+    {
+      "slug": "ufc-325:-volkanovski-vs.-lopes-2",
+      "title": "UFC 325: Volkanovski vs. Lopes 2",
+      "date": "2026-02-01T02:00:00",
+      "location": "Sydney, Australia",
+      "accuracy": 76.9,
+      "correctPredictions": 10,
+      "totalDecidedFights": 13,
+      "totalFights": 13,
+      "fights": [
+        {
+          "fighter1": "Alexander Volkanovski",
+          "fighter2": "Diego Lopes",
+          "weightClass": "Featherweight",
+          "isTitleFight": true,
+          "prediction": {
+            "fighter1WinProbability": 50.0,
+            "fighter2WinProbability": 50.0,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Beno\u00eet Saint Denis",
+          "fighter2": "Dan Hooker",
+          "weightClass": "Lightweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 64.8,
+            "fighter2WinProbability": 35.2,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Mauricio Ruffy",
+          "fighter2": "Rafael Fiziev",
+          "weightClass": "Lightweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 42.3,
+            "fighter2WinProbability": 57.7,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Tallison Teixeira",
+          "fighter2": "Tai Tuivasa",
+          "weightClass": "Heavyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 46.1,
+            "fighter2WinProbability": 53.9,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Quillan Salkilld",
+          "fighter2": "Jamie Mullarkey",
+          "weightClass": "Lightweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 51.2,
+            "fighter2WinProbability": 48.8,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Billy Elekana",
+          "fighter2": "Junior Tafa",
+          "weightClass": "Heavyweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 47.5,
+            "fighter2WinProbability": 52.5,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Cam Rowston",
+          "fighter2": "Cody Brundage",
+          "weightClass": "Middleweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 55.7,
+            "fighter2WinProbability": 44.3,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Jacob Malkoun",
+          "fighter2": "Torrez Finney",
+          "weightClass": "Middleweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 62.4,
+            "fighter2WinProbability": 37.6,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Jonathan Micallef",
+          "fighter2": "Oban Elliott",
+          "weightClass": "Welterweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 58.9,
+            "fighter2WinProbability": 41.1,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Kaan Ofli",
+          "fighter2": "Yizha",
+          "weightClass": "Featherweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 54.3,
+            "fighter2WinProbability": 45.7,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Dom Mar Fan",
+          "fighter2": "SangWook Kim",
+          "weightClass": "Bantamweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 51.8,
+            "fighter2WinProbability": 48.2,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Keiichiro Nakamura",
+          "fighter2": "Sebastian Szalay",
+          "weightClass": "Featherweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 56.2,
+            "fighter2WinProbability": 43.8,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Lawrence Lui",
+          "fighter2": "Sulangrangbo",
+          "weightClass": "Bantamweight",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 52.6,
+            "fighter2WinProbability": 47.4,
+            "breakdown": {
+              "strikingAdvantage": 0,
+              "grapplingAdvantage": 0,
+              "biometricAdvantage": 0,
+              "finishPotential": 0,
+              "experienceAdvantage": 0
+            }
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        }
+      ]
+    },
     {
       "slug": "ufc-324:-gaethje-vs.-pimblett",
       "title": "UFC 324: Gaethje vs. Pimblett",

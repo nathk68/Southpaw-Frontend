@@ -1,33 +1,33 @@
 {
-  "generatedAt": "2025-12-26T22:58:12.294460",
+  "generatedAt": "2026-07-08T00:00:00.000000",
   "count": 3,
   "fights": [
     {
-      "fighter1": "Bautista",
-      "fighter2": "Oliveira",
-      "eventTitle": "UFC FIGHT NIGHT",
-      "eventDate": "2026-02-08T02:00:00.000Z",
-      "prob1": 88.7,
-      "prob2": 11.3,
-      "confidence": 96
+      "fighter1": "McGregor",
+      "fighter2": "Holloway",
+      "eventTitle": "UFC 329",
+      "eventDate": "2026-07-12T02:00:00.000Z",
+      "prob1": 27.5,
+      "prob2": 72.5,
+      "confidence": 45
     },
     {
-      "fighter1": "Strickland",
-      "fighter2": "Hernandez",
+      "fighter1": "du Plessis",
+      "fighter2": "Usman",
       "eventTitle": "UFC FIGHT NIGHT",
-      "eventDate": "2026-02-22T02:00:00.000Z",
-      "prob1": 50,
-      "prob2": 50,
-      "confidence": 27
+      "eventDate": "2026-07-19T02:00:00.000Z",
+      "prob1": 19.7,
+      "prob2": 80.3,
+      "confidence": 60
     },
     {
-      "fighter1": "Moreno",
-      "fighter2": "Almabayev",
+      "fighter1": "Ankalaev",
+      "fighter2": "Rountree Jr.",
       "eventTitle": "UFC FIGHT NIGHT",
-      "eventDate": "2026-03-01T02:00:00.000Z",
-      "prob1": 70.3,
-      "prob2": 29.7,
-      "confidence": 90
+      "eventDate": "2026-07-26T02:00:00.000Z",
+      "prob1": 79.6,
+      "prob2": 20.4,
+      "confidence": 59
     }
   ]
 }

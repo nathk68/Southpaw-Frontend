@@ -9,7 +9,7 @@
       "eventDate": "2026-07-12T02:00:00.000Z",
       "prob1": 27.5,
       "prob2": 72.5,
-      "confidence": 45
+      "confidence": 70.8
     },
     {
       "fighter1": "du Plessis",
@@ -18,16 +18,16 @@
       "eventDate": "2026-07-19T02:00:00.000Z",
       "prob1": 19.7,
       "prob2": 80.3,
-      "confidence": 60
+      "confidence": 85.6
     },
     {
       "fighter1": "Ankalaev",
       "fighter2": "Rountree Jr.",
       "eventTitle": "UFC FIGHT NIGHT",
       "eventDate": "2026-07-26T02:00:00.000Z",
-      "prob1": 79.6,
-      "prob2": 20.4,
-      "confidence": 59
+      "prob1": 82.4,
+      "prob2": 17.6,
+      "confidence": 89.7
     }
   ]
 }

@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
     if (!results1.results || results1.results.length === 0) {
       console.error(`❌ Aucun résultat pour ${fighter1Name}. Response:`, results1);
       return NextResponse.json(
-        { error: `Combattant non trouvé: ${fighter1Name}` },
+        { error: `Aucune donnée disponible pour ${fighter1Name}. Ce combattant effectue probablement ses débuts à l'UFC et n'est pas encore dans notre base de données.` },
         { status: 404 }
       );
     }
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     if (!results2.results || results2.results.length === 0) {
       console.error(`❌ Aucun résultat pour ${fighter2Name}. Response:`, results2);
       return NextResponse.json(
-        { error: `Combattant non trouvé: ${fighter2Name}` },
+        { error: `Aucune donnée disponible pour ${fighter2Name}. Ce combattant effectue probablement ses débuts à l'UFC et n'est pas encore dans notre base de données.` },
         { status: 404 }
       );
     }

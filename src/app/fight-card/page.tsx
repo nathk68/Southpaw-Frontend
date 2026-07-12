@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Navbar, Footer, CustomCursor } from '@/components/LandingUI';
 import { useAuth } from '@/contexts/AuthContext';
 import { canAccessEvent } from '@/lib/access-control';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface UFCEvent {
   title: string;
@@ -35,6 +36,7 @@ export default function FightCardPage() {
   const [nextEventSlug, setNextEventSlug] = useState<string | null>(null);
   const router = useRouter();
   const { access } = useAuth();
+  const { t, lang } = useLanguage();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -84,7 +86,7 @@ export default function FightCardPage() {
       if (isNaN(date.getTime())) {
         return 'DATE TBA';
       }
-      return date.toLocaleDateString('fr-FR', {
+      return date.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
         weekday: 'short',
         day: '2-digit',
         month: 'short',
@@ -98,7 +100,7 @@ export default function FightCardPage() {
   const formatUpdateTime = (isoDate: string) => {
     try {
       const date = new Date(isoDate);
-      return date.toLocaleTimeString('fr-FR', {
+      return date.toLocaleTimeString(lang === 'fr' ? 'fr-FR' : 'en-US', {
         hour: '2-digit',
         minute: '2-digit'
       });
@@ -120,7 +122,7 @@ export default function FightCardPage() {
               className="group flex items-center gap-2 text-brand-lime hover:text-white transition-colors font-mono text-sm"
             >
               <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-              RETOUR
+              {t.fightCard.back}
             </button>
           </div>
 
@@ -131,14 +133,14 @@ export default function FightCardPage() {
                   FIGHT CARD
                 </h1>
                 <p className="text-gray-400 font-mono text-sm">
-                  Événements UFC à venir scrappés en temps réel depuis ufc.com
+                  {t.fightCard.subtitle}
                 </p>
               </div>
 
               {lastUpdate && !loading && (
                 <div className="flex items-center gap-2 text-xs font-mono bg-brand-lime/10 text-brand-lime px-4 py-2 border border-brand-lime/30 rounded-none">
                   <span className="animate-pulse h-2 w-2 bg-brand-lime rounded-full block"></span>
-                  MAJ: {formatUpdateTime(lastUpdate)}
+                  {t.fightCard.update} {formatUpdateTime(lastUpdate)}
                 </div>
               )}
             </div>
@@ -162,14 +164,14 @@ export default function FightCardPage() {
                 onClick={() => window.location.reload()}
                 className="mt-4 px-6 py-2 bg-red-500 text-white font-mono text-sm hover:bg-red-600 transition-colors"
               >
-                RÉESSAYER
+                {t.fightCard.retry}
               </button>
             </div>
           )}
 
           {!loading && !error && events.length === 0 && (
             <div className="border-2 border-white/10 bg-white/5 p-8 text-center">
-              <p className="text-gray-400 font-mono">Aucun événement à venir trouvé.</p>
+              <p className="text-gray-400 font-mono">{t.fightCard.noEvents}</p>
             </div>
           )}
 
@@ -251,7 +253,7 @@ export default function FightCardPage() {
                           }}
                           className="group/link inline-flex items-center gap-2 text-brand-lime hover:text-white font-mono text-xs transition-colors"
                         >
-                          VOIR DÉTAILS
+                          {t.fightCard.viewDetails}
                           <ExternalLink size={12} className="group-hover/link:translate-x-1 transition-transform" />
                         </button>
                       </div>
@@ -268,7 +270,7 @@ export default function FightCardPage() {
           {!loading && events.length > 0 && (
             <div className="mt-12 text-center">
               <p className="text-gray-500 font-mono text-xs">
-                {events.length} événement{events.length > 1 ? 's' : ''} trouvé{events.length > 1 ? 's' : ''}
+                {t.fightCard.eventsFound(events.length)}
               </p>
             </div>
           )}

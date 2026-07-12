@@ -6,6 +6,7 @@ import { FaDiscord } from 'react-icons/fa';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import DiscordLoginModal from './DiscordLoginModal';
 
 // --- Custom Cursor ---
@@ -65,11 +66,28 @@ export const CustomCursor = () => {
 };
 
 
+// --- Language Toggle ---
+const LanguageToggle = () => {
+  const { lang, setLang } = useLanguage();
+  return (
+    <button
+      onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+      className="flex items-center gap-1 px-3 py-1.5 border border-white/20 hover:border-brand-lime text-white/60 hover:text-brand-lime transition-all duration-300 font-mono text-xs font-bold clip-path-card"
+      aria-label="Switch language"
+    >
+      <span className={lang === 'fr' ? 'text-brand-lime' : 'text-white/40'}>FR</span>
+      <span className="text-white/20">|</span>
+      <span className={lang === 'en' ? 'text-brand-lime' : 'text-white/40'}>EN</span>
+    </button>
+  );
+};
+
 // --- Navbar ---
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, access, loading, login, logout } = useAuth();
+  const { t } = useLanguage();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -102,17 +120,18 @@ export const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8 font-mono text-sm text-brand-white/70">
           <Link href="/algorithm" className="hover:text-brand-lime transition-colors duration-300 relative group">
-            ALGORITHME
+            {t.nav.algorithm}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-lime group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link href="/fight-card" className="hover:text-brand-lime transition-colors duration-300 relative group">
-            FIGHT CARD
+            {t.nav.fightCard}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-lime group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link href="/stats" className="hover:text-brand-lime transition-colors duration-300 relative group">
-            STATS
+            {t.nav.stats}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-lime group-hover:w-full transition-all duration-300"></span>
           </Link>
+          <LanguageToggle />
           <a
             href="https://discord.gg/Aappan5y8Z"
             target="_blank"

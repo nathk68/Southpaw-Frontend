@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronRight, Zap, Shield, Search, Brain, TrendingUp, Crosshair, MessageCircle, LucideIcon } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Enregistrement du plugin côté client
 if (typeof window !== 'undefined') {
@@ -12,6 +13,7 @@ if (typeof window !== 'undefined') {
 
 // --- Hero Section ---
 export const Hero = () => {
+  const { t } = useLanguage();
   const titleRef = useRef(null);
   const badgeRef = useRef(null);
   const descRef = useRef(null);
@@ -96,7 +98,7 @@ export const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
               </span>
-              PROBABILITÉS EN TEMPS RÉEL
+              {t.hero.badge}
             </div>
           </div>
           <h1 ref={titleRef} className="font-display font-bold text-[3rem] sm:text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-6 sm:mb-8 relative z-30">
@@ -104,18 +106,17 @@ export const Hero = () => {
             <span className="block text-brand-lime glitch-text" data-text="INTELLIGENCE">INTELLIGENCE</span>
           </h1>
           <p ref={descRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-lg mb-8 sm:mb-10 font-sans font-light border-l-2 border-brand-lime pl-3 sm:pl-4 md:pl-6">
-            <strong className="text-white font-medium">Southpaw</strong> n&apos;est pas un bookmaker. C&apos;est votre analyste personnel.
-            Nous croisons des milliers de données (styles, cardio, historique) pour vous donner l&apos;avantage mathématique.
+            <strong className="text-white font-medium">Southpaw</strong> {t.hero.description}
           </p>
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a href="/fight-card" className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-bold font-display uppercase tracking-wider overflow-hidden clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base inline-block cursor-pointer">
               <span className="relative z-10 flex items-center gap-2 justify-center pointer-events-none">
-                Voir les prédictions <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                {t.hero.seePredictions} <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white transform translate-y-full transition-transform group-hover:translate-y-0 duration-300 pointer-events-none"></div>
             </a>
             <a href="/algorithm" className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-xs sm:text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300 inline-block text-center cursor-pointer">
-              <span className="pointer-events-none">Comment ça marche ?</span>
+              <span className="pointer-events-none">{t.hero.howItWorks}</span>
             </a>
           </div>
         </div>
@@ -177,6 +178,7 @@ const StatCard = ({ icon: Icon, title, desc, delay }: { icon: LucideIcon, title:
 );
 
 export const Features = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -254,7 +256,7 @@ export const Features = () => {
          <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 mb-20 items-end" ref={titleRef}>
                 <div>
-                    <h2 className="font-display font-bold text-5xl md:text-6xl mb-6">LA SCIENCE <br/><span className="text-gray-600">DU COMBAT</span></h2>
+                    <h2 className="font-display font-bold text-5xl md:text-6xl mb-6">{t.features.title} <br/><span className="text-gray-600">{t.features.subtitle}</span></h2>
                     <div className="h-1 w-20 bg-brand-lime rounded-none"></div>
                 </div>
                 <p className="font-mono text-gray-400 text-sm md:text-base border-l border-brand-lime pl-6">
@@ -265,20 +267,20 @@ export const Features = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-                <StatCard 
-                    icon={Search} 
-                    title="Data Mining" 
-                    desc="Notre moteur scanne des milliers d'articles, stats officielles et réseaux sociaux pour connaître l'état de forme réel de chaque combattant avant la pesée."
+                <StatCard
+                    icon={Search}
+                    title="Data Mining"
+                    desc={t.features.dataMiningDesc}
                 />
-                <StatCard 
-                    icon={Brain} 
-                    title="Style Matchups" 
-                    desc="L'algorithme comprend que 'Styles Make Fights'. Un lutteur d'élite contre un striker sans takedown defense ? Nous ajustons les probabilités drastiquement."
+                <StatCard
+                    icon={Brain}
+                    title="Style Matchups"
+                    desc={t.features.styleMatchupsDesc}
                 />
-                <StatCard 
-                    icon={TrendingUp} 
-                    title="Valeur Attendue (EV+)" 
-                    desc="Nous ne cherchons pas juste le vainqueur. Nous identifions les cotes mal ajustées par les bookmakers pour maximiser votre ROI long terme."
+                <StatCard
+                    icon={TrendingUp}
+                    title={t.features.evTitle}
+                    desc={t.features.evDesc}
                 />
             </div>
          </div>
@@ -295,9 +297,10 @@ interface FightRowProps {
   prob2: number;
   event: string;
   confidence?: number;
+  aiConfidenceLabel: string;
 }
 
-const FightRow = ({ fighter1, fighter2, date, prob1, prob2, event, confidence = 0 }: FightRowProps) => {
+const FightRow = ({ fighter1, fighter2, date, prob1, prob2, event, confidence = 0, aiConfidenceLabel }: FightRowProps) => {
   // Utiliser la confiance ML si disponible, sinon la probabilité du favori
   const displayConfidence = confidence > 0 ? confidence : Math.max(prob1, prob2);
 
@@ -320,7 +323,7 @@ const FightRow = ({ fighter1, fighter2, date, prob1, prob2, event, confidence = 
             </div>
 
             <div className="w-full md:w-1/6 flex flex-col items-center md:items-end">
-                <div className="text-[10px] font-mono text-gray-500 mb-1 uppercase tracking-widest">Confiance IA</div>
+                <div className="text-[10px] font-mono text-gray-500 mb-1 uppercase tracking-widest">{aiConfidenceLabel}</div>
                 <div className="flex items-center gap-3">
                     <div className="h-2 w-24 bg-gray-900 skew-x-[-12deg] overflow-hidden border border-white/10">
                         <div className="h-full bg-brand-lime transition-all duration-1000" style={{width: `${displayConfidence}%`}}></div>
@@ -357,6 +360,7 @@ interface UFCEvent {
 }
 
 export const UpcomingFights = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const [fights, setFights] = React.useState<Fight[]>([]);
   const [loading, setLoading] = React.useState(true);
@@ -436,7 +440,7 @@ export const UpcomingFights = () => {
   return (
     <section id="fights" className="py-20 bg-brand-dark relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row justify-between items-end gap-4">
-              <h2 className="font-display font-bold text-4xl uppercase text-white">Prochains Combats</h2>
+              <h2 className="font-display font-bold text-4xl uppercase text-white">{t.upcomingFights.title}</h2>
               <div className="flex items-center gap-2 text-xs font-mono bg-brand-lime text-black px-3 py-1 border-2 border-brand-lime rounded-full font-bold">
                   <span className="animate-pulse h-2 w-2 bg-black rounded-full block"></span> SYNCING LIVE ODDS
               </div>
@@ -444,7 +448,7 @@ export const UpcomingFights = () => {
 
           <div className="border-t border-white/10">
               {loading ? (
-                <div className="py-20 text-center text-gray-500 font-mono">Chargement des combats...</div>
+                <div className="py-20 text-center text-gray-500 font-mono">{t.upcomingFights.loading}</div>
               ) : fights.length > 0 ? (
                 fights.map((fight, idx) => (
                   <FightRow
@@ -456,16 +460,17 @@ export const UpcomingFights = () => {
                     prob1={fight.prob1 || 50}
                     prob2={fight.prob2 || 50}
                     confidence={fight.confidence}
+                    aiConfidenceLabel={t.upcomingFights.aiConfidence}
                   />
                 ))
               ) : (
-                <div className="py-20 text-center text-gray-500 font-mono">Aucun combat à venir</div>
+                <div className="py-20 text-center text-gray-500 font-mono">{t.upcomingFights.noFights}</div>
               )}
           </div>
 
           <div className="text-center mt-12">
                <a href="/fight-card" className="group text-brand-lime font-mono text-sm transition-colors flex items-center justify-center gap-2 mx-auto hover:text-white">
-                  VOIR TOUTES les analyses <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform"/>
+                  {t.upcomingFights.viewAll} <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform"/>
               </a>
           </div>
       </section>
@@ -474,6 +479,7 @@ export const UpcomingFights = () => {
 
 // --- Call To Action Section ---
 export const CallToAction = () => {
+  const { t } = useLanguage();
   const ctaRef = useRef(null);
   const formRef = useRef(null);
   const iconRef = useRef(null);
@@ -534,13 +540,12 @@ export const CallToAction = () => {
           </div>
           <div ref={ctaRef}>
             <h2 className="font-display font-bold text-5xl md:text-7xl mb-8 leading-none">
-                ARRÊTEZ DE PARIER <br/>
-                <span className="text-brand-lime lime-glow-text">AU HASARD</span>
+                {t.cta.title} <br/>
+                <span className="text-brand-lime lime-glow-text">{t.cta.subtitle}</span>
             </h2>
           </div>
           <p className="text-gray-300 mb-10 font-sans text-lg">
-              L&apos;UFC est un chaos organisé. Southpaw est l&apos;outil qui met de l&apos;ordre dans le chaos.
-              Rejoignez notre Discord pour accéder aux analyses.
+              {t.cta.description}
           </p>
 
           {/* Discord CTA */}
@@ -552,7 +557,7 @@ export const CallToAction = () => {
               className="inline-flex items-center gap-3 px-8 py-4 border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-black transition-all duration-300 clip-path-card font-mono font-bold uppercase group"
             >
               <MessageCircle size={20} className="group-hover:rotate-12 transition-transform" />
-              Rejoindre le Discord
+              {t.cta.joinDiscord}
             </a>
           </div>
        </div>

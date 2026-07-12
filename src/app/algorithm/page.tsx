@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, Database, Brain, Zap, Target, CheckCircle, TrendingUp, Code } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 import { Navbar, Footer, CustomCursor } from '@/components/LandingUI';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { ThreeBackground } from '@/components/ThreeBackground';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AlgorithmPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const heroRef = useRef<HTMLDivElement>(null);
   const pipelineRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);

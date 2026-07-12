@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ChevronDown, ChevronUp, Trophy, TrendingUp, Calendar, MapPin, CheckCircle2, XCircle, Circle } from 'lucide-react';
 import { Navbar, Footer, CustomCursor } from '@/components/LandingUI';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FightPrediction {
   fighter1: string;
@@ -54,6 +55,7 @@ interface HistoricalData {
 
 export default function StatsPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [events, setEvents] = useState<HistoricalEvent[]>([]);
   const [metadata, setMetadata] = useState<HistoricalDataMetadata | null>(null);
   const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
@@ -132,17 +134,17 @@ export default function StatsPage() {
               className="group flex items-center gap-2 text-brand-lime hover:text-white transition-colors font-mono text-sm"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-              Retour
+              {t.stats.back}
             </button>
           </div>
 
           <div className="mb-12">
             <h1 className="font-display text-5xl md:text-7xl font-bold mb-4 uppercase">
-              Statistiques
+              {t.stats.title}
               <span className="text-brand-lime">.</span>
             </h1>
             <p className="text-gray-400 font-mono text-sm md:text-base max-w-2xl">
-              Performance historique du Southpaw Predictive Engine sur les événements UFC passés
+              {t.stats.subtitle}
             </p>
           </div>
 
@@ -150,32 +152,32 @@ export default function StatsPage() {
           {globalStats && (
             <div className="grid md:grid-cols-3 gap-4 mb-12">
               <div className="border-2 border-brand-lime/30 bg-brand-lime/5 p-6">
-                <div className="text-xs text-brand-lime font-mono font-bold mb-2">PRÉCISION GLOBALE</div>
+                <div className="text-xs text-brand-lime font-mono font-bold mb-2">{t.stats.globalAccuracy}</div>
                 <div className={`text-4xl font-display font-bold mb-1 ${getAccuracyColor(globalAccuracy)}`}>
                   {globalAccuracy.toFixed(1)}%
                 </div>
                 <div className="text-sm text-gray-400 font-mono">
-                  {globalStats.totalCorrect}/{globalStats.totalDecided} combats de test
+                  {t.stats.testFights(globalStats.totalCorrect, globalStats.totalDecided)}
                 </div>
               </div>
 
               <div className="border-2 border-white/10 bg-brand-dark p-6">
-                <div className="text-xs text-gray-400 font-mono font-bold mb-2">ÉVÉNEMENTS AFFICHÉS</div>
+                <div className="text-xs text-gray-400 font-mono font-bold mb-2">{t.stats.displayedEvents}</div>
                 <div className="text-4xl font-display font-bold text-white mb-1">
                   {globalStats.displayedEvents}
                 </div>
                 <div className="text-sm text-gray-400 font-mono">
-                  Les plus récents
+                  {t.stats.mostRecent}
                 </div>
               </div>
 
               <div className="border-2 border-white/10 bg-brand-dark p-6">
-                <div className="text-xs text-gray-400 font-mono font-bold mb-2">DONNÉES D'ENTRAÎNEMENT</div>
+                <div className="text-xs text-gray-400 font-mono font-bold mb-2">{t.stats.trainingData}</div>
                 <div className="text-4xl font-display font-bold text-white mb-1">
                   {globalStats.trainingFights.toLocaleString()}
                 </div>
                 <div className="text-sm text-gray-400 font-mono">
-                  Combats historiques
+                  {t.stats.historicalFights}
                 </div>
               </div>
             </div>
@@ -184,7 +186,7 @@ export default function StatsPage() {
           {/* Loading State */}
           {loading && (
             <div className="flex items-center justify-center py-20">
-              <div className="text-brand-lime font-mono">Chargement des données...</div>
+              <div className="text-brand-lime font-mono">{t.stats.loading}</div>
             </div>
           )}
 
@@ -266,7 +268,7 @@ export default function StatsPage() {
                                 <div className="flex items-center gap-2 mb-3">
                                   <TrendingUp className="text-brand-lime" size={16} />
                                   <span className="font-mono text-xs text-brand-lime font-bold">
-                                    PRÉDICTION ALGORITHME
+                                    {t.stats.algorithmPrediction}
                                   </span>
                                 </div>
                                 <div className="flex items-center justify-between mb-2">
@@ -283,7 +285,7 @@ export default function StatsPage() {
                                 </div>
                                 <div className="mt-3 pt-3 border-t border-brand-lime/20">
                                   <span className="font-mono text-xs text-brand-lime">
-                                    Avis: {fight.algorithmPrediction === 'fighter1' ? fight.fighter1 : fight.fighter2}
+                                    {t.stats.opinion} {fight.algorithmPrediction === 'fighter1' ? fight.fighter1 : fight.fighter2}
                                   </span>
                                 </div>
                               </div>
@@ -299,7 +301,7 @@ export default function StatsPage() {
                                     <Circle className="text-gray-500" size={16} />
                                   )}
                                   <span className="font-mono text-xs text-gray-400 font-bold">
-                                    RÉSULTAT RÉEL
+                                    {t.stats.actualResult}
                                   </span>
                                 </div>
                                 <div className="text-2xl font-display font-bold text-white mb-2">
@@ -307,12 +309,12 @@ export default function StatsPage() {
                                 </div>
                                 {fight.actualWinner === 'fighter1' && (
                                   <div className="text-sm text-gray-400 font-mono">
-                                    Victoire de {fight.fighter1}
+                                    {t.stats.victoryOf} {fight.fighter1}
                                   </div>
                                 )}
                                 {fight.actualWinner === 'fighter2' && (
                                   <div className="text-sm text-gray-400 font-mono">
-                                    Victoire de {fight.fighter2}
+                                    {t.stats.victoryOf} {fight.fighter2}
                                   </div>
                                 )}
                                 <div className="mt-3 pt-3 border-t border-white/20">
@@ -321,16 +323,16 @@ export default function StatsPage() {
                                     fight.wasCorrect === false ? 'text-red-500' :
                                     'text-gray-500'
                                   }`}>
-                                    {fight.wasCorrect === true ? '✓ Prédiction correcte' :
-                                     fight.wasCorrect === false ? '✗ Prédiction incorrecte' :
-                                     '○ Non comptabilisé'}
+                                    {fight.wasCorrect === true ? t.stats.correctPrediction :
+                                     fight.wasCorrect === false ? t.stats.incorrectPrediction :
+                                     t.stats.notCounted}
                                   </span>
                                 </div>
                               </div>
                             </div>
                           ) : (
                             <div className="text-center py-4 text-gray-500 font-mono text-sm">
-                              Prédiction non disponible (combattants non trouvés)
+                              {t.stats.noPrediction}
                             </div>
                           )}
                         </div>
@@ -345,7 +347,7 @@ export default function StatsPage() {
           {/* Empty State */}
           {!loading && events.length === 0 && (
             <div className="text-center py-20">
-              <div className="text-gray-500 font-mono mb-4">Aucune donnée historique disponible</div>
+              <div className="text-gray-500 font-mono mb-4">{t.stats.noData}</div>
             </div>
           )}
         </div>

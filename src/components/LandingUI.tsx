@@ -305,7 +305,9 @@ export const Navbar = () => {
 };
 
 // --- Footer ---
-export const Footer = () => (
+export const Footer = () => {
+  const { t } = useLanguage();
+  return (
   <footer className="relative border-t-2 border-white/10 bg-brand-dark/50 backdrop-blur-sm z-30">
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="grid md:grid-cols-4 gap-8">
@@ -315,36 +317,36 @@ export const Footer = () => (
             SOUTHPAW<span className="text-brand-lime">.</span>
           </h3>
           <p className="text-gray-400 text-sm">
-            L&apos;algorithme prédictif ultime pour l&apos;UFC
+            {t.footer.tagline}
           </p>
         </div>
 
         {/* Navigation */}
         <div>
-          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">NAVIGATION</h4>
+          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">{t.footer.navigation}</h4>
           <ul className="space-y-2">
-            <li><a href="/" className="text-gray-400 hover:text-brand-lime transition-colors">Accueil</a></li>
-            <li><a href="/algorithm" className="text-gray-400 hover:text-brand-lime transition-colors">Algorithme</a></li>
-            <li><a href="/fight-card" className="text-gray-400 hover:text-brand-lime transition-colors">Fight Card</a></li>
-            <li><a href="/stats" className="text-gray-400 hover:text-brand-lime transition-colors">Stats</a></li>
+            <li><a href="/" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.home}</a></li>
+            <li><a href="/algorithm" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.algorithm}</a></li>
+            <li><a href="/fight-card" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.fightCard}</a></li>
+            <li><a href="/stats" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.stats}</a></li>
           </ul>
         </div>
 
         {/* Legal */}
         <div>
-          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">LÉGAL</h4>
+          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">{t.footer.legal}</h4>
           <ul className="space-y-2">
-            <li><a href="/legal" className="text-gray-400 hover:text-brand-lime transition-colors">Mentions légales</a></li>
-            <li><a href="/privacy" className="text-gray-400 hover:text-brand-lime transition-colors">Confidentialité</a></li>
+            <li><a href="/legal" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.legalNotice}</a></li>
+            <li><a href="/privacy" className="text-gray-400 hover:text-brand-lime transition-colors">{t.footer.privacy}</a></li>
           </ul>
           <p className="text-gray-500 text-xs mt-4">
-            ⚠️ Les paris peuvent créer une dépendance.
+            {t.footer.gamblingWarning}
           </p>
         </div>
 
         {/* Community */}
         <div>
-          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">COMMUNAUTÉ</h4>
+          <h4 className="font-mono text-sm font-bold mb-4 text-brand-lime">{t.footer.community}</h4>
           <a
             href="https://discord.gg/Aappan5y8Z"
             target="_blank"
@@ -352,10 +354,10 @@ export const Footer = () => (
             className="inline-flex items-center gap-3 px-6 py-3 bg-brand-lime text-black font-mono font-bold uppercase clip-path-card hover:shadow-lg hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105 group"
           >
             <FaDiscord size={20} className="group-hover:rotate-12 transition-transform" />
-            Rejoindre Discord
+            {t.footer.joinDiscord}
           </a>
           <p className="text-gray-500 text-xs mt-3">
-            Accès anticipé • Analyses exclusives • Communauté VIP
+            {t.footer.communityDesc}
           </p>
         </div>
       </div>
@@ -364,26 +366,25 @@ export const Footer = () => (
       <div className="border-t border-white/10 mt-8 pt-6">
         <div className="bg-orange-500/10 border-l-4 border-orange-500 p-4 mb-6">
           <p className="text-orange-400 text-xs font-mono leading-relaxed">
-            <strong className="font-bold">⚠️ DISCLAIMER IMPORTANT :</strong> Southpaw est un outil d&apos;analyse statistique à but éducatif et informatif uniquement.
-            Nous ne sommes PAS un bookmaker et n&apos;offrons AUCUN service de paris. Les prédictions fournies ne constituent en AUCUN CAS un conseil financier,
-            une incitation au pari ou une garantie de résultat. Vous êtes seul responsable de vos décisions. Les paris sportifs comportent des risques financiers
-            et peuvent créer une dépendance. <strong>Interdit aux mineurs (-18 ans).</strong> Jouez responsablement. En cas de problème :
-            <a href="tel:0974751313" className="text-brand-lime hover:underline ml-1">09 74 75 13 13</a> (Joueurs Info Service).
+            <strong className="font-bold">{t.footer.disclaimerLabel}</strong> {t.footer.disclaimerText}{' '}
+            <strong>{t.footer.minorWarning}</strong> {t.footer.gamblingResponsibly}{' '}
+            <a href="tel:0974751313" className="text-brand-lime hover:underline ml-1">{t.footer.helplineNumber}</a> {t.footer.helplineName}
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-xs">
-          <p>© 2025 Southpaw - Nathan Kiss. Propulsé par l&apos;IA & la data UFC. Non affilié à l&apos;UFC®.</p>
+          <p>{t.footer.copyright}</p>
           <div className="flex gap-4">
-            <a href="/legal" className="hover:text-brand-lime transition-colors">Mentions légales</a>
+            <a href="/legal" className="hover:text-brand-lime transition-colors">{t.footer.legalNotice}</a>
             <span>•</span>
-            <a href="/privacy" className="hover:text-brand-lime transition-colors">Confidentialité</a>
+            <a href="/privacy" className="hover:text-brand-lime transition-colors">{t.footer.privacy}</a>
           </div>
         </div>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 // --- Marquee Content ---
 const MarqueeContent = () => (

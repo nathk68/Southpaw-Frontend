@@ -200,73 +200,24 @@ export default function AlgorithmPage() {
   }, []);
 
   const pipelineSteps = [
-    {
-      icon: Database,
-      title: 'DATA COLLECTION',
-      description: '8255 combats UFC analysés',
-      detail: 'Scraping automatique des stats officielles UFC',
-    },
-    {
-      icon: Brain,
-      title: 'FEATURE ENGINEERING',
-      description: '48+ métriques par combattant',
-      detail: 'Algorithme propriétaire SPE-V1',
-    },
-    {
-      icon: Zap,
-      title: 'PREDICTION MODEL',
-      description: 'Machine learning avancé',
-      detail: 'Sigmoid functions & amplification',
-    },
-    {
-      icon: Target,
-      title: 'REAL-TIME ODDS',
-      description: 'Calculs instantanés',
-      detail: 'API Python ultra-rapide',
-    },
-    {
-      icon: CheckCircle,
-      title: 'VERIFIED RESULTS',
-      description: '72.3% de précision',
-      detail: '133/192 combats prédits correctement',
-    },
+    { icon: Database, title: 'DATA COLLECTION', description: t.algorithm.pipeline[0].description, detail: t.algorithm.pipeline[0].detail },
+    { icon: Brain, title: 'FEATURE ENGINEERING', description: t.algorithm.pipeline[1].description, detail: t.algorithm.pipeline[1].detail },
+    { icon: Zap, title: 'PREDICTION MODEL', description: t.algorithm.pipeline[2].description, detail: t.algorithm.pipeline[2].detail },
+    { icon: Target, title: 'REAL-TIME ODDS', description: t.algorithm.pipeline[3].description, detail: t.algorithm.pipeline[3].detail },
+    { icon: CheckCircle, title: 'VERIFIED RESULTS', description: t.algorithm.pipeline[4].description, detail: t.algorithm.pipeline[4].detail },
   ];
 
   const stats = [
-    { value: 72.3, suffix: '%', label: 'Précision Globale', icon: TrendingUp },
-    { value: 192, suffix: '', label: 'Combats Testés', icon: Target },
-    { value: 8255, suffix: '', label: 'Combats Analysés', icon: Database },
+    { value: 72.3, suffix: '%', label: t.algorithm.statsLabels[0], icon: TrendingUp },
+    { value: 192, suffix: '', label: t.algorithm.statsLabels[1], icon: Target },
+    { value: 8255, suffix: '', label: t.algorithm.statsLabels[2], icon: Database },
   ];
 
   const algorithmFeatures = [
-    {
-      icon: Database,
-      title: '48+ Features',
-      description: 'Chaque combattant est analysé selon 48+ métriques propriétaires',
-      detail: 'Stats de frappe, grappling, biométrie, historique, momentum',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: Brain,
-      title: 'Deep Learning',
-      description: 'Réseau de neurones entraîné sur 8255 combats UFC historiques',
-      detail: 'Pattern recognition & style matchup analysis',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: Zap,
-      title: 'Sigmoid Amplification',
-      description: 'Fonctions mathématiques avancées pour calibrer les probabilités',
-      detail: 'Optimisation continue basée sur les résultats réels',
-      color: 'from-yellow-500 to-amber-500'
-    },
-    {
-      icon: Target,
-      title: 'Validation Rigoureuse',
-      description: '72.3% de précision maintenue sur 192 combats de test',
-      detail: 'Performance supérieure aux bookmakers traditionnels',
-      color: 'from-green-500 to-emerald-500'
-    },
+    { icon: Database, color: 'from-blue-500 to-cyan-500', title: t.algorithm.features[0].title, description: t.algorithm.features[0].description, detail: t.algorithm.features[0].detail },
+    { icon: Brain, color: 'from-purple-500 to-pink-500', title: t.algorithm.features[1].title, description: t.algorithm.features[1].description, detail: t.algorithm.features[1].detail },
+    { icon: Zap, color: 'from-yellow-500 to-amber-500', title: t.algorithm.features[2].title, description: t.algorithm.features[2].description, detail: t.algorithm.features[2].detail },
+    { icon: Target, color: 'from-green-500 to-emerald-500', title: t.algorithm.features[3].title, description: t.algorithm.features[3].description, detail: t.algorithm.features[3].detail },
   ];
 
   const events = [
@@ -306,22 +257,20 @@ export default function AlgorithmPage() {
             <div className="max-w-5xl mx-auto text-center">
               <div className="hero-badge inline-block px-6 py-2 bg-brand-lime/10 border-2 border-brand-lime/30 clip-path-card mb-8 opacity-100">
                 <span className="font-mono text-brand-lime font-bold uppercase text-sm">
-                  Southpaw Predictive Engine V1
+                  {t.algorithm.heroBadge}
                 </span>
               </div>
 
               <div className="hero-title font-display text-6xl md:text-8xl font-bold mb-8 uppercase leading-tight opacity-100">
                 <h1 className="block">
-                  <span className="word block">Le</span>
-                  <span className="word block text-brand-lime">Cerveau</span>
-                  <span className="word block">De Southpaw<span className="text-brand-lime">.</span></span>
+                  <span className="word block">{t.algorithm.heroWord1}</span>
+                  <span className="word block text-brand-lime">{t.algorithm.heroWord2}</span>
+                  <span className="word block">{t.algorithm.heroWord3}<span className="text-brand-lime">.</span></span>
                 </h1>
               </div>
 
               <p className="hero-subtitle text-xl md:text-2xl text-gray-400 font-mono mb-12 max-w-3xl mx-auto opacity-100">
-                L'algorithme prédictif le plus avancé de l'UFC. 72.3% de précision.
-                <br />
-                Propulsé par l'IA, la data science & 8255 combats analysés.
+                {t.algorithm.heroSubtitle}
               </p>
 
               <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-100">
@@ -329,13 +278,13 @@ export default function AlgorithmPage() {
                   onClick={() => router.push('/fight-card')}
                   className="px-8 py-4 bg-brand-lime text-black font-bold font-display uppercase clip-path-card shadow-lg shadow-brand-lime/30 hover:shadow-2xl hover:shadow-brand-lime/50 transition-all duration-300 hover:scale-105"
                 >
-                  Voir les Prédictions
+                  {t.algorithm.seePredictions}
                 </button>
                 <button
                   onClick={() => router.push('/stats')}
                   className="px-8 py-4 border-2 border-white/40 hover:border-brand-lime text-white font-mono uppercase text-sm transition-all clip-path-card bg-white/5 hover:bg-brand-lime hover:text-black duration-300"
                 >
-                  Statistiques
+                  {t.algorithm.statistics}
                 </button>
               </div>
             </div>
@@ -346,10 +295,10 @@ export default function AlgorithmPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-20">
                 <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 uppercase">
-                  Comment ça <span className="text-brand-lime">Fonctionne</span>
+                  {t.algorithm.howItWorks} <span className="text-brand-lime">{t.algorithm.howItWorksBold}</span>
                 </h2>
                 <p className="text-gray-400 font-mono text-lg max-w-2xl mx-auto">
-                  Du scraping des données à la prédiction finale, chaque étape est optimisée pour la précision.
+                  {t.algorithm.howItWorksDesc}
                 </p>
               </div>
 
@@ -410,10 +359,10 @@ export default function AlgorithmPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 uppercase text-white">
-                  Les <span className="text-brand-lime">Chiffres</span>
+                  {t.algorithm.numbersTitle} <span className="text-brand-lime">{t.algorithm.numbersBold}</span>
                 </h2>
                 <p className="text-gray-400 font-mono text-lg">
-                  Des résultats vérifiés sur les derniers événements UFC
+                  {t.algorithm.numbersDesc}
                 </p>
               </div>
 
@@ -449,11 +398,10 @@ export default function AlgorithmPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 uppercase text-white">
-                  L&apos;Algorithme <span className="text-brand-lime">Southpaw</span>
+                  {t.algorithm.algoTitle} <span className="text-brand-lime">{t.algorithm.algoBold}</span>
                 </h2>
                 <p className="text-gray-400 font-mono text-lg max-w-2xl mx-auto">
-                  Un système d&apos;intelligence artificielle avancé qui combine machine learning,
-                  analyse de données massives et validation rigoureuse
+                  {t.algorithm.algoDesc}
                 </p>
               </div>
 
@@ -491,11 +439,10 @@ export default function AlgorithmPage() {
               <div className="mt-12 border-2 border-brand-lime/30 bg-brand-lime/5 p-8 clip-path-card text-center">
                 <Code className="w-12 h-12 text-brand-lime mx-auto mb-4" />
                 <h3 className="font-display text-2xl font-bold text-white mb-3 uppercase">
-                  Algorithme Propriétaire SPE-V1
+                  {t.algorithm.proprietaryAlgo}
                 </h3>
                 <p className="text-gray-400 font-mono text-sm max-w-3xl mx-auto">
-                  Southpaw Predictive Engine V1 • En amélioration continue grâce aux résultats réels •
-                  Performance validée sur des centaines de combats UFC
+                  {t.algorithm.proprietaryDesc}
                 </p>
               </div>
             </div>
@@ -506,14 +453,14 @@ export default function AlgorithmPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 uppercase">
-                  Performances <span className="text-brand-lime">Vérifiées</span>
+                  {t.algorithm.performancesTitle} <span className="text-brand-lime">{t.algorithm.performancesBold}</span>
                 </h2>
                 <p className="text-gray-400 font-mono text-lg mb-4">
-                  Historique des prédictions sur les derniers événements UFC
+                  {t.algorithm.performancesDesc}
                 </p>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-lime/10 border border-brand-lime/30 clip-path-card">
                   <CheckCircle size={20} className="text-brand-lime" />
-                  <span className="font-mono text-brand-lime font-bold">72.3% de précision globale sur 192 combats</span>
+                  <span className="font-mono text-brand-lime font-bold">{t.algorithm.performancesBadge}</span>
                 </div>
               </div>
 
@@ -541,15 +488,15 @@ export default function AlgorithmPage() {
               <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm font-mono">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-green-500 bg-green-500/10"></div>
-                  <span className="text-gray-400">Excellent (&gt;75%)</span>
+                  <span className="text-gray-400">{t.algorithm.legend.excellent}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-yellow-500 bg-yellow-500/10"></div>
-                  <span className="text-gray-400">Bon (60-75%)</span>
+                  <span className="text-gray-400">{t.algorithm.legend.good}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-orange-500 bg-orange-500/10"></div>
-                  <span className="text-gray-400">Moyen (&lt;60%)</span>
+                  <span className="text-gray-400">{t.algorithm.legend.average}</span>
                 </div>
               </div>
             </div>
@@ -560,10 +507,10 @@ export default function AlgorithmPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 uppercase">
-                  Tech <span className="text-brand-lime">Stack</span>
+                  {t.algorithm.techStackTitle} <span className="text-brand-lime">{t.algorithm.techStackBold}</span>
                 </h2>
                 <p className="text-gray-400 font-mono text-lg">
-                  Technologies de pointe pour des prédictions ultra-rapides
+                  {t.algorithm.techStackDesc}
                 </p>
               </div>
 
@@ -589,11 +536,11 @@ export default function AlgorithmPage() {
                 </div>
 
                 <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 uppercase">
-                  Rejoins la <span className="text-brand-lime">Communauté</span>
+                  {t.algorithm.communityTitle} <span className="text-brand-lime">{t.algorithm.communityBold}</span>
                 </h2>
 
                 <p className="text-gray-300 font-mono text-lg mb-8">
-                  Accède aux prédictions en avant-première, analyses exclusives et insights VIP
+                  {t.algorithm.communityDesc}
                 </p>
 
                 <a
@@ -603,11 +550,11 @@ export default function AlgorithmPage() {
                   className="inline-flex items-center gap-4 px-10 py-5 bg-brand-lime text-black font-bold font-display uppercase text-xl clip-path-card shadow-2xl shadow-brand-lime/50 hover:scale-110 transition-all duration-300 group"
                 >
                   <FaDiscord size={24} className="group-hover:rotate-12 transition-transform" />
-                  Rejoindre Discord
+                  {t.algorithm.joinDiscord}
                 </a>
 
                 <p className="text-gray-500 text-sm font-mono mt-6">
-                  Places limitées • Accès anticipé • Communauté VIP
+                  {t.algorithm.communityFooter}
                 </p>
               </div>
             </div>

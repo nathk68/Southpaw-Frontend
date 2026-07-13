@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Calendar, MapPin, Shield, Loader2, Trophy, Brain, TrendingUp, X, ExternalLink, Lock, ShoppingCart, Zap } from 'lucide-react';
 import { Navbar, Footer, CustomCursor } from '@/components/LandingUI';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { PRODUCT_LINKS } from '@/lib/whop';
 import { canAccessEvent } from '@/lib/access-control';
 
@@ -71,6 +72,7 @@ export default function EventPage() {
   const router = useRouter();
   const slug = params.slug as string;
   const { user, access, login, logout } = useAuth();
+  const { t } = useLanguage();
 
   const [event, setEvent] = useState<EventDetails | null>(null);
   const [loading, setLoading] = useState(true);
@@ -244,7 +246,7 @@ export default function EventPage() {
             <div className="flex items-center gap-3">
               <Brain className="text-brand-lime" size={24} />
               <h2 className="font-display text-2xl font-bold text-white uppercase">
-                Prédiction Southpaw
+                {t.event.modalTitle}
               </h2>
             </div>
             <button
@@ -267,7 +269,7 @@ export default function EventPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-brand-lime hover:text-brand-lime/80 transition-colors"
-                      title="Voir le profil UFC"
+                      title={t.event.viewProfile}
                     >
                       <ExternalLink size={16} />
                     </a>
@@ -282,7 +284,7 @@ export default function EventPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-brand-lime hover:text-brand-lime/80 transition-colors"
-                      title="Voir le profil UFC"
+                      title={t.event.viewProfile}
                     >
                       <ExternalLink size={16} />
                     </a>
@@ -295,7 +297,7 @@ export default function EventPage() {
               <div className="flex flex-col items-center justify-center py-12">
                 <Loader2 className="w-12 h-12 text-brand-lime animate-spin mb-4" />
                 <p className="text-brand-lime font-mono text-sm animate-pulse">
-                  Calcul de la prédiction en cours...
+                  {t.event.calculating}
                 </p>
               </div>
             )}
@@ -311,20 +313,20 @@ export default function EventPage() {
                       </div>
                       <div>
                         <h3 className="font-display text-xl font-bold text-white">
-                          Connexion requise
+                          {t.event.authTitle}
                         </h3>
                         <p className="text-xs text-gray-400 font-mono">AUTH_REQUIRED</p>
                       </div>
                     </div>
                     <div className="border-t border-brand-lime/30 pt-4">
                       <p className="text-gray-300 font-mono text-sm leading-relaxed mb-6">
-                        Vous devez être connecté avec Discord et avoir un rôle Southpaw PRO ou PPV Pass pour accéder aux prédictions.
+                        {t.event.authDesc}
                       </p>
                       <button
                         onClick={login}
                         className="w-full px-6 py-3 bg-brand-lime text-black font-mono font-bold uppercase hover:bg-brand-lime/90 transition-colors"
                       >
-                        Se connecter avec Discord
+                        {t.event.loginBtn}
                       </button>
                     </div>
                   </div>
@@ -339,14 +341,14 @@ export default function EventPage() {
                       </div>
                       <div>
                         <h3 className="font-display text-xl font-bold text-white">
-                          Abonnement requis
+                          {t.event.subTitle}
                         </h3>
                         <p className="text-xs text-gray-400 font-mono">SUBSCRIPTION_REQUIRED</p>
                       </div>
                     </div>
                     <div className="border-t border-yellow-500/30 pt-4">
                       <p className="text-gray-300 font-mono text-sm leading-relaxed mb-6">
-                        Pour accéder aux prédictions, vous devez avoir un abonnement Southpaw PRO ou PPV Pass.
+                        {t.event.subDesc}
                       </p>
                       <div className="space-y-3">
                         <a
@@ -379,7 +381,7 @@ export default function EventPage() {
                       </div>
                       <div>
                         <h3 className="font-display text-xl font-bold text-white">
-                          Erreur de prédiction
+                          {t.event.errorTitle}
                         </h3>
                         <p className="text-xs text-gray-400 font-mono">PREDICTION_ERROR</p>
                       </div>
@@ -391,8 +393,7 @@ export default function EventPage() {
                     </div>
                     <div className="mt-6 pt-4 border-t border-red-500/30">
                       <p className="text-gray-500 text-xs font-mono">
-                        Les combattants doivent être présents dans notre base de données pour générer une prédiction.
-                        Certains nouveaux combattants peuvent ne pas encore être disponibles.
+                        {t.event.fighterNotInDb}
                       </p>
                     </div>
                   </div>
@@ -408,7 +409,7 @@ export default function EventPage() {
                     <div className="text-4xl font-display font-bold text-white mb-1">
                       {prediction.fighter1WinProbability.toFixed(1)}%
                     </div>
-                    <div className="text-sm text-gray-400 font-mono">Probabilité de victoire</div>
+                    <div className="text-sm text-gray-400 font-mono">{t.event.winProbability}</div>
                   </div>
 
                   <div className="border-2 border-blue-500/30 bg-blue-500/5 p-6">
@@ -416,7 +417,7 @@ export default function EventPage() {
                     <div className="text-4xl font-display font-bold text-white mb-1">
                       {prediction.fighter2WinProbability.toFixed(1)}%
                     </div>
-                    <div className="text-sm text-gray-400 font-mono">Probabilité de victoire</div>
+                    <div className="text-sm text-gray-400 font-mono">{t.event.winProbability}</div>
                   </div>
                 </div>
 
@@ -425,7 +426,7 @@ export default function EventPage() {
                   <div className="flex items-center gap-2 mb-3">
                     <Trophy className="text-brand-lime" size={18} />
                     <span className="font-mono text-sm text-brand-lime font-bold uppercase">
-                      Verdict Southpaw
+                      {t.event.verdictTitle}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
@@ -449,7 +450,7 @@ export default function EventPage() {
                       )}
                     </div>
                     <div className="text-right">
-                      <div className="text-xs text-gray-500 font-mono mb-1">Écart</div>
+                      <div className="text-xs text-gray-500 font-mono mb-1">{t.event.gap}</div>
                       <div className="text-lg font-mono font-bold text-brand-lime">
                         {Math.abs(prediction.fighter1WinProbability - prediction.fighter2WinProbability).toFixed(1)}%
                       </div>
@@ -461,14 +462,14 @@ export default function EventPage() {
                   <div className="flex items-center gap-2 mb-4">
                     <TrendingUp className="text-brand-lime" size={18} />
                     <span className="font-mono text-sm text-brand-lime font-bold">
-                      CONFIANCE: {prediction.confidenceScore}%
+                      {t.event.confidence} {prediction.confidenceScore}%
                     </span>
                   </div>
                   <p className="text-white font-mono text-lg">{prediction.analysis.prediction}</p>
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-mono text-sm text-gray-400 font-bold uppercase">Analyse des piliers</h3>
+                  <h3 className="font-mono text-sm text-gray-400 font-bold uppercase">{t.event.pillarsTitle}</h3>
 
                   <div className="grid md:grid-cols-2 gap-x-6 gap-y-3">
                     {[
@@ -476,12 +477,12 @@ export default function EventPage() {
                       { label: 'Striking', value: prediction.breakdown.strikingAdvantage },
                       { label: 'Grappling', value: prediction.breakdown.grapplingAdvantage },
                       { label: 'Ground %', value: prediction.breakdown.groundAdvantage },
-                      { label: 'Contrôle', value: prediction.breakdown.controlAdvantage },
+                      { label: t.event.pillarControl, value: prediction.breakdown.controlAdvantage },
                       { label: 'Head Strikes', value: prediction.breakdown.headStrikesAdvantage },
-                      { label: 'Défense', value: prediction.breakdown.defensiveAdvantage },
+                      { label: t.event.pillarDefense, value: prediction.breakdown.defensiveAdvantage },
                       { label: 'Submissions', value: prediction.breakdown.submissionAdvantage },
                       { label: 'Finish', value: prediction.breakdown.finishPotential },
-                      { label: 'Expérience', value: prediction.breakdown.experienceAdvantage }
+                      { label: t.event.pillarExperience, value: prediction.breakdown.experienceAdvantage }
                     ].map((pillar) => {
                       // Ne pas plafonner la valeur pour l'affichage du label
                       const rawValue = pillar.value;
@@ -527,7 +528,7 @@ export default function EventPage() {
 
                   <div className="mt-4 pt-4 border-t border-white/10 md:col-span-2">
                     <p className="text-xs text-gray-500 font-mono text-center">
-                      Les barres montrent l&apos;avantage relatif de chaque combattant sur 10 piliers clés basés sur les features les plus importantes du modèle ML
+                      {t.event.pillarsDesc}
                     </p>
                   </div>
                 </div>
@@ -535,7 +536,7 @@ export default function EventPage() {
                 {prediction.analysis.keyFactors.length > 0 && (
                   <div className="border-2 border-white/10 p-4">
                     <h3 className="font-mono text-sm text-gray-400 font-bold uppercase mb-3">
-                      Facteurs clés
+                      {t.event.keyFactors}
                     </h3>
                     <ul className="space-y-2">
                       {prediction.analysis.keyFactors.map((factor, idx) => (
@@ -551,7 +552,7 @@ export default function EventPage() {
                 {prediction.analysis.warnings.length > 0 && (
                   <div className="border-2 border-yellow-500/30 bg-yellow-500/5 p-4">
                     <h3 className="font-mono text-sm text-yellow-500 font-bold uppercase mb-3">
-                      Avertissements
+                      {t.event.warnings}
                     </h3>
                     <ul className="space-y-2">
                       {prediction.analysis.warnings.map((warning, idx) => (
@@ -566,7 +567,7 @@ export default function EventPage() {
 
                 <div className="border-t-2 border-white/10 pt-4">
                   <p className="text-xs text-gray-500 font-mono text-center">
-                    Southpaw Predictive Engine V1 • Basé sur les statistiques UFC officielles
+                    {t.event.poweredBy}
                   </p>
                 </div>
               </div>
@@ -647,7 +648,7 @@ export default function EventPage() {
           <div className="flex flex-col items-center gap-3 w-full">
             <div className="flex items-center gap-2 px-6 py-3 bg-gray-800/50 border-2 border-gray-600 text-gray-400 font-mono text-sm font-bold uppercase cursor-not-allowed w-full justify-center">
               <Lock size={18} />
-              Prédictions PRO uniquement
+              {t.event.proOnly}
             </div>
             <a
               href={PRODUCT_LINKS.PRO}
@@ -656,7 +657,7 @@ export default function EventPage() {
               className="flex items-center gap-2 px-4 py-2 border border-brand-lime/30 text-brand-lime hover:bg-brand-lime/10 font-mono text-xs font-bold uppercase transition-colors"
             >
               <Zap size={14} />
-              Passer à PRO
+              {t.event.upgradeToPro}
             </a>
           </div>
         ) : (
@@ -665,7 +666,7 @@ export default function EventPage() {
             className="flex items-center gap-2 px-6 py-3 bg-brand-lime/10 border-2 border-brand-lime/30 hover:bg-brand-lime hover:text-black text-brand-lime font-mono text-sm font-bold uppercase transition-all duration-300 group/btn"
           >
             <Brain size={18} className="group-hover/btn:rotate-12 transition-transform" />
-            Voir les prédictions
+            {t.event.predictBtn}
           </button>
         )}
       </div>
@@ -683,7 +684,7 @@ export default function EventPage() {
           <Icon className="text-brand-lime" size={24} />
           <h2 className="font-display text-3xl font-bold text-white uppercase">{title}</h2>
           <div className="h-px flex-1 bg-brand-lime/30"></div>
-          <span className="text-gray-500 font-mono text-sm">{fights.length} combat{fights.length > 1 ? 's' : ''}</span>
+          <span className="text-gray-500 font-mono text-sm">{t.event.fights(fights.length)}</span>
         </div>
 
         <div className="space-y-4">
@@ -709,7 +710,7 @@ export default function EventPage() {
               className="group flex items-center gap-2 text-brand-lime hover:text-white transition-colors font-mono text-sm"
             >
               <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-              RETOUR AUX ÉVÉNEMENTS
+              {t.event.back}
             </button>
           </div>
 
@@ -717,7 +718,7 @@ export default function EventPage() {
             <div className="flex flex-col items-center justify-center py-32">
               <Loader2 className="w-12 h-12 text-brand-lime animate-spin mb-4" />
               <p className="text-brand-lime text-center font-mono animate-pulse">
-                Chargement des détails...
+                {t.event.loading}
               </p>
             </div>
           )}
@@ -729,7 +730,7 @@ export default function EventPage() {
                 onClick={() => router.push('/fight-card')}
                 className="mt-4 px-6 py-2 bg-red-500 text-white font-mono text-sm hover:bg-red-600 transition-colors"
               >
-                RETOUR
+                {t.event.backError}
               </button>
             </div>
           )}
@@ -767,20 +768,20 @@ export default function EventPage() {
                     </div>
                     <div>
                       <h2 className="font-display text-3xl font-bold text-white uppercase mb-2">
-                        Prédictions réservées aux PRO
+                        {t.event.proReservedTitle}
                       </h2>
                       <p className="text-gray-400 font-mono text-sm">
-                        Votre PPV Pass ne donne accès qu&apos;aux prédictions du prochain événement
+                        {t.event.ppvRestriction}
                       </p>
                     </div>
                   </div>
 
                   <div className="border-t-2 border-brand-lime/30 pt-6 mb-6">
                     <p className="text-gray-300 font-mono text-base leading-relaxed mb-4">
-                      Avec votre <span className="text-white font-bold">PPV Pass</span>, vous avez accès aux prédictions du prochain événement UFC uniquement.
+                      {t.event.ppvDesc1} <span className="text-white font-bold">PPV Pass</span>{t.event.ppvDesc2}
                     </p>
                     <p className="text-gray-300 font-mono text-base leading-relaxed">
-                      Passez à <span className="text-brand-lime font-bold">Southpaw PRO</span> pour débloquer :
+                      {t.event.ppvUpgradePrefix} <span className="text-brand-lime font-bold">Southpaw PRO</span> {t.event.ppvUpgradeSuffix}
                     </p>
                   </div>
 
@@ -788,40 +789,40 @@ export default function EventPage() {
                     <div className="bg-brand-dark border border-brand-lime/30 p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-2 h-2 bg-brand-lime rounded-full"></div>
-                        <span className="text-white font-mono text-sm font-bold">Accès illimité</span>
+                        <span className="text-white font-mono text-sm font-bold">{t.event.unlimitedAccess}</span>
                       </div>
                       <p className="text-gray-400 font-mono text-xs">
-                        Prédictions pour TOUS les événements UFC à venir
+                        {t.event.unlimitedDesc}
                       </p>
                     </div>
 
                     <div className="bg-brand-dark border border-brand-lime/30 p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-2 h-2 bg-brand-lime rounded-full"></div>
-                        <span className="text-white font-mono text-sm font-bold">Historique complet</span>
+                        <span className="text-white font-mono text-sm font-bold">{t.event.fullHistory}</span>
                       </div>
                       <p className="text-gray-400 font-mono text-xs">
-                        Accès à toutes les analyses passées et statistiques
+                        {t.event.fullHistoryDesc}
                       </p>
                     </div>
 
                     <div className="bg-brand-dark border border-brand-lime/30 p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-2 h-2 bg-brand-lime rounded-full"></div>
-                        <span className="text-white font-mono text-sm font-bold">Mises à jour en temps réel</span>
+                        <span className="text-white font-mono text-sm font-bold">{t.event.realTimeUpdates}</span>
                       </div>
                       <p className="text-gray-400 font-mono text-xs">
-                        Notifications pour les nouveaux événements
+                        {t.event.realTimeDesc}
                       </p>
                     </div>
 
                     <div className="bg-brand-dark border border-brand-lime/30 p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-2 h-2 bg-brand-lime rounded-full"></div>
-                        <span className="text-white font-mono text-sm font-bold">Support prioritaire</span>
+                        <span className="text-white font-mono text-sm font-bold">{t.event.prioritySupport}</span>
                       </div>
                       <p className="text-gray-400 font-mono text-xs">
-                        Aide rapide et accès anticipé aux nouvelles features
+                        {t.event.priorityDesc}
                       </p>
                     </div>
                   </div>
@@ -834,13 +835,13 @@ export default function EventPage() {
                       className="flex-1 flex items-center justify-center gap-3 px-8 py-4 bg-brand-lime text-black font-mono font-bold uppercase hover:bg-brand-lime/90 transition-colors group"
                     >
                       <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                      Passer à Southpaw PRO
+                      {t.event.upgradeBtn}
                     </a>
                     <button
                       onClick={() => router.push('/fight-card')}
                       className="flex-1 px-8 py-4 border-2 border-brand-lime/30 text-brand-lime font-mono font-bold uppercase hover:bg-brand-lime/10 transition-colors"
                     >
-                      Voir tous les événements
+                      {t.event.allEventsBtn}
                     </button>
                   </div>
                 </div>
@@ -853,10 +854,10 @@ export default function EventPage() {
               {event.mainCard.length === 0 && event.preliminaryCard.length === 0 && event.earlyPrelims.length === 0 && (
                 <div className="border-2 border-white/10 bg-white/5 p-12 text-center">
                   <p className="text-gray-400 font-mono text-lg">
-                    Les détails des combats ne sont pas encore disponibles pour cet événement.
+                    {t.event.noFightsTitle}
                   </p>
                   <p className="text-gray-500 font-mono text-sm mt-2">
-                    Revenez plus tard pour voir la carte complète.
+                    {t.event.noFightsDesc}
                   </p>
                 </div>
               )}

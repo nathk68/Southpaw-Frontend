@@ -69,5 +69,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/historical-predictions.json public/upcoming-predictions.json
-          git diff --staged --quiet || git commit -m "chore: sync UFC data (stats + upcoming fights) [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: sync UFC data (stats + upcoming fights)"
           git push

@@ -25,10 +25,15 @@ export async function GET() {
       new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
     );
 
-    // Return the next event (first in sorted list)
+    // Return the next event + slugs of the next 3 for PPV access control
+    const nextSlugs = sortedEvents.slice(0, 3)
+      .map(e => e.url.split('/').pop()?.split('?')[0] || '')
+      .filter(Boolean);
+
     return NextResponse.json({
       success: true,
-      data: sortedEvents[0]
+      data: sortedEvents[0],
+      nextSlugs,
     });
   } catch (error) {
     console.error('API Error:', error);

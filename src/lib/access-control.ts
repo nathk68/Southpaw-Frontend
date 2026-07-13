@@ -11,13 +11,13 @@ export interface EventAccessResult {
  *
  * @param access - User's access level from auth context
  * @param eventSlug - The event slug to check access for
- * @param nextEventSlug - The slug of the next upcoming event
+ * @param nextEventSlugs - Slugs of the next 3 upcoming events (PPV Pass access window)
  * @returns EventAccessResult indicating if user can access and why/why not
  */
 export function canAccessEvent(
   access: AccessLevel | null,
   eventSlug: string,
-  nextEventSlug: string | null
+  nextEventSlugs: string | string[] | null
 ): EventAccessResult {
   // Not authenticated
   if (!access || !access.hasAccess) {
@@ -34,21 +34,17 @@ export function canAccessEvent(
     };
   }
 
-  // PPV Pass users can only access the next event
+  // PPV Pass users can only access the next 3 upcoming events
   if (access.isPPV) {
-    const isNextEvent = eventSlug === nextEventSlug;
+    const slugs = Array.isArray(nextEventSlugs)
+      ? nextEventSlugs
+      : [nextEventSlugs].filter((s): s is string => Boolean(s));
+    const isUpcomingEvent = slugs.includes(eventSlug);
 
-    if (isNextEvent) {
-      return {
-        canAccess: true,
-        isNextEvent: true,
-      };
+    if (isUpcomingEvent) {
+      return { canAccess: true, isNextEvent: true };
     } else {
-      return {
-        canAccess: false,
-        reason: 'ppv_restricted',
-        isNextEvent: false,
-      };
+      return { canAccess: false, reason: 'ppv_restricted', isNextEvent: false };
     }
   }
 

@@ -84,7 +84,7 @@ export default function EventPage() {
   const [predictionError, setPredictionError] = useState<string | null>(null);
   const [fighter1Info, setFighter1Info] = useState<FighterInfo | null>(null);
   const [fighter2Info, setFighter2Info] = useState<FighterInfo | null>(null);
-  const [nextEventSlug, setNextEventSlug] = useState<string | null>(null);
+  const [nextEventSlugs, setNextEventSlugs] = useState<string[] | null>(null);
   const [eventAccessBlocked, setEventAccessBlocked] = useState(false);
 
   useEffect(() => {
@@ -119,9 +119,14 @@ export default function EventPage() {
         const data = await response.json();
 
         if (data.success && data.data) {
-          // Extract slug from URL
-          const nextSlug = data.data.url.split('/').pop()?.split('?')[0] || '';
-          setNextEventSlug(nextSlug);
+          // Use pre-computed nextSlugs (next 3 events) for PPV access window
+          if (data.nextSlugs?.length) {
+            setNextEventSlugs(data.nextSlugs);
+          } else {
+            // Fallback: extract slug from first event URL
+            const slug = data.data.url.split('/').pop()?.split('?')[0] || '';
+            setNextEventSlugs(slug ? [slug] : []);
+          }
         }
       } catch (err) {
         console.error('Failed to fetch next event:', err);
@@ -133,8 +138,8 @@ export default function EventPage() {
 
   // Check event access when we have all necessary data
   useEffect(() => {
-    if (!loading && event && nextEventSlug !== null && access) {
-      const accessResult = canAccessEvent(access, slug, nextEventSlug);
+    if (!loading && event && nextEventSlugs !== null && access) {
+      const accessResult = canAccessEvent(access, slug, nextEventSlugs);
 
       if (!accessResult.canAccess && accessResult.reason === 'ppv_restricted') {
         setEventAccessBlocked(true);
@@ -142,7 +147,7 @@ export default function EventPage() {
         setEventAccessBlocked(false);
       }
     }
-  }, [loading, event, nextEventSlug, access, slug]);
+  }, [loading, event, nextEventSlugs, access, slug]);
 
   const handlePredictFight = async (fight: Fight) => {
     setSelectedFight(fight);

@@ -86,6 +86,105 @@ function toSlug(name: string) {
   return name.toLowerCase().replace(/'/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
+function normalizeFighterName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z\s]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const WEIGHT_CLASSES = new Set([
+  'Lightweight', 'Heavyweight', 'Welterweight', 'Middleweight',
+  'Featherweight', 'Bantamweight', 'Flyweight', "Women's", 'Strawweight',
+  'Light', 'Super',
+]);
+const METHOD_WORDS = new Set(['KO', 'TKO', 'Decision', 'Submission', 'DQ', 'Draw', 'NC', 'No']);
+
+async function getWikipediaWinners(eventTitle: string): Promise<Map<string, string> | null> {
+  try {
+    const searchRes = await fetchWithTimeout(
+      `https://en.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(eventTitle)}&limit=5&format=json&namespace=0`,
+      { headers: { 'User-Agent': 'Southpaw-UFC/1.0' } },
+      8000
+    );
+    if (!searchRes.ok) return null;
+    const searchData = await searchRes.json() as [string, string[]];
+    const ufcTitle = searchData[1].find(t => /^UFC/i.test(t));
+    if (!ufcTitle) return null;
+
+    const parseRes = await fetchWithTimeout(
+      `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(ufcTitle)}&prop=text&format=json`,
+      { headers: { 'User-Agent': 'Southpaw-UFC/1.0' } },
+      10000
+    );
+    if (!parseRes.ok) return null;
+    const parseData = await parseRes.json();
+    const html = parseData?.parse?.text?.['*'];
+    if (!html) return null;
+
+    // Strip HTML tags and extract "Winner def. Loser Method..." patterns
+    const clean = (html as string).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    const parts = clean.split('def.');
+    const winners = new Map<string, string>();
+
+    for (let i = 1; i < parts.length; i++) {
+      const beforeWords = parts[i - 1].trim().split(/\s+/);
+      const afterWords = parts[i].trim().split(/\s+/);
+
+      // Winner: last capitalized words before "def.", skipping weight class labels
+      const winnerParts: string[] = [];
+      for (let j = beforeWords.length - 1; j >= 0 && winnerParts.length < 3; j--) {
+        const w = beforeWords[j];
+        if (/^[A-Z]/.test(w) && !WEIGHT_CLASSES.has(w)) {
+          winnerParts.unshift(w);
+        } else break;
+      }
+
+      // Loser: first capitalized words after "def.", stopping before method keywords
+      const loserParts: string[] = [];
+      for (let j = 0; j < afterWords.length && loserParts.length < 3; j++) {
+        const w = afterWords[j];
+        if (METHOD_WORDS.has(w) || /^\d/.test(w) || /^\(/.test(w)) break;
+        if (/^[A-Z]/.test(w)) loserParts.push(w);
+        else break;
+      }
+
+      if (winnerParts.length > 0 && loserParts.length > 0) {
+        const winnerName = normalizeFighterName(winnerParts.join(' '));
+        const loserName = normalizeFighterName(loserParts.join(' '));
+        if (winnerName.length > 2 && loserName.length > 2) {
+          winners.set(winnerName, loserName);
+        }
+      }
+    }
+
+    return winners.size > 0 ? winners : null;
+  } catch {
+    return null;
+  }
+}
+
+function matchWikipediaWinner(
+  fighter1: string,
+  fighter2: string,
+  wikiWinners: Map<string, string>
+): 'fighter1' | 'fighter2' | null {
+  const f1 = normalizeFighterName(fighter1);
+  const f2 = normalizeFighterName(fighter2);
+  const f1Last = f1.split(' ').pop()!;
+  const f2Last = f2.split(' ').pop()!;
+
+  for (const [winner] of wikiWinners) {
+    const wLast = winner.split(' ').pop()!;
+    if (f1 === winner || wLast === f1Last || f1.endsWith(wLast)) return 'fighter1';
+    if (f2 === winner || wLast === f2Last || f2.endsWith(wLast)) return 'fighter2';
+  }
+  return null;
+}
+
 export async function GET(request: NextRequest) {
   // Auth check
   const token = request.nextUrl.searchParams.get('token');
@@ -138,12 +237,27 @@ export async function GET(request: NextRequest) {
     if (!details) continue;
 
     const allFights = [...details.mainCard, ...details.preliminaryCard, ...details.earlyPrelims];
+    if (allFights.length === 0) continue;
+
+    // Fetch fight results from Wikipedia (more reliable than UFC.com HTML for completed events)
+    const eventTitle = details.title || title;
+    const wikiWinners = await getWikipediaWinners(eventTitle);
+    console.log(`Wikipedia winners for "${eventTitle}": ${wikiWinners ? wikiWinners.size : 'not found'}`);
+
     const historicalFights: HistoricalFight[] = [];
 
     for (const fight of allFights) {
       const pred = await getPrediction(toSlug(fight.fighter1), toSlug(fight.fighter2));
 
-      const actualWinner = fight.winner ?? null;
+      // Determine winner: Wikipedia first, then UFC.com CSS detection as fallback
+      let actualWinner: HistoricalFight['actualWinner'] = null;
+      if (wikiWinners) {
+        actualWinner = matchWikipediaWinner(fight.fighter1, fight.fighter2, wikiWinners);
+      }
+      if (!actualWinner) {
+        actualWinner = fight.winner ?? null;
+      }
+
       const wasCorrect = pred && actualWinner && actualWinner !== 'draw' && actualWinner !== 'no-contest'
         ? pred.algorithmPrediction === actualWinner
         : null;

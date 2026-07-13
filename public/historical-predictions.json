@@ -3,547 +3,11 @@
     "globalAccuracy": 70.2,
     "totalTestFights": 573,
     "correctPredictions": 402,
-    "displayedEvents": 55,
+    "displayedEvents": 52,
     "trainingFights": 8255,
     "generatedAt": "2026-07-13T10:11:05.728Z"
   },
   "events": [
-    {
-      "slug": "ufc-329",
-      "title": "UFC 329",
-      "date": "2026-07-12T01:00:00.000Z",
-      "location": "T-Mobile Arena, Las Vegas United States",
-      "accuracy": 0,
-      "correctPredictions": 0,
-      "totalDecidedFights": 0,
-      "totalFights": 13,
-      "fights": [
-        {
-          "fighter1": "Conor McGregor",
-          "fighter2": "Max Holloway",
-          "weightClass": "Welterweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 27.5,
-            "fighter2WinProbability": 72.5,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Benoît Saint Denis",
-          "fighter2": "Paddy Pimblett",
-          "weightClass": "Lightweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 69.4,
-            "fighter2WinProbability": 30.6,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Cory Sandhagen",
-          "fighter2": "Mario Bautista",
-          "weightClass": "Bantamweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 66.1,
-            "fighter2WinProbability": 33.9,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Brandon Royval",
-          "fighter2": "Lone’er Kavanagh",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 82.3,
-            "fighter2WinProbability": 17.7,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "King Green",
-          "fighter2": "Terrance McKinney",
-          "weightClass": "Lightweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 67.7,
-            "fighter2WinProbability": 32.3,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Nikita Krylov",
-          "fighter2": "Robert Whittaker",
-          "weightClass": "Light Heavyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 39.4,
-            "fighter2WinProbability": 60.6,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Gable Steveson",
-          "fighter2": "Elisha Ellison",
-          "weightClass": "Heavyweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Luke Riley",
-          "fighter2": "Kai Kamaka III",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 97.5,
-            "fighter2WinProbability": 2.5,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Tracy Cortez",
-          "fighter2": "Wang Cong",
-          "weightClass": "Women's Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 66.5,
-            "fighter2WinProbability": 33.5,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Damian Pinas",
-          "fighter2": "Cesar Almeida",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 31.8,
-            "fighter2WinProbability": 68.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Farid Basharat",
-          "fighter2": "John Garza",
-          "weightClass": "Bantamweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Ryan Gandra",
-          "fighter2": "Zachary Reese",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Alessandro Costa",
-          "fighter2": "Cody Durden",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 27,
-            "fighter2WinProbability": 73,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        }
-      ]
-    },
-    {
-      "slug": "ufc-fight-night-june-27-2026",
-      "title": "UFC Fight Night",
-      "date": "2026-06-27T16:00:00.000Z",
-      "location": "National Gymnastics Arena, Baku Azerbaijan",
-      "accuracy": 0,
-      "correctPredictions": 0,
-      "totalDecidedFights": 0,
-      "totalFights": 13,
-      "fights": [
-        {
-          "fighter1": "Rafael Fiziev",
-          "fighter2": "Manuel Torres",
-          "weightClass": "Lightweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 59.5,
-            "fighter2WinProbability": 40.5,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Shara Magomedov",
-          "fighter2": "Michel Pereira",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 67.6,
-            "fighter2WinProbability": 32.4,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Nazim Sadykhov",
-          "fighter2": "Matheus Camilo",
-          "weightClass": "Lightweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 89.3,
-            "fighter2WinProbability": 10.7,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Asu Almabayev",
-          "fighter2": "Charles Johnson",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 55.6,
-            "fighter2WinProbability": 44.4,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Ikram Aliskerov",
-          "fighter2": "Brunno Ferreira",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 70.8,
-            "fighter2WinProbability": 29.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Abus Magomedov",
-          "fighter2": "Michal Oleksiejczuk",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 83.1,
-            "fighter2WinProbability": 16.9,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Farman Hasanov",
-          "fighter2": "Eric Nolan",
-          "weightClass": "Welterweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Abdul Rakhman Yakhyaev",
-          "fighter2": "Julius Walker",
-          "weightClass": "Light Heavyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 64.8,
-            "fighter2WinProbability": 35.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Nursulton Ruziboev",
-          "fighter2": "Andrey Pulyaev",
-          "weightClass": "Middleweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 89.7,
-            "fighter2WinProbability": 10.3,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Kaan Ofli",
-          "fighter2": "Javier Reyes",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 57.4,
-            "fighter2WinProbability": 42.6,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Daniil Donchenko",
-          "fighter2": "Theodor Berggren",
-          "weightClass": "Welterweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Bekzat Almakhan",
-          "fighter2": "Jean Matsumoto",
-          "weightClass": "Bantamweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 29.3,
-            "fighter2WinProbability": 70.7,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Tahir Abdullayev",
-          "fighter2": "Jefferson Nascimento",
-          "weightClass": "Welterweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        }
-      ]
-    },
-    {
-      "slug": "ufc-fight-night-june-20-2026",
-      "title": "UFC Fight Night",
-      "date": "2026-06-21T00:00:00.000Z",
-      "location": "Meta APEX, Las Vegas United States",
-      "accuracy": 0,
-      "correctPredictions": 0,
-      "totalDecidedFights": 0,
-      "totalFights": 12,
-      "fights": [
-        {
-          "fighter1": "Manel Kape",
-          "fighter2": "Kyoji Horiguchi",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 64.3,
-            "fighter2WinProbability": 35.7,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Ion Cutelaba",
-          "fighter2": "Navajo Stirling",
-          "weightClass": "Light Heavyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 54.9,
-            "fighter2WinProbability": 45.1,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Hyder Amil",
-          "fighter2": "Christian Rodriguez",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 48.8,
-            "fighter2WinProbability": 51.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Melsik Baghdasaryan",
-          "fighter2": "Murtazali Magomedov",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 53.7,
-            "fighter2WinProbability": 46.3,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Vinicius Oliveira",
-          "fighter2": "Andre Fili",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 31.6,
-            "fighter2WinProbability": 68.4,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter2",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Andre Lima",
-          "fighter2": "Kevin Borjas",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 69.8,
-            "fighter2WinProbability": 30.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Bia Mesquita",
-          "fighter2": "Melissa Mullins",
-          "weightClass": "Women's Bantamweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 70.8,
-            "fighter2WinProbability": 29.2,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Allan Nascimento",
-          "fighter2": "Mitch Raposo",
-          "weightClass": "Flyweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 73.2,
-            "fighter2WinProbability": 26.8,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Gaston Bolanos",
-          "fighter2": "Michael Aswell Jr.",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 84.9,
-            "fighter2WinProbability": 15.1,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Leon Shahbazyan",
-          "fighter2": "Levan Chokheli",
-          "weightClass": "Welterweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Karol Rosa",
-          "fighter2": "Luana Santos",
-          "weightClass": "Women's Bantamweight Bout",
-          "isTitleFight": false,
-          "prediction": {
-            "fighter1WinProbability": 91.5,
-            "fighter2WinProbability": 8.5,
-            "breakdown": {}
-          },
-          "algorithmPrediction": "fighter1",
-          "actualWinner": null,
-          "wasCorrect": null
-        },
-        {
-          "fighter1": "Shane Collins",
-          "fighter2": "Otari Tanzilovi",
-          "weightClass": "Featherweight Bout",
-          "isTitleFight": false,
-          "prediction": null,
-          "algorithmPrediction": null,
-          "actualWinner": null,
-          "wasCorrect": null
-        }
-      ]
-    },
     {
       "slug": "ufc-fight-night-fiziev-vs-torres",
       "title": "UFC Fight Night: Fiziev vs. Torres",
@@ -622,7 +86,7 @@
         },
         {
           "fighter1": "Abusupiyan Magomedov",
-          "fighter2": "Michał Oleksiejczuk",
+          "fighter2": "Micha\u0142 Oleksiejczuk",
           "weightClass": "Middleweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -744,7 +208,7 @@
         },
         {
           "fighter1": "Navajo Stirling",
-          "fighter2": "Ion Cuțelaba",
+          "fighter2": "Ion Cu\u021belaba",
           "weightClass": "Light Heavyweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -796,7 +260,7 @@
         },
         {
           "fighter1": "Kevin Borjas",
-          "fighter2": "André Lima",
+          "fighter2": "Andr\u00e9 Lima",
           "weightClass": "Catchweight (129 lb)",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -829,7 +293,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Gastón Bolaños",
+          "fighter1": "Gast\u00f3n Bola\u00f1os",
           "fighter2": "Michael Aswell Jr.",
           "weightClass": "Featherweight",
           "isTitleFight": false,
@@ -941,7 +405,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Maurício Ruffy",
+          "fighter1": "Maur\u00edcio Ruffy",
           "fighter2": "Michael Chandler",
           "weightClass": "Lightweight",
           "isTitleFight": false,
@@ -1020,7 +484,7 @@
         },
         {
           "fighter1": "Tom Nolan",
-          "fighter2": "Farès Ziam",
+          "fighter2": "Far\u00e8s Ziam",
           "weightClass": "Lightweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -1085,7 +549,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Édgar Cháirez",
+          "fighter1": "\u00c9dgar Ch\u00e1irez",
           "fighter2": "Bruno Gustavo da Silva",
           "weightClass": "Flyweight",
           "isTitleFight": false,
@@ -1243,7 +707,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "José Henrique Souza",
+          "fighter1": "Jos\u00e9 Henrique Souza",
           "fighter2": "Ding Meng",
           "weightClass": "Welterweight",
           "isTitleFight": false,
@@ -1347,7 +811,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Juan Díaz",
+          "fighter1": "Juan D\u00edaz",
           "fighter2": "Malcolm Wellmaker",
           "weightClass": "Bantamweight",
           "isTitleFight": false,
@@ -1578,7 +1042,7 @@
         },
         {
           "fighter1": "Yaroslav Amosov",
-          "fighter2": "Joel Álvarez",
+          "fighter2": "Joel \u00c1lvarez",
           "weightClass": "Welterweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -1588,7 +1052,7 @@
         },
         {
           "fighter1": "Grant Dawson",
-          "fighter2": "Mateusz Rębecki",
+          "fighter2": "Mateusz R\u0119becki",
           "weightClass": "Lightweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -1731,7 +1195,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Brando Peričić",
+          "fighter1": "Brando Peri\u010di\u0107",
           "fighter2": "Shamil Gaziev",
           "weightClass": "Heavyweight",
           "isTitleFight": false,
@@ -1885,7 +1349,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Rafa García",
+          "fighter1": "Rafa Garc\u00eda",
           "fighter2": "Alexander Hernandez",
           "weightClass": "Lightweight",
           "isTitleFight": false,
@@ -1896,7 +1360,7 @@
         },
         {
           "fighter1": "Davey Grant",
-          "fighter2": "Adrián Luna Martinetti",
+          "fighter2": "Adri\u00e1n Luna Martinetti",
           "weightClass": "Bantamweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2100,7 +1564,7 @@
         },
         {
           "fighter1": "Gauge Young",
-          "fighter2": "Thiago Moisés",
+          "fighter2": "Thiago Mois\u00e9s",
           "weightClass": "Lightweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2109,7 +1573,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Márcio Barbosa",
+          "fighter1": "M\u00e1rcio Barbosa",
           "fighter2": "Dennis Buzukja",
           "weightClass": "Featherweight",
           "isTitleFight": false,
@@ -2129,7 +1593,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Gökhan Sarıçam",
+          "fighter1": "G\u00f6khan Sar\u0131\u00e7am",
           "fighter2": "Tanner Boser",
           "weightClass": "Heavyweight",
           "isTitleFight": false,
@@ -2175,8 +1639,8 @@
       ]
     },
     {
-      "slug": "ufc-327-procházka-vs-ulberg",
-      "title": "UFC 327: Procházka vs. Ulberg",
+      "slug": "ufc-327-proch\u00e1zka-vs-ulberg",
+      "title": "UFC 327: Proch\u00e1zka vs. Ulberg",
       "date": "2026-04-11T00:00:00",
       "location": "",
       "accuracy": 87.5,
@@ -2186,7 +1650,7 @@
       "fights": [
         {
           "fighter1": "Carlos Ulberg",
-          "fighter2": "Jiří Procházka",
+          "fighter2": "Ji\u0159\u00ed Proch\u00e1zka",
           "weightClass": "Light Heavyweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2252,7 +1716,7 @@
         },
         {
           "fighter1": "Aaron Pico",
-          "fighter2": "Patrício Pitbull",
+          "fighter2": "Patr\u00edcio Pitbull",
           "weightClass": "Featherweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2290,7 +1754,7 @@
         },
         {
           "fighter1": "Tatiana Suarez",
-          "fighter2": "Loopy Godínez",
+          "fighter2": "Loopy God\u00ednez",
           "weightClass": "Women's Strawweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2405,8 +1869,8 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "José Mauro Delano",
-          "fighter2": "Robert Ruchała",
+          "fighter1": "Jos\u00e9 Mauro Delano",
+          "fighter2": "Robert Rucha\u0142a",
           "weightClass": "Featherweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2809,7 +2273,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Mário Pinto",
+          "fighter1": "M\u00e1rio Pinto",
           "fighter2": "Felipe Franco",
           "weightClass": "Heavyweight",
           "isTitleFight": false,
@@ -2819,8 +2283,8 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Mantas Kondratavičius",
-          "fighter2": "Antonio Trócoli",
+          "fighter1": "Mantas Kondratavi\u010dius",
+          "fighter2": "Antonio Tr\u00f3coli",
           "weightClass": "Middleweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -2829,7 +2293,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Brando Peričić",
+          "fighter1": "Brando Peri\u010di\u0107",
           "fighter2": "Louie Sutherland",
           "weightClass": "Heavyweight",
           "isTitleFight": false,
@@ -2931,7 +2395,7 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "Ion Cuțelaba",
+          "fighter1": "Ion Cu\u021belaba",
           "fighter2": "Oumar Sy",
           "weightClass": "Light Heavyweight",
           "isTitleFight": false,
@@ -3045,7 +2509,7 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "Piera Rodríguez",
+          "fighter1": "Piera Rodr\u00edguez",
           "fighter2": "Sam Hughes",
           "weightClass": "Women's Strawweight",
           "isTitleFight": false,
@@ -3194,7 +2658,7 @@
         },
         {
           "fighter1": "Su Mudaerji",
-          "fighter2": "Jesús Santos Aguilar",
+          "fighter2": "Jes\u00fas Santos Aguilar",
           "weightClass": "Flyweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -3257,7 +2721,7 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "David Martínez",
+          "fighter1": "David Mart\u00ednez",
           "fighter2": "Marlon Vera",
           "weightClass": "Bantamweight",
           "isTitleFight": false,
@@ -3281,7 +2745,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Édgar Cháirez",
+          "fighter1": "\u00c9dgar Ch\u00e1irez",
           "fighter2": "Felipe Bunes",
           "weightClass": "Flyweight",
           "isTitleFight": false,
@@ -3291,7 +2755,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Imanol Rodríguez",
+          "fighter1": "Imanol Rodr\u00edguez",
           "fighter2": "Kevin Borjas",
           "weightClass": "Flyweight",
           "isTitleFight": false,
@@ -3316,7 +2780,7 @@
         },
         {
           "fighter1": "Ryan Gandra",
-          "fighter2": "José Medina",
+          "fighter2": "Jos\u00e9 Medina",
           "weightClass": "Middleweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -3325,7 +2789,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Ailín Pérez",
+          "fighter1": "Ail\u00edn P\u00e9rez",
           "fighter2": "Macy Chiasson",
           "weightClass": "Women's Bantamweight",
           "isTitleFight": false,
@@ -3335,7 +2799,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Cristian Quiñónez",
+          "fighter1": "Cristian Qui\u00f1\u00f3nez",
           "fighter2": "Kris Moutinho",
           "weightClass": "Bantamweight",
           "isTitleFight": false,
@@ -3360,7 +2824,7 @@
         },
         {
           "fighter1": "Regina Tarin",
-          "fighter2": "Ernesta Kareckaitė",
+          "fighter2": "Ernesta Kareckait\u0117",
           "weightClass": "Catchweight (130 lb)",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -3419,7 +2883,7 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "Uroš Medić",
+          "fighter1": "Uro\u0161 Medi\u0107",
           "fighter2": "Geoff Neal",
           "weightClass": "Welterweight",
           "isTitleFight": false,
@@ -3629,8 +3093,8 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "Michał Oleksiejczuk",
-          "fighter2": "Marc-André Barriault",
+          "fighter1": "Micha\u0142 Oleksiejczuk",
+          "fighter2": "Marc-Andr\u00e9 Barriault",
           "weightClass": "Middleweight",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -3710,7 +3174,7 @@
         },
         {
           "fighter1": "Javid Basharat",
-          "fighter2": "Gianni Vázquez",
+          "fighter2": "Gianni V\u00e1zquez",
           "weightClass": "Catchweight (141 lb)",
           "isTitleFight": false,
           "actualWinner": "fighter1",
@@ -3733,7 +3197,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Jakub Wikłacz",
+          "fighter1": "Jakub Wik\u0142acz",
           "fighter2": "Muin Gafurov",
           "weightClass": "Catchweight (141 lb)",
           "isTitleFight": false,
@@ -3743,7 +3207,7 @@
           "wasCorrect": null
         },
         {
-          "fighter1": "Klaudia Syguła",
+          "fighter1": "Klaudia Sygu\u0142a",
           "fighter2": "Priscila Cachoeira",
           "weightClass": "Women's Bantamweight",
           "isTitleFight": false,
@@ -3785,7 +3249,7 @@
           "wasCorrect": true
         },
         {
-          "fighter1": "Benoît Saint Denis",
+          "fighter1": "Beno\u00eet Saint Denis",
           "fighter2": "Dan Hooker",
           "weightClass": "Lightweight",
           "isTitleFight": false,
@@ -4097,7 +3561,7 @@
           "wasCorrect": false
         },
         {
-          "fighter1": "Natália Silva",
+          "fighter1": "Nat\u00e1lia Silva",
           "fighter2": "Rose Namajunas",
           "weightClass": "Women's Flyweight",
           "isTitleFight": false,

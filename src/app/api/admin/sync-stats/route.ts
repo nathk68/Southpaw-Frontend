@@ -103,6 +103,8 @@ export async function GET(request: NextRequest) {
   }
 
   const knownSlugs = new Set(historicalData.events.map(e => e.slug));
+  // Also index existing events by date (day precision) to catch slug-format mismatches
+  const knownDates = new Set(historicalData.events.map(e => e.date.slice(0, 10)));
 
   // Find recent past events not yet in the historical data
   const slugParam = request.nextUrl.searchParams.get('slug');
@@ -112,7 +114,17 @@ export async function GET(request: NextRequest) {
     eventsToProcess = [{ slug: slugParam, title: slugParam, dateISO: new Date().toISOString() }];
   } else {
     const recentPast = await getRecentPastEvents(30);
-    eventsToProcess = recentPast.filter(e => !knownSlugs.has(e.slug));
+    eventsToProcess = recentPast.filter(e => {
+      // Skip if same slug already exists
+      if (knownSlugs.has(e.slug)) return false;
+      // Skip if an event on the same date (±1 day) already exists (different slug format)
+      const eventDay = e.dateISO.slice(0, 10);
+      const eventDate = new Date(e.dateISO);
+      const prevDay = new Date(eventDate.getTime() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+      const nextDay = new Date(eventDate.getTime() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+      if (knownDates.has(eventDay) || knownDates.has(prevDay) || knownDates.has(nextDay)) return false;
+      return true;
+    });
   }
 
   if (eventsToProcess.length === 0) {
@@ -155,6 +167,12 @@ export async function GET(request: NextRequest) {
     const decidedFights = historicalFights.filter(f => f.actualWinner && f.actualWinner !== 'draw' && f.actualWinner !== 'no-contest' && f.wasCorrect !== null);
     const correctPredictions = decidedFights.filter(f => f.wasCorrect === true).length;
     const accuracy = decidedFights.length > 0 ? Math.round((correctPredictions / decidedFights.length) * 1000) / 10 : 0;
+
+    // Skip events where no fight outcomes could be determined (results not yet on UFC.com)
+    if (decidedFights.length === 0) {
+      console.log(`Skipping ${slug}: no fight outcomes detected yet`);
+      continue;
+    }
 
     newEvents.push({
       slug,

@@ -342,21 +342,28 @@ export async function GET(request: NextRequest) {
   // Merge new events at the beginning (most recent first)
   const updatedEvents = [...newEvents, ...historicalData.events];
 
-  // Recalculate global accuracy
-  let totalCorrect = 0;
-  let totalDecided = 0;
+  // Recalculate global accuracy using rolling window of last 100 decided fights
+  const ACCURACY_WINDOW = 100;
+  let windowCorrect = 0;
+  let windowTotal = 0;
   for (const event of updatedEvents) {
-    totalCorrect += event.correctPredictions;
-    totalDecided += event.totalDecidedFights;
+    if (windowTotal >= ACCURACY_WINDOW) break;
+    for (const fight of event.fights) {
+      if (fight.wasCorrect !== null) {
+        if (fight.wasCorrect) windowCorrect++;
+        windowTotal++;
+        if (windowTotal >= ACCURACY_WINDOW) break;
+      }
+    }
   }
-  const globalAccuracy = totalDecided > 0 ? Math.round((totalCorrect / totalDecided) * 1000) / 10 : 0;
+  const globalAccuracy = windowTotal > 0 ? Math.round((windowCorrect / windowTotal) * 1000) / 10 : 0;
 
   const updatedData: HistoricalData = {
     metadata: {
       ...historicalData.metadata,
       globalAccuracy,
-      totalTestFights: totalDecided,
-      correctPredictions: totalCorrect,
+      totalTestFights: windowTotal,
+      correctPredictions: windowCorrect,
       displayedEvents: updatedEvents.length,
       generatedAt: new Date().toISOString(),
     },

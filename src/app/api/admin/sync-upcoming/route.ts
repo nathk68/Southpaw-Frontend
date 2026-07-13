@@ -65,30 +65,27 @@ export async function GET(request: NextRequest) {
 
   const fights: object[] = [];
 
-  // Process next 2 events max
-  for (const event of futureEvents.slice(0, 2)) {
+  // Process next 3 events, 1 main event each
+  for (const event of futureEvents.slice(0, 3)) {
     const slug = event.url.replace(/^.*\/event\//, '').replace(/\?.*$/, '');
     const details = await getEventDetails(slug);
     if (!details) continue;
 
-    // Main card only (top 5 fights)
-    const mainCardFights = details.mainCard.slice(0, 5);
+    const mainEvent = details.mainCard[0];
+    if (!mainEvent?.fighter1 || !mainEvent?.fighter2) continue;
 
-    for (const fight of mainCardFights) {
-      if (!fight.fighter1 || !fight.fighter2) continue;
-      const pred = await getFightPrediction(fight.fighter1, fight.fighter2);
-      if (!pred) continue;
+    const pred = await getFightPrediction(mainEvent.fighter1, mainEvent.fighter2);
+    if (!pred) continue;
 
-      fights.push({
-        fighter1: lastName(fight.fighter1),
-        fighter2: lastName(fight.fighter2),
-        eventTitle: details.title || event.title,
-        eventDate: event.dateISO,
-        prob1: pred.prob1,
-        prob2: pred.prob2,
-        confidence: pred.confidence,
-      });
-    }
+    fights.push({
+      fighter1: lastName(mainEvent.fighter1),
+      fighter2: lastName(mainEvent.fighter2),
+      eventTitle: details.title || event.title,
+      eventDate: event.dateISO,
+      prob1: pred.prob1,
+      prob2: pred.prob2,
+      confidence: pred.confidence,
+    });
   }
 
   const data = {

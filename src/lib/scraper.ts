@@ -73,8 +73,9 @@ export async function getUpcomingFights(): Promise<UFCEvent[]> {
         const eventDate = new Date(parseInt(timestamp) * 1000);
         const now = new Date();
 
-        // Simple comparison: if event_date >= now, show it
-        if (eventDate >= now) {
+        // Keep events visible until 12h after their start time
+        const cutoff = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+        if (eventDate >= cutoff) {
           events.push({
             title,
             date,
@@ -94,6 +95,63 @@ export async function getUpcomingFights(): Promise<UFCEvent[]> {
     return events;
   } catch (error) {
     console.error('UFC Scraping Error:', error);
+    return [];
+  }
+}
+
+export interface PastUFCEvent {
+  slug: string;
+  title: string;
+  dateISO: string;
+}
+
+/**
+ * Returns UFC events that occurred in the last `days` days.
+ * Used by the stats sync job to discover events needing historical processing.
+ */
+export async function getRecentPastEvents(days = 30): Promise<PastUFCEvent[]> {
+  try {
+    const response = await fetch('https://www.ufc.com/events', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+      },
+      cache: 'no-store',
+    });
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const html = await response.text();
+    const $ = cheerio.load(html);
+    const now = new Date();
+    const cutoffOld = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
+    // Also exclude events from the last 12h (still "live")
+    const cutoffRecent = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+    const pastEvents: PastUFCEvent[] = [];
+
+    $('.c-card-event--result__info').each((_, element) => {
+      const $element = $(element);
+      const headline = $element.find('.c-card-event--result__headline a');
+      const title = headline.text().trim();
+      const urlRelative = headline.attr('href') || '';
+      const timestamp = $element.find('.c-card-event--result__date').attr('data-main-card-timestamp');
+
+      if (!title || !timestamp || !urlRelative) return;
+
+      const eventDate = new Date(parseInt(timestamp) * 1000);
+      // Event must be in the past (>12h ago) and within the last N days
+      if (eventDate < cutoffRecent && eventDate >= cutoffOld) {
+        const slug = urlRelative.replace(/^.*\/event\//, '').replace(/\?.*$/, '').replace(/^\//, '');
+        if (slug) {
+          pastEvents.push({ slug, title, dateISO: eventDate.toISOString() });
+        }
+      }
+    });
+
+    return pastEvents;
+  } catch (error) {
+    console.error('Past events scraping error:', error);
     return [];
   }
 }

@@ -72,7 +72,7 @@ export default function EventPage() {
   const router = useRouter();
   const slug = params.slug as string;
   const { user, access, login, logout } = useAuth();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const [event, setEvent] = useState<EventDetails | null>(null);
   const [loading, setLoading] = useState(true);
@@ -214,6 +214,7 @@ export default function EventPage() {
         body: JSON.stringify({
           fighter1Name: toSlug(fight.fighter1),
           fighter2Name: toSlug(fight.fighter2),
+          lang,
         }),
       });
 

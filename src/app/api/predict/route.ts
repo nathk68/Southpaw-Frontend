@@ -21,6 +21,7 @@ const FighterPredictionSchema = z.object({
     .min(2, 'Nom trop court (minimum 2 caractères)')
     .max(50, 'Nom trop long (maximum 50 caractères)')
     .regex(/^[a-zA-Z\s\-'\.]+$/, 'Caractères invalides dans le nom'),
+  lang: z.enum(['fr', 'en']).optional().default('fr'),
 });
 
 /**
@@ -49,7 +50,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { fighter1Name, fighter2Name } = validationResult.data;
+    const { fighter1Name, fighter2Name, lang } = validationResult.data;
+    const isEn = lang === 'en';
 
     console.log(`🔍 Recherche de combattants: ${fighter1Name} vs ${fighter2Name}`);
 
@@ -212,9 +214,13 @@ export async function POST(request: NextRequest) {
       const strikingLeader = analysis.striking_advantage > 0 ? fighter1.name : fighter2.name;
       const strikingValue = Math.abs(analysis.striking_advantage);
       if (strikingValue > 20) {
-        keyFactors.push(`${strikingLeader} possède un avantage striking significatif (+${strikingValue.toFixed(0)}%)`);
+        keyFactors.push(isEn
+          ? `${strikingLeader} has a significant striking advantage (+${strikingValue.toFixed(0)}%)`
+          : `${strikingLeader} possède un avantage striking significatif (+${strikingValue.toFixed(0)}%)`);
       } else if (strikingValue > 10) {
-        keyFactors.push(`${strikingLeader} a un léger avantage au striking`);
+        keyFactors.push(isEn
+          ? `${strikingLeader} has a slight striking advantage`
+          : `${strikingLeader} a un léger avantage au striking`);
       }
     }
 
@@ -223,7 +229,9 @@ export async function POST(request: NextRequest) {
       const grapplingLeader = analysis.grappling_advantage > 0 ? fighter1.name : fighter2.name;
       const grapplingValue = Math.abs(analysis.grappling_advantage);
       if (grapplingValue > 20) {
-        keyFactors.push(`${grapplingLeader} domine au grappling avec des takedowns constants`);
+        keyFactors.push(isEn
+          ? `${grapplingLeader} dominates the grappling with consistent takedowns`
+          : `${grapplingLeader} domine au grappling avec des takedowns constants`);
       }
     }
 
@@ -232,7 +240,9 @@ export async function POST(request: NextRequest) {
       const finisherValue = Math.abs(analysis.finish_potential);
       if (finisherValue > 15) {
         const finisher = analysis.finish_potential > 0 ? fighter1.name : fighter2.name;
-        keyFactors.push(`${finisher} a un taux de finish élevé - risque de KO/Soumission`);
+        keyFactors.push(isEn
+          ? `${finisher} has a high finish rate — KO/Submission risk`
+          : `${finisher} a un taux de finish élevé - risque de KO/Soumission`);
       }
     }
 
@@ -241,7 +251,9 @@ export async function POST(request: NextRequest) {
       const maxStr = Math.max(analysis.f1_str, analysis.f2_str);
       if (maxStr > 500) {
         const volumeStriker = analysis.f1_str > analysis.f2_str ? fighter1.name : fighter2.name;
-        keyFactors.push(`${volumeStriker} maintient un volume de frappes élevé (${maxStr.toFixed(0)} frappes totales)`);
+        keyFactors.push(isEn
+          ? `${volumeStriker} maintains a high striking volume (${maxStr.toFixed(0)} total strikes)`
+          : `${volumeStriker} maintient un volume de frappes élevé (${maxStr.toFixed(0)} frappes totales)`);
       }
     }
 
@@ -264,8 +276,12 @@ export async function POST(request: NextRequest) {
 
     // Toujours ajouter les facteurs généraux à la fin
     keyFactors.push(
-      `Prédiction basée sur 8,255 combats historiques (72.3% accuracy)`,
-      `Modèle: Random Forest avec 48 features statistiques`
+      isEn
+        ? `Prediction based on 8,255 historical fights (72.3% accuracy)`
+        : `Prédiction basée sur 8,255 combats historiques (72.3% accuracy)`,
+      isEn
+        ? `Model: Random Forest with 48 statistical features`
+        : `Modèle: Random Forest avec 48 features statistiques`
     );
 
     const prediction = {
@@ -309,13 +325,17 @@ export async function POST(request: NextRequest) {
       analysis: {
         keyFactors,
         warnings: mlPrediction.confidence < 15
-          ? ['Combat très serré - Issue incertaine', 'Les deux combattants ont des chances équilibrées']
+          ? isEn
+            ? ['Very close fight — uncertain outcome', 'Both fighters have balanced chances']
+            : ['Combat très serré - Issue incertaine', 'Les deux combattants ont des chances équilibrées']
           : mlPrediction.confidence < 25
-          ? ['Prédiction serrée - Plusieurs scénarios possibles']
+          ? isEn
+            ? ['Close prediction — multiple scenarios possible']
+            : ['Prédiction serrée - Plusieurs scénarios possibles']
           : [],
         prediction: mlPrediction.prediction === 'fighter1'
-          ? `Victoire probable de ${fighter1.name}`
-          : `Victoire probable de ${fighter2.name}`,
+          ? isEn ? `Likely victory for ${fighter1.name}` : `Victoire probable de ${fighter1.name}`
+          : isEn ? `Likely victory for ${fighter2.name}` : `Victoire probable de ${fighter2.name}`,
       },
     };
 

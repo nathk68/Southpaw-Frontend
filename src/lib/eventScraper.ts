@@ -8,6 +8,7 @@ export interface Fight {
   weightClass: string;
   isTitleFight: boolean;
   order: number;
+  winner?: 'fighter1' | 'fighter2' | 'draw' | 'no-contest' | null;
 }
 
 export interface EventDetails {
@@ -113,6 +114,19 @@ export async function getEventDetails(eventSlug: string): Promise<EventDetails |
                           weightClass.toLowerCase().includes('championship') ||
                           $fight.find('.c-listing-fight__belt').length > 0;
 
+      // Detect winner for completed events
+      // UFC.com marks winning corner with 'is-win' class on the corner element
+      let winner: Fight['winner'] = null;
+      const redHasWin = redCorner.hasClass('is-win') || redCorner.find('.is-win').length > 0 ||
+                        $fight.find('.c-listing-fight__corner--red .c-listing-fight__corner-name').hasClass('is-win');
+      const blueHasWin = blueCorner.hasClass('is-win') || blueCorner.find('.is-win').length > 0 ||
+                         $fight.find('.c-listing-fight__corner--blue .c-listing-fight__corner-name').hasClass('is-win');
+      const outcomeText = $fight.find('.c-listing-fight__outcome-wrapper, .c-listing-fight__result-text').text().toLowerCase();
+      if (redHasWin) winner = 'fighter1';
+      else if (blueHasWin) winner = 'fighter2';
+      else if (outcomeText.includes('draw')) winner = 'draw';
+      else if (outcomeText.includes('no contest') || outcomeText.includes('nc')) winner = 'no-contest';
+
       if (fighter1 && fighter2) {
         allFights.push({
           fighter1,
@@ -121,7 +135,8 @@ export async function getEventDetails(eventSlug: string): Promise<EventDetails |
           fighter2Image: fighter2Image || undefined,
           weightClass,
           isTitleFight,
-          order: order++
+          order: order++,
+          winner,
         });
       }
     });

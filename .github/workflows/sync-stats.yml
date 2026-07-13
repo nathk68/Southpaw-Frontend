@@ -1,4 +1,4 @@
-name: Sync Historical Stats
+name: Sync UFC Data
 
 on:
   schedule:
@@ -9,12 +9,12 @@ on:
   workflow_dispatch:
     inputs:
       slug:
-        description: 'Specific event slug to process (optional)'
+        description: 'Specific event slug to process for historical stats (optional)'
         required: false
         type: string
 
 jobs:
-  sync-stats:
+  sync:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23,8 +23,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Call sync-stats API
-        id: sync
+      - name: Sync historical stats
+        id: sync-stats
         env:
           INPUT_SLUG: ${{ github.event.inputs.slug }}
           RAILWAY_URL: ${{ secrets.RAILWAY_URL }}
@@ -39,8 +39,6 @@ jobs:
             "${RAILWAY_URL}/api/admin/sync-stats?token=${ADMIN_SYNC_TOKEN}${SLUG_PARAM}" \
             --max-time 90)
 
-          echo "response=$RESPONSE" >> "$GITHUB_OUTPUT"
-
           UPDATED=$(echo "$RESPONSE" | jq -r '.updated')
           echo "updated=$UPDATED" >> "$GITHUB_OUTPUT"
 
@@ -48,14 +46,28 @@ jobs:
             echo "$RESPONSE" | jq '.data' > public/historical-predictions.json
             echo "Wrote updated historical-predictions.json"
           else
-            echo "No new events to process: $(echo "$RESPONSE" | jq -r '.message')"
+            echo "No new historical events: $(echo "$RESPONSE" | jq -r '.message')"
           fi
 
-      - name: Commit and push if updated
-        if: steps.sync.outputs.updated == 'true'
+      - name: Sync upcoming fights
+        id: sync-upcoming
+        env:
+          RAILWAY_URL: ${{ secrets.RAILWAY_URL }}
+          ADMIN_SYNC_TOKEN: ${{ secrets.ADMIN_SYNC_TOKEN }}
+        run: |
+          RESPONSE=$(curl -sf \
+            "${RAILWAY_URL}/api/admin/sync-upcoming?token=${ADMIN_SYNC_TOKEN}" \
+            --max-time 90)
+
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+          echo "$RESPONSE" | jq '.data' > public/upcoming-predictions.json
+          echo "Wrote updated upcoming-predictions.json: $(echo "$RESPONSE" | jq -r '.message')"
+
+      - name: Commit and push changes
+        if: steps.sync-stats.outputs.updated == 'true' || steps.sync-upcoming.outputs.updated == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/historical-predictions.json
-          git commit -m "chore: sync historical predictions stats [skip ci]"
+          git add public/historical-predictions.json public/upcoming-predictions.json
+          git diff --staged --quiet || git commit -m "chore: sync UFC data (stats + upcoming fights) [skip ci]"
           git push

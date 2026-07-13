@@ -373,16 +373,22 @@ export const UpcomingFights = () => {
         const data = await response.json();
 
         if (data.fights && data.fights.length > 0) {
-          // Afficher uniquement le combat principal des 3 prochains events
-          const mainEvents: typeof data.fights = [];
+          // 1 main event per upcoming event, fill up to 3 if fewer events available
+          const selected: typeof data.fights = [];
           const seenEvents = new Set<string>();
           for (const fight of data.fights) {
-            if (!seenEvents.has(fight.eventDate) && mainEvents.length < 3) {
+            if (!seenEvents.has(fight.eventDate)) {
               seenEvents.add(fight.eventDate);
-              mainEvents.push(fight);
+              selected.push(fight);
             }
           }
-          setFights(mainEvents.length > 0 ? mainEvents : data.fights.slice(0, 3));
+          if (selected.length < 3) {
+            for (const fight of data.fights) {
+              if (selected.length >= 3) break;
+              if (!selected.includes(fight)) selected.push(fight);
+            }
+          }
+          setFights(selected.slice(0, 3));
         }
       } catch (error) {
         console.error('Error fetching upcoming predictions:', error);

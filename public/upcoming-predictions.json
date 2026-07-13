@@ -1,33 +1,78 @@
 {
-  "generatedAt": "2026-07-08T00:00:00.000000",
-  "count": 3,
+  "generatedAt": "2026-07-13T12:52:25.848Z",
+  "count": 8,
   "fights": [
     {
-      "fighter1": "McGregor",
-      "fighter2": "Holloway",
-      "eventTitle": "UFC 329",
-      "eventDate": "2026-07-12T02:00:00.000Z",
-      "prob1": 27.5,
-      "prob2": 72.5,
-      "confidence": 70.8
-    },
-    {
-      "fighter1": "du Plessis",
+      "fighter1": "Plessis",
       "fighter2": "Usman",
-      "eventTitle": "UFC FIGHT NIGHT",
-      "eventDate": "2026-07-19T02:00:00.000Z",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-19T00:00:00.000Z",
       "prob1": 19.7,
       "prob2": 80.3,
       "confidence": 85.6
     },
     {
+      "fighter1": "Cannonier",
+      "fighter2": "Duncan",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-19T00:00:00.000Z",
+      "prob1": 77.1,
+      "prob2": 22.9,
+      "confidence": 79.2
+    },
+    {
+      "fighter1": "Hooper",
+      "fighter2": "Ramirez",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-19T00:00:00.000Z",
+      "prob1": 86.8,
+      "prob2": 13.2,
+      "confidence": 98.5
+    },
+    {
+      "fighter1": "McMillen",
+      "fighter2": "Montes",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-19T00:00:00.000Z",
+      "prob1": 43.8,
+      "prob2": 56.2,
+      "confidence": 35.8
+    },
+    {
+      "fighter1": "Ricci",
+      "fighter2": "Kline",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-19T00:00:00.000Z",
+      "prob1": 58.6,
+      "prob2": 41.4,
+      "confidence": 44.9
+    },
+    {
       "fighter1": "Ankalaev",
-      "fighter2": "Rountree Jr.",
-      "eventTitle": "UFC FIGHT NIGHT",
-      "eventDate": "2026-07-26T02:00:00.000Z",
+      "fighter2": "Jr.",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-25T16:00:00.000Z",
       "prob1": 82.4,
       "prob2": 17.6,
       "confidence": 89.7
+    },
+    {
+      "fighter1": "Erceg",
+      "fighter2": "Temirov",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-25T16:00:00.000Z",
+      "prob1": 88.2,
+      "prob2": 11.8,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Dulatov",
+      "fighter2": "Turman",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-07-25T16:00:00.000Z",
+      "prob1": 24.9,
+      "prob2": 75.1,
+      "confidence": 75.3
     }
   ]
 }

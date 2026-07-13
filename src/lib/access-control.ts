@@ -27,21 +27,26 @@ export function canAccessEvent(
     };
   }
 
-  // Southpaw PRO users can access all events
+  // Southpaw PRO users can access the next 3 upcoming events
   if (access.isPro) {
-    return {
-      canAccess: true,
-    };
-  }
-
-  // PPV Pass users can only access the next 3 upcoming events
-  if (access.isPPV) {
     const slugs = Array.isArray(nextEventSlugs)
       ? nextEventSlugs
       : [nextEventSlugs].filter((s): s is string => Boolean(s));
     const isUpcomingEvent = slugs.includes(eventSlug);
 
     if (isUpcomingEvent) {
+      return { canAccess: true, isNextEvent: false };
+    } else {
+      return { canAccess: false, reason: 'ppv_restricted', isNextEvent: false };
+    }
+  }
+
+  // PPV Pass users can only access the next 1 event
+  if (access.isPPV) {
+    const nextSlug = Array.isArray(nextEventSlugs) ? nextEventSlugs[0] : nextEventSlugs;
+    const isNextEvent = eventSlug === nextSlug;
+
+    if (isNextEvent) {
       return { canAccess: true, isNextEvent: true };
     } else {
       return { canAccess: false, reason: 'ppv_restricted', isNextEvent: false };

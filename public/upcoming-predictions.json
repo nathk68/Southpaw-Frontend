@@ -1,60 +1,15 @@
 {
-  "generatedAt": "2026-07-13T12:52:25.848Z",
+  "generatedAt": "2026-07-19T08:11:12.066Z",
   "count": 8,
   "fights": [
     {
-      "fighter1": "Plessis",
-      "fighter2": "Usman",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-19T00:00:00.000Z",
-      "prob1": 19.7,
-      "prob2": 80.3,
-      "confidence": 85.6
-    },
-    {
-      "fighter1": "Cannonier",
-      "fighter2": "Duncan",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-19T00:00:00.000Z",
-      "prob1": 77.1,
-      "prob2": 22.9,
-      "confidence": 79.2
-    },
-    {
-      "fighter1": "Hooper",
-      "fighter2": "Ramirez",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-19T00:00:00.000Z",
-      "prob1": 86.8,
-      "prob2": 13.2,
-      "confidence": 98.5
-    },
-    {
-      "fighter1": "McMillen",
-      "fighter2": "Montes",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-19T00:00:00.000Z",
-      "prob1": 43.8,
-      "prob2": 56.2,
-      "confidence": 35.8
-    },
-    {
-      "fighter1": "Ricci",
-      "fighter2": "Kline",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-19T00:00:00.000Z",
-      "prob1": 58.6,
-      "prob2": 41.4,
-      "confidence": 44.9
-    },
-    {
       "fighter1": "Ankalaev",
-      "fighter2": "Jr.",
+      "fighter2": "Guskov",
       "eventTitle": "UFC Fight Night",
       "eventDate": "2026-07-25T16:00:00.000Z",
-      "prob1": 82.4,
-      "prob2": 17.6,
-      "confidence": 89.7
+      "prob1": 87.8,
+      "prob2": 12.2,
+      "confidence": 100
     },
     {
       "fighter1": "Erceg",
@@ -73,6 +28,51 @@
       "prob1": 24.9,
       "prob2": 75.1,
       "confidence": 75.3
+    },
+    {
+      "fighter1": "Gamrot",
+      "fighter2": "Salkilld",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 65.7,
+      "prob2": 34.3,
+      "confidence": 59.6
+    },
+    {
+      "fighter1": "Nurgozhay",
+      "fighter2": "Lopes",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 83.2,
+      "prob2": 16.8,
+      "confidence": 91.5
+    },
+    {
+      "fighter1": "Ferreira",
+      "fighter2": "Quarantillo",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 47.2,
+      "prob2": 52.8,
+      "confidence": 22.9
+    },
+    {
+      "fighter1": "Sutherland",
+      "fighter2": "Silva",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 49.9,
+      "prob2": 50.1,
+      "confidence": 1.4
+    },
+    {
+      "fighter1": "Asplund",
+      "fighter2": "Pat",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 38.7,
+      "prob2": 61.3,
+      "confidence": 52.2
     }
   ]
 }

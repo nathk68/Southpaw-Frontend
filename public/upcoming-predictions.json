@@ -1,34 +1,7 @@
 {
-  "generatedAt": "2026-07-20T12:08:43.225Z",
-  "count": 8,
+  "generatedAt": "2026-07-26T08:21:40.217Z",
+  "count": 9,
   "fights": [
-    {
-      "fighter1": "Ankalaev",
-      "fighter2": "Guskov",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-25T16:00:00.000Z",
-      "prob1": 87.8,
-      "prob2": 12.2,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Erceg",
-      "fighter2": "Temirov",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-25T16:00:00.000Z",
-      "prob1": 88.2,
-      "prob2": 11.8,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Dulatov",
-      "fighter2": "Turman",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-07-25T16:00:00.000Z",
-      "prob1": 24.9,
-      "prob2": 75.1,
-      "confidence": 75.3
-    },
     {
       "fighter1": "Gamrot",
       "fighter2": "Salkilld",
@@ -37,6 +10,15 @@
       "prob1": 65.7,
       "prob2": 34.3,
       "confidence": 59.6
+    },
+    {
+      "fighter1": "Miller",
+      "fighter2": "Goff",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-08T21:00:00.000Z",
+      "prob1": 27.9,
+      "prob2": 72.1,
+      "confidence": 70.1
     },
     {
       "fighter1": "Nurgozhay",
@@ -66,13 +48,40 @@
       "confidence": 1.4
     },
     {
-      "fighter1": "Asplund",
-      "fighter2": "Pat",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
-      "prob1": 38.7,
-      "prob2": 61.3,
-      "confidence": 52.2
+      "fighter1": "Makhachev",
+      "fighter2": "Garry",
+      "eventTitle": "UFC 330",
+      "eventDate": "2026-08-16T01:00:00.000Z",
+      "prob1": 75.1,
+      "prob2": 24.9,
+      "confidence": 75.2
+    },
+    {
+      "fighter1": "Dern",
+      "fighter2": "Robertson",
+      "eventTitle": "UFC 330",
+      "eventDate": "2026-08-16T01:00:00.000Z",
+      "prob1": 80.2,
+      "prob2": 19.8,
+      "confidence": 85.5
+    },
+    {
+      "fighter1": "Abdul-Malik",
+      "fighter2": "Stoltzfus",
+      "eventTitle": "UFC 330",
+      "eventDate": "2026-08-16T01:00:00.000Z",
+      "prob1": 69.7,
+      "prob2": 30.3,
+      "confidence": 66.1
+    },
+    {
+      "fighter1": "Wells",
+      "fighter2": "Orolbai",
+      "eventTitle": "UFC 330",
+      "eventDate": "2026-08-16T01:00:00.000Z",
+      "prob1": 80.5,
+      "prob2": 19.5,
+      "confidence": 85.9
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-26T08:21:40.217Z",
+  "generatedAt": "2026-07-27T12:50:19.820Z",
   "count": 9,
   "fights": [
     {
       "fighter1": "Gamrot",
       "fighter2": "Salkilld",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
+      "eventDate": "2026-08-09T00:00:00.000Z",
       "prob1": 65.7,
       "prob2": 34.3,
       "confidence": 59.6
@@ -15,7 +15,7 @@
       "fighter1": "Miller",
       "fighter2": "Goff",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
+      "eventDate": "2026-08-09T00:00:00.000Z",
       "prob1": 27.9,
       "prob2": 72.1,
       "confidence": 70.1
@@ -24,7 +24,7 @@
       "fighter1": "Nurgozhay",
       "fighter2": "Lopes",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
+      "eventDate": "2026-08-09T00:00:00.000Z",
       "prob1": 83.2,
       "prob2": 16.8,
       "confidence": 91.5
@@ -33,7 +33,7 @@
       "fighter1": "Ferreira",
       "fighter2": "Quarantillo",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
+      "eventDate": "2026-08-09T00:00:00.000Z",
       "prob1": 47.2,
       "prob2": 52.8,
       "confidence": 22.9
@@ -42,7 +42,7 @@
       "fighter1": "Sutherland",
       "fighter2": "Silva",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-08T21:00:00.000Z",
+      "eventDate": "2026-08-09T00:00:00.000Z",
       "prob1": 49.9,
       "prob2": 50.1,
       "confidence": 1.4

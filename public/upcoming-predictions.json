@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T08:18:20.285Z",
-  "count": 8,
+  "generatedAt": "2026-08-03T12:48:57.085Z",
+  "count": 13,
   "fights": [
     {
       "fighter1": "Gamrot",
@@ -73,6 +73,51 @@
       "prob1": 80.5,
       "prob2": 19.5,
       "confidence": 85.9
+    },
+    {
+      "fighter1": "Nurmagomedov",
+      "fighter2": "Yadong",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-29T10:00:00.000Z",
+      "prob1": 68.7,
+      "prob2": 31.3,
+      "confidence": 64.5
+    },
+    {
+      "fighter1": "Xiaonan",
+      "fighter2": "Gomes",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-29T10:00:00.000Z",
+      "prob1": 88.9,
+      "prob2": 11.1,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Aoriqileng",
+      "fighter2": "Asakura",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-29T10:00:00.000Z",
+      "prob1": 93.3,
+      "prob2": 6.7,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Sumudaerji",
+      "fighter2": "Perez",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-29T10:00:00.000Z",
+      "prob1": 73.1,
+      "prob2": 26.9,
+      "confidence": 71.9
+    },
+    {
+      "fighter1": "Tsuruya",
+      "fighter2": "Borjas",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-08-29T10:00:00.000Z",
+      "prob1": 92.4,
+      "prob2": 7.6,
+      "confidence": 100
     }
   ]
 }

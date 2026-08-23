@@ -1,52 +1,7 @@
 {
-  "generatedAt": "2026-08-17T10:21:17.664Z",
+  "generatedAt": "2026-08-23T06:35:19.068Z",
   "count": 12,
   "fights": [
-    {
-      "fighter1": "Hernandez",
-      "fighter2": "Rodrigues",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-23T00:00:00.000Z",
-      "prob1": 92.3,
-      "prob2": 7.7,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Spivac",
-      "fighter2": "Petrino",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-23T00:00:00.000Z",
-      "prob1": 25.6,
-      "prob2": 74.4,
-      "confidence": 74
-    },
-    {
-      "fighter1": "Ridder",
-      "fighter2": "Dolidze",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-23T00:00:00.000Z",
-      "prob1": 37.7,
-      "prob2": 62.3,
-      "confidence": 53.8
-    },
-    {
-      "fighter1": "Mederos",
-      "fighter2": "Jones",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-23T00:00:00.000Z",
-      "prob1": 50.4,
-      "prob2": 49.6,
-      "confidence": 4.3
-    },
-    {
-      "fighter1": "Judice",
-      "fighter2": "Chaves",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-23T00:00:00.000Z",
-      "prob1": 55.9,
-      "prob2": 44.1,
-      "confidence": 34.5
-    },
     {
       "fighter1": "Nurmagomedov",
       "fighter2": "Yadong",
@@ -109,6 +64,51 @@
       "prob1": 29.3,
       "prob2": 70.7,
       "confidence": 67.9
+    },
+    {
+      "fighter1": "Rodriguez",
+      "fighter2": "Silva",
+      "eventTitle": "Noche UFC",
+      "eventDate": "2026-09-12T21:00:00.000Z",
+      "prob1": 88.5,
+      "prob2": 11.5,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Moreno",
+      "fighter2": "Morales",
+      "eventTitle": "Noche UFC",
+      "eventDate": "2026-09-12T21:00:00.000Z",
+      "prob1": 97.7,
+      "prob2": 2.3,
+      "confidence": 100
+    },
+    {
+      "fighter1": "McMillen",
+      "fighter2": "Rahiki",
+      "eventTitle": "Noche UFC",
+      "eventDate": "2026-09-12T21:00:00.000Z",
+      "prob1": 42.1,
+      "prob2": 57.9,
+      "confidence": 42.2
+    },
+    {
+      "fighter1": "Fiorot",
+      "fighter2": "Grasso",
+      "eventTitle": "Noche UFC",
+      "eventDate": "2026-09-12T21:00:00.000Z",
+      "prob1": 50.1,
+      "prob2": 49.9,
+      "confidence": 1.2
+    },
+    {
+      "fighter1": "Acosta",
+      "fighter2": "Blaydes",
+      "eventTitle": "Noche UFC",
+      "eventDate": "2026-09-12T21:00:00.000Z",
+      "prob1": 61.1,
+      "prob2": 38.9,
+      "confidence": 51.9
     }
   ]
 }

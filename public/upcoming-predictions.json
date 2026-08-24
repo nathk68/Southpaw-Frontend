@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-23T06:35:19.068Z",
-  "count": 12,
+  "generatedAt": "2026-08-24T10:27:24.890Z",
+  "count": 11,
   "fights": [
     {
       "fighter1": "Nurmagomedov",
@@ -28,15 +28,6 @@
       "prob1": 93.3,
       "prob2": 6.7,
       "confidence": 100
-    },
-    {
-      "fighter1": "Perez",
-      "fighter2": "Sumudaerji",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-08-29T10:00:00.000Z",
-      "prob1": 49.3,
-      "prob2": 50.7,
-      "confidence": 6.7
     },
     {
       "fighter1": "Page",

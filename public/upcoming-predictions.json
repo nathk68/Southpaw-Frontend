@@ -1,34 +1,7 @@
 {
-  "generatedAt": "2026-08-31T17:17:40.473Z",
-  "count": 12,
+  "generatedAt": "2026-09-06T10:13:16.367Z",
+  "count": 11,
   "fights": [
-    {
-      "fighter1": "Page",
-      "fighter2": "Ruziboev",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-09-05T19:00:00.000Z",
-      "prob1": 48.9,
-      "prob2": 51.1,
-      "confidence": 11.2
-    },
-    {
-      "fighter1": "Donchenko",
-      "fighter2": "Soriano",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-09-05T19:00:00.000Z",
-      "prob1": 5.5,
-      "prob2": 94.5,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Charriere",
-      "fighter2": "Lima",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-09-05T19:00:00.000Z",
-      "prob1": 85.4,
-      "prob2": 14.6,
-      "confidence": 95.8
-    },
     {
       "fighter1": "Silva",
       "fighter2": "Delgado",
@@ -109,6 +82,24 @@
       "prob1": 37.3,
       "prob2": 62.7,
       "confidence": 54.5
+    },
+    {
+      "fighter1": "Jr.",
+      "fighter2": "Barcelos",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-09-26T22:00:00.000Z",
+      "prob1": 80.8,
+      "prob2": 19.2,
+      "confidence": 86.6
+    },
+    {
+      "fighter1": "Jackson",
+      "fighter2": "Simon",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-09-26T22:00:00.000Z",
+      "prob1": 58.2,
+      "prob2": 41.8,
+      "confidence": 43.1
     }
   ]
 }

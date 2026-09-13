@@ -1,52 +1,7 @@
 {
-  "generatedAt": "2026-09-07T15:22:46.617Z",
+  "generatedAt": "2026-09-13T11:02:42.833Z",
   "count": 11,
   "fights": [
-    {
-      "fighter1": "Silva",
-      "fighter2": "Delgado",
-      "eventTitle": "Noche UFC",
-      "eventDate": "2026-09-12T21:00:00.000Z",
-      "prob1": 49.5,
-      "prob2": 50.5,
-      "confidence": 5.2
-    },
-    {
-      "fighter1": "Moreno",
-      "fighter2": "Morales",
-      "eventTitle": "Noche UFC",
-      "eventDate": "2026-09-12T21:00:00.000Z",
-      "prob1": 97.7,
-      "prob2": 2.3,
-      "confidence": 100
-    },
-    {
-      "fighter1": "McMillen",
-      "fighter2": "Rahiki",
-      "eventTitle": "Noche UFC",
-      "eventDate": "2026-09-12T21:00:00.000Z",
-      "prob1": 42.1,
-      "prob2": 57.9,
-      "confidence": 42.2
-    },
-    {
-      "fighter1": "Fiorot",
-      "fighter2": "Grasso",
-      "eventTitle": "Noche UFC",
-      "eventDate": "2026-09-12T21:00:00.000Z",
-      "prob1": 50.1,
-      "prob2": 49.9,
-      "confidence": 1.2
-    },
-    {
-      "fighter1": "Acosta",
-      "fighter2": "Blaydes",
-      "eventTitle": "Noche UFC",
-      "eventDate": "2026-09-12T21:00:00.000Z",
-      "prob1": 61.1,
-      "prob2": 38.9,
-      "confidence": 51.9
-    },
     {
       "fighter1": "Van",
       "fighter2": "Pantoja",
@@ -87,19 +42,64 @@
       "fighter1": "Jr.",
       "fighter2": "Barcelos",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-09-26T22:00:00.000Z",
+      "eventDate": "2026-09-27T00:00:00.000Z",
       "prob1": 80.8,
       "prob2": 19.2,
       "confidence": 86.6
     },
     {
-      "fighter1": "Jackson",
-      "fighter2": "Simon",
+      "fighter1": "Vieira",
+      "fighter2": "Bryczek",
       "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-09-26T22:00:00.000Z",
-      "prob1": 58.2,
-      "prob2": 41.8,
-      "confidence": 43.1
+      "eventDate": "2026-09-27T00:00:00.000Z",
+      "prob1": 81.8,
+      "prob2": 18.2,
+      "confidence": 88.5
+    },
+    {
+      "fighter1": "Hiestand",
+      "fighter2": "Nakamura",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-09-27T00:00:00.000Z",
+      "prob1": 77.2,
+      "prob2": 22.8,
+      "confidence": 79.3
+    },
+    {
+      "fighter1": "Silva",
+      "fighter2": "Cong",
+      "eventTitle": "UFC 332",
+      "eventDate": "2026-10-04T00:00:00.000Z",
+      "prob1": 40.9,
+      "prob2": 59.1,
+      "confidence": 46.6
+    },
+    {
+      "fighter1": "Figueiredo",
+      "fighter2": "Talbott",
+      "eventTitle": "UFC 332",
+      "eventDate": "2026-10-04T00:00:00.000Z",
+      "prob1": 49.2,
+      "prob2": 50.8,
+      "confidence": 7.6
+    },
+    {
+      "fighter1": "Green",
+      "fighter2": "Ribovics",
+      "eventTitle": "UFC 332",
+      "eventDate": "2026-10-04T00:00:00.000Z",
+      "prob1": 69.6,
+      "prob2": 30.4,
+      "confidence": 66
+    },
+    {
+      "fighter1": "Gautier",
+      "fighter2": "Kopylov",
+      "eventTitle": "UFC 332",
+      "eventDate": "2026-10-04T00:00:00.000Z",
+      "prob1": 51.3,
+      "prob2": 48.7,
+      "confidence": 13
     }
   ]
 }

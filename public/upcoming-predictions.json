@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-09-14T16:02:54.246Z",
-  "count": 11,
+  "generatedAt": "2026-09-20T10:34:27.741Z",
+  "count": 8,
   "fights": [
-    {
-      "fighter1": "Van",
-      "fighter2": "Pantoja",
-      "eventTitle": "Crypto.com UFC 331",
-      "eventDate": "2026-09-20T01:00:00.000Z",
-      "prob1": 30.3,
-      "prob2": 69.7,
-      "confidence": 66.1
-    },
-    {
-      "fighter1": "Tsarukyan",
-      "fighter2": "Ruffy",
-      "eventTitle": "Crypto.com UFC 331",
-      "eventDate": "2026-09-20T01:00:00.000Z",
-      "prob1": 92.4,
-      "prob2": 7.6,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Moicano",
-      "fighter2": "Ortega",
-      "eventTitle": "Crypto.com UFC 331",
-      "eventDate": "2026-09-20T01:00:00.000Z",
-      "prob1": 44.1,
-      "prob2": 55.9,
-      "confidence": 34.4
-    },
-    {
-      "fighter1": "Menifield",
-      "fighter2": "Baraniewski",
-      "eventTitle": "Crypto.com UFC 331",
-      "eventDate": "2026-09-20T01:00:00.000Z",
-      "prob1": 37.3,
-      "prob2": 62.7,
-      "confidence": 54.5
-    },
     {
       "fighter1": "Jr.",
       "fighter2": "Barcelos",
@@ -100,6 +64,15 @@
       "prob1": 51.3,
       "prob2": 48.7,
       "confidence": 13
+    },
+    {
+      "fighter1": "Allen",
+      "fighter2": "Duncan",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-10-11T00:00:00.000Z",
+      "prob1": 71.8,
+      "prob2": 28.2,
+      "confidence": 69.8
     }
   ]
 }

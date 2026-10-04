@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-09-28T17:52:07.227Z",
-  "count": 10,
+  "generatedAt": "2026-10-04T11:44:51.650Z",
+  "count": 15,
   "fights": [
-    {
-      "fighter1": "Silva",
-      "fighter2": "Cong",
-      "eventTitle": "UFC 332",
-      "eventDate": "2026-10-04T00:00:00.000Z",
-      "prob1": 40.9,
-      "prob2": 59.1,
-      "confidence": 46.6
-    },
-    {
-      "fighter1": "Figueiredo",
-      "fighter2": "Talbott",
-      "eventTitle": "UFC 332",
-      "eventDate": "2026-10-04T00:00:00.000Z",
-      "prob1": 49.2,
-      "prob2": 50.8,
-      "confidence": 7.6
-    },
-    {
-      "fighter1": "Green",
-      "fighter2": "Ribovics",
-      "eventTitle": "UFC 332",
-      "eventDate": "2026-10-04T00:00:00.000Z",
-      "prob1": 69.6,
-      "prob2": 30.4,
-      "confidence": 66
-    },
-    {
-      "fighter1": "Gautier",
-      "fighter2": "Kopylov",
-      "eventTitle": "UFC 332",
-      "eventDate": "2026-10-04T00:00:00.000Z",
-      "prob1": 51.3,
-      "prob2": 48.7,
-      "confidence": 13
-    },
     {
       "fighter1": "Allen",
       "fighter2": "Duncan",
@@ -46,6 +10,42 @@
       "prob1": 71.8,
       "prob2": 28.2,
       "confidence": 69.8
+    },
+    {
+      "fighter1": "Camilo",
+      "fighter2": "Herbert",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-10-11T00:00:00.000Z",
+      "prob1": 33.5,
+      "prob2": 66.5,
+      "confidence": 60.9
+    },
+    {
+      "fighter1": "Godinez",
+      "fighter2": "Souza",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-10-11T00:00:00.000Z",
+      "prob1": 90.1,
+      "prob2": 9.9,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Fili",
+      "fighter2": "III",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-10-11T00:00:00.000Z",
+      "prob1": 70.5,
+      "prob2": 29.5,
+      "confidence": 67.5
+    },
+    {
+      "fighter1": "Walker",
+      "fighter2": "Meerschaert",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-10-11T00:00:00.000Z",
+      "prob1": 87.4,
+      "prob2": 12.6,
+      "confidence": 99.9
     },
     {
       "fighter1": "Buckley",
@@ -91,6 +91,51 @@
       "prob1": 25.8,
       "prob2": 74.2,
       "confidence": 73.8
+    },
+    {
+      "fighter1": "Volkanovski",
+      "fighter2": "Evloev",
+      "eventTitle": "UFC 333",
+      "eventDate": "2026-10-24T18:00:00.000Z",
+      "prob1": 81,
+      "prob2": 19,
+      "confidence": 86.9
+    },
+    {
+      "fighter1": "Yan",
+      "fighter2": "Dvalishvili",
+      "eventTitle": "UFC 333",
+      "eventDate": "2026-10-24T18:00:00.000Z",
+      "prob1": 78.2,
+      "prob2": 21.8,
+      "confidence": 81.3
+    },
+    {
+      "fighter1": "Kavanagh",
+      "fighter2": "Temirov",
+      "eventTitle": "UFC 333",
+      "eventDate": "2026-10-24T18:00:00.000Z",
+      "prob1": 90.2,
+      "prob2": 9.8,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Volkov",
+      "fighter2": "Kuniev",
+      "eventTitle": "UFC 333",
+      "eventDate": "2026-10-24T18:00:00.000Z",
+      "prob1": 95.1,
+      "prob2": 4.9,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Allen",
+      "fighter2": "Pico",
+      "eventTitle": "UFC 333",
+      "eventDate": "2026-10-24T18:00:00.000Z",
+      "prob1": 97.2,
+      "prob2": 2.8,
+      "confidence": 100
     }
   ]
 }

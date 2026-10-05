@@ -1,13 +1,209 @@
 {
   "metadata": {
-    "globalAccuracy": 69,
+    "globalAccuracy": 66,
     "totalTestFights": 100,
-    "correctPredictions": 69,
-    "displayedEvents": 54,
+    "correctPredictions": 66,
+    "displayedEvents": 55,
     "trainingFights": 8255,
-    "generatedAt": "2026-08-17T10:21:14.263Z"
+    "generatedAt": "2026-10-05T18:57:15.803Z"
   },
   "events": [
+    {
+      "slug": "ufc-332",
+      "title": "UFC 332",
+      "date": "2026-10-04T00:00:00.000Z",
+      "location": "Delta Center, Salt Lake City United States",
+      "accuracy": 45.5,
+      "correctPredictions": 5,
+      "totalDecidedFights": 11,
+      "totalFights": 14,
+      "fights": [
+        {
+          "fighter1": "Natalia Silva",
+          "fighter2": "Wang Cong",
+          "weightClass": "Women's Flyweight Title Bout",
+          "isTitleFight": true,
+          "prediction": {
+            "fighter1WinProbability": 40.9,
+            "fighter2WinProbability": 59.1,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter1",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Deiveson Figueiredo",
+          "fighter2": "Payton Talbott",
+          "weightClass": "Bantamweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 49.2,
+            "fighter2WinProbability": 50.8,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter2",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "King Green",
+          "fighter2": "Esteban Ribovics",
+          "weightClass": "Lightweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 69.6,
+            "fighter2WinProbability": 30.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Roberto Soldić",
+          "fighter2": "Khaos Williams",
+          "weightClass": "Welterweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Ateba Gautier",
+          "fighter2": "Roman Kopylov",
+          "weightClass": "Middleweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 51.3,
+            "fighter2WinProbability": 48.7,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Imanol Rodriguez",
+          "fighter2": "Alden Coria",
+          "weightClass": "Flyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 51.6,
+            "fighter2WinProbability": 48.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Damian Pinas",
+          "fighter2": "Andrey Pulyaev",
+          "weightClass": "Middleweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 63.1,
+            "fighter2WinProbability": 36.9,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Marcus McGhee",
+          "fighter2": "Anthony Romero",
+          "weightClass": "Featherweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 51.6,
+            "fighter2WinProbability": 48.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Anthony Wint",
+          "fighter2": "Lucas Armand",
+          "weightClass": "Heavyweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Johnny Walker",
+          "fighter2": "Mick Parkin",
+          "weightClass": "Heavyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 61.1,
+            "fighter2WinProbability": 38.9,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Jacobe Smith",
+          "fighter2": "Bruce Whitehead",
+          "weightClass": "Welterweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Rafael Dos Anjos",
+          "fighter2": "Alexander Hernandez",
+          "weightClass": "Lightweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 69.9,
+            "fighter2WinProbability": 30.1,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Marvin Vettori",
+          "fighter2": "Ismail Naurdiev",
+          "weightClass": "Middleweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 85.5,
+            "fighter2WinProbability": 14.5,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Court McGee",
+          "fighter2": "Eric Nolan",
+          "weightClass": "Welterweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 98.6,
+            "fighter2WinProbability": 1.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        }
+      ]
+    },
     {
       "slug": "ufc-330",
       "title": "UFC 330",

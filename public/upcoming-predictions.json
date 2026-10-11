@@ -1,52 +1,7 @@
 {
-  "generatedAt": "2026-10-05T18:57:20.592Z",
-  "count": 15,
+  "generatedAt": "2026-10-11T12:03:22.941Z",
+  "count": 14,
   "fights": [
-    {
-      "fighter1": "Allen",
-      "fighter2": "Duncan",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-11T00:00:00.000Z",
-      "prob1": 71.8,
-      "prob2": 28.2,
-      "confidence": 69.8
-    },
-    {
-      "fighter1": "Camilo",
-      "fighter2": "Herbert",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-11T00:00:00.000Z",
-      "prob1": 33.5,
-      "prob2": 66.5,
-      "confidence": 60.9
-    },
-    {
-      "fighter1": "Godinez",
-      "fighter2": "Souza",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-11T00:00:00.000Z",
-      "prob1": 90.1,
-      "prob2": 9.9,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Fili",
-      "fighter2": "III",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-11T00:00:00.000Z",
-      "prob1": 70.5,
-      "prob2": 29.5,
-      "confidence": 67.5
-    },
-    {
-      "fighter1": "Walker",
-      "fighter2": "Meerschaert",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-11T00:00:00.000Z",
-      "prob1": 87.4,
-      "prob2": 12.6,
-      "confidence": 99.9
-    },
     {
       "fighter1": "Buckley",
       "fighter2": "Malott",
@@ -129,13 +84,49 @@
       "confidence": 100
     },
     {
-      "fighter1": "Allen",
-      "fighter2": "Pico",
+      "fighter1": "Pico",
+      "fighter2": "Keita",
       "eventTitle": "UFC 333",
       "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 97.2,
-      "prob2": 2.8,
+      "prob1": 73.8,
+      "prob2": 26.2,
+      "confidence": 73.1
+    },
+    {
+      "fighter1": "Moicano",
+      "fighter2": "Nolan",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-01T00:00:00.000Z",
+      "prob1": 70.3,
+      "prob2": 29.7,
+      "confidence": 67.2
+    },
+    {
+      "fighter1": "Brown",
+      "fighter2": "Leal",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-01T00:00:00.000Z",
+      "prob1": 93.5,
+      "prob2": 6.5,
       "confidence": 100
+    },
+    {
+      "fighter1": "Santos",
+      "fighter2": "Santos",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-01T00:00:00.000Z",
+      "prob1": 67,
+      "prob2": 33,
+      "confidence": 61.7
+    },
+    {
+      "fighter1": "Alencar",
+      "fighter2": "Rodriguez",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-01T00:00:00.000Z",
+      "prob1": 48.4,
+      "prob2": 51.6,
+      "confidence": 16
     }
   ]
 }

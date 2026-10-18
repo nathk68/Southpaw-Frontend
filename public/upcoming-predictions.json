@@ -1,52 +1,7 @@
 {
-  "generatedAt": "2026-10-12T19:29:51.012Z",
+  "generatedAt": "2026-10-18T10:20:21.475Z",
   "count": 14,
   "fights": [
-    {
-      "fighter1": "Buckley",
-      "fighter2": "Malott",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-18T00:00:00.000Z",
-      "prob1": 62.4,
-      "prob2": 37.6,
-      "confidence": 54
-    },
-    {
-      "fighter1": "Blanchfield",
-      "fighter2": "Jasudavicius",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-18T00:00:00.000Z",
-      "prob1": 69.9,
-      "prob2": 30.1,
-      "confidence": 66.5
-    },
-    {
-      "fighter1": "Nelson",
-      "fighter2": "Gonzalez",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-18T00:00:00.000Z",
-      "prob1": 66.6,
-      "prob2": 33.4,
-      "confidence": 61.1
-    },
-    {
-      "fighter1": "Barriault",
-      "fighter2": "Daukaus",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-18T00:00:00.000Z",
-      "prob1": 79.8,
-      "prob2": 20.2,
-      "confidence": 84.7
-    },
-    {
-      "fighter1": "Jourdain",
-      "fighter2": "Cuamba",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-10-18T00:00:00.000Z",
-      "prob1": 25.8,
-      "prob2": 74.2,
-      "confidence": 73.8
-    },
     {
       "fighter1": "Volkanovski",
       "fighter2": "Evloev",
@@ -120,13 +75,58 @@
       "confidence": 61.7
     },
     {
-      "fighter1": "Alencar",
-      "fighter2": "Rodriguez",
+      "fighter1": "Marshall",
+      "fighter2": "Bolanos",
       "eventTitle": "UFC Fight Night",
       "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 48.4,
-      "prob2": 51.6,
-      "confidence": 16
+      "prob1": 63.1,
+      "prob2": 36.9,
+      "confidence": 55.2
+    },
+    {
+      "fighter1": "Bonfim",
+      "fighter2": "Brady",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 54.9,
+      "prob2": 45.1,
+      "confidence": 31
+    },
+    {
+      "fighter1": "Suarez",
+      "fighter2": "Jandiroba",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 59.3,
+      "prob2": 40.7,
+      "confidence": 47.3
+    },
+    {
+      "fighter1": "Grant",
+      "fighter2": "Smith",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 79.9,
+      "prob2": 20.1,
+      "confidence": 84.9
+    },
+    {
+      "fighter1": "Ko",
+      "fighter2": "Turman",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 80,
+      "prob2": 20,
+      "confidence": 85
+    },
+    {
+      "fighter1": "Elekana",
+      "fighter2": "Fernando",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 57.3,
+      "prob2": 42.7,
+      "confidence": 40.1
     }
   ]
 }

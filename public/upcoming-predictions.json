@@ -1,52 +1,7 @@
 {
-  "generatedAt": "2026-10-19T16:41:47.968Z",
-  "count": 14,
+  "generatedAt": "2026-10-25T10:39:34.642Z",
+  "count": 11,
   "fights": [
-    {
-      "fighter1": "Volkanovski",
-      "fighter2": "Evloev",
-      "eventTitle": "UFC 333",
-      "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 81,
-      "prob2": 19,
-      "confidence": 86.9
-    },
-    {
-      "fighter1": "Yan",
-      "fighter2": "Dvalishvili",
-      "eventTitle": "UFC 333",
-      "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 78.2,
-      "prob2": 21.8,
-      "confidence": 81.3
-    },
-    {
-      "fighter1": "Kavanagh",
-      "fighter2": "Temirov",
-      "eventTitle": "UFC 333",
-      "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 90.2,
-      "prob2": 9.8,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Volkov",
-      "fighter2": "Kuniev",
-      "eventTitle": "UFC 333",
-      "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 95.1,
-      "prob2": 4.9,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Pico",
-      "fighter2": "Keita",
-      "eventTitle": "UFC 333",
-      "eventDate": "2026-10-24T18:00:00.000Z",
-      "prob1": 73.8,
-      "prob2": 26.2,
-      "confidence": 73.1
-    },
     {
       "fighter1": "Moicano",
       "fighter2": "Nolan",
@@ -58,11 +13,11 @@
     },
     {
       "fighter1": "Brown",
-      "fighter2": "Leal",
+      "fighter2": "Smith",
       "eventTitle": "UFC Fight Night",
       "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 93.5,
-      "prob2": 6.5,
+      "prob1": 95.7,
+      "prob2": 4.3,
       "confidence": 100
     },
     {
@@ -75,13 +30,13 @@
       "confidence": 61.7
     },
     {
-      "fighter1": "Marshall",
-      "fighter2": "Bolanos",
+      "fighter1": "Osbourne",
+      "fighter2": "Durden",
       "eventTitle": "UFC Fight Night",
       "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 63.1,
-      "prob2": 36.9,
-      "confidence": 55.2
+      "prob1": 49.6,
+      "prob2": 50.4,
+      "confidence": 4.2
     },
     {
       "fighter1": "Bonfim",
@@ -120,13 +75,31 @@
       "confidence": 85
     },
     {
-      "fighter1": "Elekana",
-      "fighter2": "Fernando",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-08T01:00:00.000Z",
-      "prob1": 57.3,
-      "prob2": 42.7,
-      "confidence": 40.1
+      "fighter1": "Gane",
+      "fighter2": "Hokit",
+      "eventTitle": "Polymarket UFC 334",
+      "eventDate": "2026-11-15T02:00:00.000Z",
+      "prob1": 55.2,
+      "prob2": 44.8,
+      "confidence": 32
+    },
+    {
+      "fighter1": "Harrison",
+      "fighter2": "Nunes",
+      "eventTitle": "Polymarket UFC 334",
+      "eventDate": "2026-11-15T02:00:00.000Z",
+      "prob1": 5.9,
+      "prob2": 94.1,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Borralho",
+      "fighter2": "Belgaroui",
+      "eventTitle": "Polymarket UFC 334",
+      "eventDate": "2026-11-15T02:00:00.000Z",
+      "prob1": 94.9,
+      "prob2": 5.1,
+      "confidence": 100
     }
   ]
 }

@@ -3,11 +3,207 @@
     "globalAccuracy": 66,
     "totalTestFights": 100,
     "correctPredictions": 66,
-    "displayedEvents": 55,
+    "displayedEvents": 56,
     "trainingFights": 8255,
-    "generatedAt": "2026-10-05T18:57:15.803Z"
+    "generatedAt": "2026-10-25T10:39:31.209Z"
   },
   "events": [
+    {
+      "slug": "ufc-333",
+      "title": "UFC 333",
+      "date": "2026-10-24T18:00:00.000Z",
+      "location": "Etihad Arena, Yas Island/Yas West United Arab Emirates",
+      "accuracy": 88.9,
+      "correctPredictions": 8,
+      "totalDecidedFights": 9,
+      "totalFights": 14,
+      "fights": [
+        {
+          "fighter1": "Alexander Volkanovski",
+          "fighter2": "Movsar Evloev",
+          "weightClass": "Featherweight Title Bout",
+          "isTitleFight": true,
+          "prediction": {
+            "fighter1WinProbability": 81,
+            "fighter2WinProbability": 19,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": null,
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Petr Yan",
+          "fighter2": "Merab Dvalishvili",
+          "weightClass": "Bantamweight Title Bout",
+          "isTitleFight": true,
+          "prediction": {
+            "fighter1WinProbability": 78.2,
+            "fighter2WinProbability": 21.8,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": null,
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Lone’er Kavanagh",
+          "fighter2": "Ramazan Temirov",
+          "weightClass": "Flyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 90.2,
+            "fighter2WinProbability": 9.8,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Alexander Volkov",
+          "fighter2": "Rizvan Kuniev",
+          "weightClass": "Heavyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 95.1,
+            "fighter2WinProbability": 4.9,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Aaron Pico",
+          "fighter2": "Losene Keita",
+          "weightClass": "Featherweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 73.8,
+            "fighter2WinProbability": 26.2,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Azamat Murzakanov",
+          "fighter2": "Dominick Reyes",
+          "weightClass": "Light Heavyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 36.6,
+            "fighter2WinProbability": 63.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter2",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Nikita Krylov",
+          "fighter2": "Abdul Rakhman Yakhyaev",
+          "weightClass": "Light Heavyweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 83.8,
+            "fighter2WinProbability": 16.2,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter2",
+          "wasCorrect": false
+        },
+        {
+          "fighter1": "Abus Magomedov",
+          "fighter2": "Cam Rowston",
+          "weightClass": "Middleweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 82.9,
+            "fighter2WinProbability": 17.1,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Grant Dawson",
+          "fighter2": "Nurullo Aliev",
+          "weightClass": "Lightweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 87.5,
+            "fighter2WinProbability": 12.5,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Colby Thicknesse",
+          "fighter2": "Asaf Chopurov",
+          "weightClass": "Bantamweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Abubakar Vagaev",
+          "fighter2": "Jacob Malkoun",
+          "weightClass": "Middleweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Bolaji Oki",
+          "fighter2": "Daniel Santos",
+          "weightClass": "Featherweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 48.6,
+            "fighter2WinProbability": 51.4,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter2",
+          "actualWinner": "fighter2",
+          "wasCorrect": true
+        },
+        {
+          "fighter1": "Kody Steele",
+          "fighter2": "Noah Gugnon",
+          "weightClass": "Lightweight Bout",
+          "isTitleFight": false,
+          "prediction": null,
+          "algorithmPrediction": null,
+          "actualWinner": "fighter1",
+          "wasCorrect": null
+        },
+        {
+          "fighter1": "Iasmin Lucindo",
+          "fighter2": "Nicolle Caliari",
+          "weightClass": "Women's Strawweight Bout",
+          "isTitleFight": false,
+          "prediction": {
+            "fighter1WinProbability": 69.2,
+            "fighter2WinProbability": 30.8,
+            "breakdown": {}
+          },
+          "algorithmPrediction": "fighter1",
+          "actualWinner": "fighter1",
+          "wasCorrect": true
+        }
+      ]
+    },
     {
       "slug": "ufc-332",
       "title": "UFC 332",

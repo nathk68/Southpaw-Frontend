@@ -1,51 +1,15 @@
 {
-  "generatedAt": "2026-10-26T16:21:50.565Z",
-  "count": 11,
+  "generatedAt": "2026-11-01T12:38:07.979Z",
+  "count": 12,
   "fights": [
     {
-      "fighter1": "Moicano",
-      "fighter2": "Nolan",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 70.3,
-      "prob2": 29.7,
-      "confidence": 67.2
-    },
-    {
-      "fighter1": "Brown",
-      "fighter2": "Smith",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 95.7,
-      "prob2": 4.3,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Santos",
-      "fighter2": "Santos",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 67,
-      "prob2": 33,
-      "confidence": 61.7
-    },
-    {
-      "fighter1": "Osbourne",
-      "fighter2": "Durden",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-01T00:00:00.000Z",
-      "prob1": 49.6,
-      "prob2": 50.4,
-      "confidence": 4.2
-    },
-    {
-      "fighter1": "Bonfim",
-      "fighter2": "Brady",
+      "fighter1": "Acosta",
+      "fighter2": "Walker",
       "eventTitle": "UFC Fight Night",
       "eventDate": "2026-11-08T01:00:00.000Z",
-      "prob1": 54.9,
-      "prob2": 45.1,
-      "confidence": 31
+      "prob1": 72.3,
+      "prob2": 27.7,
+      "confidence": 70.6
     },
     {
       "fighter1": "Suarez",
@@ -75,6 +39,15 @@
       "confidence": 85
     },
     {
+      "fighter1": "Elekana",
+      "fighter2": "Fernando",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-08T01:00:00.000Z",
+      "prob1": 57.3,
+      "prob2": 42.7,
+      "confidence": 40.1
+    },
+    {
       "fighter1": "Gane",
       "fighter2": "Hokit",
       "eventTitle": "Polymarket UFC 334",
@@ -99,6 +72,42 @@
       "eventDate": "2026-11-15T02:00:00.000Z",
       "prob1": 94.9,
       "prob2": 5.1,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Sterling",
+      "fighter2": "Vallejos",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-21T18:00:00.000Z",
+      "prob1": 95.4,
+      "prob2": 4.6,
+      "confidence": 100
+    },
+    {
+      "fighter1": "Hooker",
+      "fighter2": "Ortega",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-21T18:00:00.000Z",
+      "prob1": 46.9,
+      "prob2": 53.1,
+      "confidence": 24.3
+    },
+    {
+      "fighter1": "Cannonier",
+      "fighter2": "Aliskerov",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-21T18:00:00.000Z",
+      "prob1": 84.5,
+      "prob2": 15.5,
+      "confidence": 94
+    },
+    {
+      "fighter1": "Gaziev",
+      "fighter2": "Teixeira",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2026-11-21T18:00:00.000Z",
+      "prob1": 96.6,
+      "prob2": 3.4,
       "confidence": 100
     }
   ]

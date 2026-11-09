@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-08T12:42:22.450Z",
+  "generatedAt": "2026-11-09T20:16:27.647Z",
   "count": 12,
   "fights": [
     {
       "fighter1": "Gane",
       "fighter2": "Hokit",
-      "eventTitle": "UFC 334",
+      "eventTitle": "Polymarket UFC 334",
       "eventDate": "2026-11-15T02:00:00.000Z",
       "prob1": 55.2,
       "prob2": 44.8,
@@ -14,7 +14,7 @@
     {
       "fighter1": "Harrison",
       "fighter2": "Nunes",
-      "eventTitle": "UFC 334",
+      "eventTitle": "Polymarket UFC 334",
       "eventDate": "2026-11-15T02:00:00.000Z",
       "prob1": 5.9,
       "prob2": 94.1,
@@ -23,7 +23,7 @@
     {
       "fighter1": "Borralho",
       "fighter2": "Belgaroui",
-      "eventTitle": "UFC 334",
+      "eventTitle": "Polymarket UFC 334",
       "eventDate": "2026-11-15T02:00:00.000Z",
       "prob1": 94.9,
       "prob2": 5.1,

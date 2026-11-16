@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-15T13:24:14.901Z",
-  "count": 12,
+  "generatedAt": "2026-11-16T19:55:45.479Z",
+  "count": 11,
   "fights": [
     {
       "fighter1": "Sterling",
@@ -100,15 +100,6 @@
       "prob1": 38.7,
       "prob2": 61.3,
       "confidence": 52.2
-    },
-    {
-      "fighter1": "Pyfer",
-      "fighter2": "Nickal",
-      "eventTitle": "UFC 335",
-      "eventDate": "2026-12-13T02:00:00.000Z",
-      "prob1": 43.6,
-      "prob2": 56.4,
-      "confidence": 36.4
     }
   ]
 }

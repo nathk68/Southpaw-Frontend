@@ -1,43 +1,7 @@
 {
-  "generatedAt": "2026-11-16T19:55:45.479Z",
+  "generatedAt": "2026-11-22T13:59:44.415Z",
   "count": 11,
   "fights": [
-    {
-      "fighter1": "Sterling",
-      "fighter2": "Vallejos",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-21T18:00:00.000Z",
-      "prob1": 95.4,
-      "prob2": 4.6,
-      "confidence": 100
-    },
-    {
-      "fighter1": "Hooker",
-      "fighter2": "Ortega",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-21T18:00:00.000Z",
-      "prob1": 46.9,
-      "prob2": 53.1,
-      "confidence": 24.3
-    },
-    {
-      "fighter1": "Horiguchi",
-      "fighter2": "Almabayev",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-21T18:00:00.000Z",
-      "prob1": 79.9,
-      "prob2": 20.1,
-      "confidence": 84.9
-    },
-    {
-      "fighter1": "Cannonier",
-      "fighter2": "Aliskerov",
-      "eventTitle": "UFC Fight Night",
-      "eventDate": "2026-11-21T18:00:00.000Z",
-      "prob1": 84.5,
-      "prob2": 15.5,
-      "confidence": 94
-    },
     {
       "fighter1": "Adesanya",
       "fighter2": "Magomedov",
@@ -93,13 +57,49 @@
       "confidence": 78.7
     },
     {
-      "fighter1": "Pasley",
-      "fighter2": "Tafa",
+      "fighter1": "Pinas",
+      "fighter2": "Susurkaev",
       "eventTitle": "UFC 335",
       "eventDate": "2026-12-13T02:00:00.000Z",
-      "prob1": 38.7,
-      "prob2": 61.3,
-      "confidence": 52.2
+      "prob1": 28.8,
+      "prob2": 71.2,
+      "confidence": 68.6
+    },
+    {
+      "fighter1": "Rodriguez",
+      "fighter2": "Garcia",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2027-01-17T01:00:00.000Z",
+      "prob1": 76.9,
+      "prob2": 23.1,
+      "confidence": 78.9
+    },
+    {
+      "fighter1": "Neal",
+      "fighter2": "Curtis",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2027-01-17T01:00:00.000Z",
+      "prob1": 69.8,
+      "prob2": 30.2,
+      "confidence": 66.4
+    },
+    {
+      "fighter1": "Njokuani",
+      "fighter2": "Bahamondes",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2027-01-17T01:00:00.000Z",
+      "prob1": 87,
+      "prob2": 13,
+      "confidence": 99
+    },
+    {
+      "fighter1": "Spann",
+      "fighter2": "Sutherland",
+      "eventTitle": "UFC Fight Night",
+      "eventDate": "2027-01-17T01:00:00.000Z",
+      "prob1": 94.8,
+      "prob2": 5.2,
+      "confidence": 100
     }
   ]
 }
